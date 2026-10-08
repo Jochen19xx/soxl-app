@@ -97,10 +97,11 @@ export function createFinnhub(token, server = '') {
       return getJson(`${server}/extended?symbol=${encodeURIComponent(symbol)}`);
     },
 
-    // Tageskerzen (nur über den eigenen Server).
-    async candles(symbol) {
+    // Kerzen (nur über den eigenen Server).
+    // range: leer = 6 Monate Tageskerzen, '1y' = 1 Jahr Wochenkerzen, 'max' = gesamt Monatskerzen.
+    async candles(symbol, range = '') {
       if (!server) throw new ApiError('Kein Server');
-      return (await getJson(`${server}/candles?symbol=${encodeURIComponent(symbol)}`)).candles;
+      return (await getJson(`${server}/candles?symbol=${encodeURIComponent(symbol)}${range ? `&range=${range}` : ''}`)).candles;
     },
 
     // Kurs eines beliebigen Werts (Yahoo, über den eigenen Server), gleiche Form wie quote().

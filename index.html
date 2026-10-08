@@ -65,11 +65,15 @@
         <p class="hint">Hinweis aus vergangenen Kursen, keine Vorhersage und keine Anlageberatung.</p>
       </div>
 
-      <h2 id="chart-title">Chart · letzte 3 Wochen</h2>
+      <div class="chart-head"><h2 id="chart-title">Chart</h2>
+        <div class="seg" id="chart-range" role="tablist" aria-label="Zeitraum">
+          <button data-r="3w">3 W</button><button data-r="3m">3 M</button><button data-r="1y">1 J</button><button data-r="max">Gesamt</button>
+        </div></div>
       <div class="card chart-card">
         <div class="chart-info" id="chart-info">Lade Kerzen …</div>
-        <svg id="chart" class="chart" role="img" aria-label="SOXL Tageskerzen der letzten drei Wochen"></svg>
-        <div class="legend"><span class="ma20">━ 20-Tage-Schnitt</span><span class="ma50">━ 50-Tage-Schnitt</span></div>
+        <svg id="chart" class="chart" role="img" aria-label="Kurschart"></svg>
+        <div class="legend" id="chart-note" hidden></div>
+        <div class="legend" id="chart-legend"><span class="ma20">━ 20-Tage-Schnitt</span><span class="ma50">━ 50-Tage-Schnitt</span></div>
         <svg id="rsi-chart" class="chart rsi-chart" role="img" aria-label="RSI der letzten drei Wochen"></svg>
       </div>
 

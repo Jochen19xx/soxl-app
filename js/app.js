@@ -1,7 +1,7 @@
 import { SERVER_URL, MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, DEFAULT_WATCH, EXTRA_HOLDINGS, getApiKey, setApiKey, restoreApiKey, loadState, saveState } from './config.js';
 import { createFinnhub, usdToEur, lastFinnhub } from './api.js';
 
-const VERSION = '2026-10-08.24';
+const VERSION = '2026-10-08.25';
 import { demo } from './demo.js';
 import { upcomingEvents } from './events.js';
 import { getPortfolio, setPortfolio, portfolioFigures, getPositions, setPositions, positionFigures } from './portfolio.js';
@@ -467,8 +467,15 @@ $('#report-archive').addEventListener('click', (e) => {
   if (li) { loadReport(li.dataset.day); window.scrollTo(0, 0); }
 });
 
-// Tageskerzen der letzten drei Wochen (15 Handelstage) mit 20- und 50-Tage-Schnitt.
+// Chart in vier Zeiträumen. 3 W und 3 M: Tageskerzen mit 20/50-Tage-Schnitt und RSI.
+// 1 J: Wochenkerzen, Gesamt: Monatskerzen. Trend und RSI rechnen immer mit Tageskerzen.
+const RANGES = {
+  '3w': { n: 15 }, '3m': { n: 63 },
+  '1y': { range: '1y', interval: '1wk', note: 'Wochenkerzen, eine Kerze je Woche' }, max: { range: 'max', interval: '1mo', note: 'Monatskerzen, eine Kerze je Monat, seit Handelsstart' },
+};
+let chartRange = RANGES[loadState().chartRange] ? loadState().chartRange : '3w';
 let dailyCandles = [], chartLoadedAt = 0;
+const longCandles = {}; // 'SYMBOL|1y' -> { t, candles }
 async function loadChart() {
   try {
     const sym = sel;
@@ -476,15 +483,45 @@ async function loadChart() {
     if (sym !== sel) return; // inzwischen anderen Wert gewählt
     dailyCandles = candles;
     chartLoadedAt = Date.now();
-    const t = trend(dailyCandles), n = 15;
-    const lines = t ? [{ cls: 'ma20', label: 'Ø20', values: t.shortLine.slice(-n) }, { cls: 'ma50', label: 'Ø50', values: t.longLine.slice(-n) },
-      { cls: 'rsi', label: 'RSI', values: t.rsiLine.slice(-n), digits: 0, draw: false }] : [];
-    renderCandles($('#chart'), $('#chart-info'), dailyCandles.slice(-n), lines);
-    $('#rsi-chart').hidden = !t;
-    if (t) renderRsi($('#rsi-chart'), t.rsiLine.slice(-n));
     renderTrend();
+    await drawChart();
   } catch { $('#chart-info').textContent = 'Chart gerade nicht verfügbar.'; }
 }
+
+async function drawChart() {
+  const sym = sel, key = chartRange, r = RANGES[key];
+  $('#chart-note').textContent = r.note || '';
+  $('#chart-note').hidden = !r.note;
+  document.querySelectorAll('#chart-range button').forEach((b) => b.classList.toggle('active', b.dataset.r === key));
+  if (!r.range) {
+    const t = dailyCandles.length && trend(dailyCandles), n = r.n;
+    const lines = t ? [{ cls: 'ma20', label: 'Ø20', values: t.shortLine.slice(-n) }, { cls: 'ma50', label: 'Ø50', values: t.longLine.slice(-n) },
+      { cls: 'rsi', label: 'RSI', values: t.rsiLine.slice(-n), digits: 0, draw: false }] : [];
+    $('#chart-legend').hidden = !t;
+    $('#rsi-chart').style.display = t ? '' : 'none';
+    renderCandles($('#chart'), $('#chart-info'), dailyCandles.slice(-n), lines, '1d');
+    if (t) renderRsi($('#rsi-chart'), t.rsiLine.slice(-n));
+    return;
+  }
+  $('#chart-legend').hidden = true;
+  $('#rsi-chart').style.display = 'none';
+  let c = longCandles[`${sym}|${key}`];
+  if (!c || Date.now() - c.t > 10 * 60_000) {
+    if (!c) { $('#chart').innerHTML = ''; $('#chart-info').textContent = 'Lade Kerzen …'; }
+    try { c = longCandles[`${sym}|${key}`] = { t: Date.now(), candles: await api.candles(sym, r.range) }; }
+    catch { if (!c) { $('#chart-info').textContent = 'Chart gerade nicht verfügbar.'; return; } }
+  }
+  if (sym !== sel || key !== chartRange) return; // inzwischen umgeschaltet
+  renderCandles($('#chart'), $('#chart-info'), c.candles, [], r.interval);
+}
+
+$('#chart-range').addEventListener('click', (e) => {
+  const b = e.target.closest('button[data-r]');
+  if (!b || b.dataset.r === chartRange) return;
+  chartRange = b.dataset.r;
+  const st = loadState(); st.chartRange = chartRange; saveState(st);
+  drawChart();
+});
 
 // Trend-Ampel: aktueller Kurs gegen 20- und 50-Tage-Schnitt.
 const TREND_TITLE = { up: 'Aufwärtstrend', down: 'Abwärtstrend', mixed: 'Kein klarer Trend' };
