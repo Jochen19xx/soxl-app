@@ -36,12 +36,60 @@ export const NEWS_SYMBOLS = ['SOXL', 'NVDA', 'AMD', 'AVGO', 'MU', 'TSM'];
 export const POLL_MS = 60_000;
 export const NEWS_POLL_MS = 10 * 60_000;
 
+// Der Schlüssel wird dreifach gespeichert (localStorage, IndexedDB, Cookie), weil Browser
+// einzelne Speicher gelegentlich leeren. Fehlt er an einer Stelle, wird er aus den anderen
+// wiederhergestellt.
 const KEY_STORAGE = 'soxl.finnhubKey';
-export function getApiKey() {
-  try { return localStorage.getItem(KEY_STORAGE) || ''; } catch { return ''; }
+const COOKIE = 'soxl_key';
+
+function readCookie() {
+  const m = document.cookie.match(new RegExp('(?:^|; )' + COOKIE + '=([^;]*)'));
+  return m ? decodeURIComponent(m[1]) : '';
 }
+function writeCookie(key) {
+  const age = key ? 60 * 60 * 24 * 400 : 0;
+  document.cookie = `${COOKIE}=${encodeURIComponent(key)}; max-age=${age}; path=/; SameSite=Strict; Secure`;
+}
+
+function idb(mode, fn) {
+  return new Promise((resolve) => {
+    try {
+      const open = indexedDB.open('soxl', 1);
+      open.onupgradeneeded = () => open.result.createObjectStore('kv');
+      open.onerror = () => resolve('');
+      open.onsuccess = () => {
+        const tx = open.result.transaction('kv', mode);
+        const req = fn(tx.objectStore('kv'));
+        tx.oncomplete = () => resolve(req.result || '');
+        tx.onerror = () => resolve('');
+      };
+    } catch { resolve(''); }
+  });
+}
+
+export function getApiKey() {
+  try { return localStorage.getItem(KEY_STORAGE) || readCookie(); } catch { return readCookie(); }
+}
+
 export function setApiKey(key) {
   try { key ? localStorage.setItem(KEY_STORAGE, key) : localStorage.removeItem(KEY_STORAGE); } catch {}
+  try { writeCookie(key); } catch {}
+  idb('readwrite', (st) => (key ? st.put(key, KEY_STORAGE) : st.delete(KEY_STORAGE)));
+}
+
+// Beim Start: Schlüssel aus einem Link übernehmen (…/#key=ABC) oder aus IndexedDB
+// zurückholen, falls localStorage geleert wurde. Danach den Browser bitten, nichts zu löschen.
+export async function restoreApiKey() {
+  const m = location.hash.match(/key=([^&]+)/);
+  if (m) {
+    setApiKey(decodeURIComponent(m[1]).trim());
+    history.replaceState(null, '', location.pathname + location.search);
+  }
+  let key = getApiKey();
+  if (!key) key = await idb('readonly', (st) => st.get(KEY_STORAGE));
+  if (key) setApiKey(key); // in allen drei Speichern auffrischen
+  try { await navigator.storage?.persist?.(); } catch {}
+  return key;
 }
 
 // Platz für spätere Funktionen (Portfolio, Alarme). Alles bleibt lokal auf dem Gerät.

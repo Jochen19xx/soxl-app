@@ -1,4 +1,4 @@
-import { MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey } from './config.js';
+import { MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey, restoreApiKey } from './config.js';
 import { createFinnhub, usdToEur } from './api.js';
 import { demo } from './demo.js';
 import { upcomingEvents } from './events.js';
@@ -219,12 +219,13 @@ $('#btn-save-key').addEventListener('click', async () => {
   $('#key-status').textContent = 'Prüfe Schlüssel …';
   try {
     await createFinnhub(key).quote(MAIN_SYMBOL);
-    setApiKey(key);
-    $('#key-status').textContent = 'Gespeichert. Echte Kurse werden geladen.';
-    start(); show('markt');
   } catch (e) {
-    $('#key-status').textContent = 'Das hat nicht geklappt: ' + e.message;
+    // Nur ablehnen, wenn Finnhub den Schlüssel ausdrücklich nicht kennt.
+    if (e.status === 401 || e.status === 403) { $('#key-status').textContent = 'Das hat nicht geklappt: ' + e.message; return; }
   }
+  setApiKey(key);
+  $('#key-status').textContent = 'Gespeichert. Echte Kurse werden geladen.';
+  start(); show('markt');
 });
 $('#btn-clear-key').addEventListener('click', () => {
   setApiKey(''); $('#key-status').textContent = 'Schlüssel gelöscht.'; start();
@@ -237,4 +238,5 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catc
 
 renderSession();
 renderHoldings();
-start();
+restoreApiKey().then(start);
+window.addEventListener('hashchange', () => { if (/key=/.test(location.hash)) restoreApiKey().then(start); });
