@@ -1,9 +1,10 @@
 import { SERVER_URL, MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey, restoreApiKey } from './config.js';
 import { createFinnhub, usdToEur, lastFinnhub } from './api.js';
 
-const VERSION = '2026-10-08.10';
+const VERSION = '2026-10-08.11';
 import { demo } from './demo.js';
 import { upcomingEvents } from './events.js';
+import { getPortfolio, setPortfolio, portfolioFigures } from './portfolio.js';
 import { toGerman, cachedGerman } from './translate.js';
 
 const $ = (sel) => document.querySelector(sel);
@@ -85,7 +86,52 @@ function renderMain(flash = false) {
   $('#soxl-h').textContent = usd(q.high);
   $('#soxl-updated').textContent = `Stand ${timeDe(q.time)} Uhr`;
   if (flash) { const p = $('#soxl-price'); p.classList.remove('flash'); void p.offsetWidth; p.classList.add('flash'); }
+  renderPortfolio();
 }
+
+// ---------- Portfolio ----------
+const money = (usdVal, eurVal) => eurVal != null ? eur(eurVal) : usd(usdVal);
+const signedMoney = (usdVal, eurVal) => ((eurVal ?? usdVal) > 0 ? '+' : '') + money(usdVal, eurVal);
+
+function renderPortfolio() {
+  const p = getPortfolio();
+  const f = portfolioFigures(p, state.quotes[MAIN_SYMBOL], state.eur?.rate);
+  $('#pf-summary').hidden = !f;
+  $('#mini-pf').hidden = !f;
+  if (!f) return;
+  $('#pf-shares').textContent = `${p.shares.toLocaleString('de-DE')} Anteile`;
+  $('#pf-value-eur').textContent = money(f.valueUsd, f.valueEur);
+  $('#pf-value-usd').textContent = f.valueEur != null ? usd(f.valueUsd) : '';
+  const day = $('#pf-day');
+  day.innerHTML = `${signedMoney(f.dayUsd, f.dayEur)}<small>${pct(f.dayPct)}</small>`;
+  day.className = 'pf-num ' + dir(f.dayUsd);
+  $('#pf-pl-box').hidden = f.plPct == null && f.plUsd == null;
+  if (f.plUsd != null || f.plEur != null) {
+    const pl = $('#pf-pl');
+    pl.innerHTML = `${signedMoney(f.plUsd, f.plEur)}<small>${f.plPct != null ? pct(f.plPct) : ''}</small>`;
+    pl.className = 'pf-num ' + dir(f.plUsd ?? f.plEur);
+  }
+  $('#pf-foot').textContent = state.eur ? `Euro-Kurs der EZB vom ${new Date(state.eur.date).toLocaleDateString('de-DE')}: 1 $ = ${state.eur.rate.toLocaleString('de-DE', { maximumFractionDigits: 4 })} €` : 'Euro-Kurs wird geladen …';
+  $('#mini-pf').innerHTML = `<div><div class="pf-label">Dein Depot</div><div class="pf-num">${money(f.valueUsd, f.valueEur)}</div></div>
+    <div class="pf-num ${dir(f.dayUsd)}">${signedMoney(f.dayUsd, f.dayEur)}<small>heute</small></div>`;
+}
+
+function fillPortfolioForm() {
+  const p = getPortfolio();
+  $('#pf-shares-in').value = p.shares || '';
+  $('#pf-cost-in').value = p.cost || '';
+  $('#pf-cur-in').value = p.currency;
+}
+
+$('#pf-save').addEventListener('click', () => {
+  const num = (v) => parseFloat(String(v).replace(',', '.')) || 0;
+  const shares = num($('#pf-shares-in').value), cost = num($('#pf-cost-in').value);
+  if (shares < 0 || cost < 0) { $('#pf-status').textContent = 'Bitte nur positive Zahlen eingeben.'; return; }
+  setPortfolio({ shares, cost, currency: $('#pf-cur-in').value });
+  $('#pf-status').textContent = shares ? 'Gespeichert.' : 'Portfolio geleert.';
+  renderPortfolio();
+});
+$('#mini-pf').addEventListener('click', () => show('portfolio'));
 
 function renderHoldings() {
   $('#holdings').innerHTML = holdings.map((h) => {
@@ -231,7 +277,7 @@ function show(view, tab = view) {
   document.querySelectorAll('.tabbar button').forEach((b) => b.classList.toggle('active', b.dataset.view === tab));
   window.scrollTo(0, 0);
 }
-document.querySelectorAll('.tabbar button').forEach((b) => b.addEventListener('click', () => show(b.dataset.view)));
+document.querySelectorAll('.tabbar button').forEach((b) => b.addEventListener('click', () => { show(b.dataset.view); if (b.dataset.view === 'portfolio') fillPortfolioForm(); }));
 $('#btn-settings').addEventListener('click', () => { show('settings'); renderDiag(); });
 
 // Zeigt, welcher Schlüssel gespeichert ist und was Finnhub zuletzt geantwortet hat.

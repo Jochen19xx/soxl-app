@@ -93,3 +93,14 @@ input { width: 100%; padding: 12px; font-size: 16px; border-radius: 10px; border
 .article p { margin: 0 0 16px; line-height: 1.55; }
 .article .btn { display: inline-block; text-decoration: none; }
 .article .orig { margin-top: 16px; }
+
+.pf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+.pf-label { color: var(--muted); font-size: 13px; }
+.pf-num { font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.pf-num small { display: block; font-size: 13px; font-weight: 500; }
+label.mt { margin-top: 14px; }
+.row.tight { margin-top: 0; }
+select { padding: 12px; font-size: 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--text); }
+.mini-pf { display: flex; width: 100%; justify-content: space-between; align-items: center; border: 0; color: var(--text); font: inherit; text-align: left; cursor: pointer; }
+.mini-pf[hidden] { display: none; }
+.mini-pf .pf-num { text-align: right; }

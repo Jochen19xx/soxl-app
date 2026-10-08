@@ -42,6 +42,7 @@
         </div>
         <div class="hero-foot" id="soxl-updated"></div>
       </div>
+      <button class="card mini-pf" id="mini-pf" hidden></button>
 
       <h2>Top 10 im SOXL</h2>
       <ul id="holdings" class="list"></ul>
@@ -70,9 +71,28 @@
     <!-- Portfolio (folgt) -->
     <section id="view-portfolio" class="view">
       <h2>Portfolio</h2>
-      <div class="card placeholder">
-        <p>Hier trägst du bald deine Stückzahl und deinen Kaufpreis ein. Die App zeigt dann den aktuellen Wert in Dollar und Euro sowie deinen Gewinn oder Verlust.</p>
-        <p class="hint">Kommt im nächsten Schritt.</p>
+      <div class="card hero" id="pf-summary" hidden>
+        <div class="hero-label">Dein SOXL-Depot · <span id="pf-shares"></span></div>
+        <div class="hero-price" id="pf-value-eur">–</div>
+        <div class="hero-eur" id="pf-value-usd"></div>
+        <div class="pf-grid">
+          <div><div class="pf-label">Heute</div><div class="pf-num" id="pf-day">–</div></div>
+          <div id="pf-pl-box"><div class="pf-label">Gewinn / Verlust</div><div class="pf-num" id="pf-pl">–</div></div>
+        </div>
+        <div class="hero-foot" id="pf-foot"></div>
+      </div>
+
+      <div class="card">
+        <label for="pf-shares-in">Anzahl SOXL-Anteile</label>
+        <input id="pf-shares-in" type="number" inputmode="decimal" min="0" step="any" placeholder="z. B. 1000">
+        <label for="pf-cost-in" class="mt">Durchschnittlicher Kaufpreis je Anteil (freiwillig)</label>
+        <div class="row tight">
+          <input id="pf-cost-in" type="number" inputmode="decimal" min="0" step="any" placeholder="z. B. 35,50">
+          <select id="pf-cur-in" aria-label="Währung des Kaufpreises"><option value="USD">$</option><option value="EUR">€</option></select>
+        </div>
+        <p class="hint">Den Durchschnittskurs findest du in deinem Depot bei der Bank. Alles bleibt nur auf diesem Gerät gespeichert.</p>
+        <div class="row"><button id="pf-save" class="btn">Speichern</button></div>
+        <p id="pf-status" class="hint"></p>
       </div>
     </section>
 
