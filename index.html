@@ -80,7 +80,7 @@
 
     <!-- News -->
     <section id="view-news" class="view">
-      <h2>News</h2>
+      <h2>News für SOXL</h2>
       <ul id="news" class="list news"></ul>
     </section>
 
@@ -100,6 +100,14 @@
     <!-- Portfolio (folgt) -->
     <section id="view-portfolio" class="view">
       <h2>Portfolio</h2>
+      <div class="card hero pf-total" id="pf-total" hidden>
+        <div class="hero-label">Gesamtdepot · <span id="pf-total-count"></span></div>
+        <div class="hero-price" id="pf-total-value">–</div>
+        <div class="pf-grid">
+          <div><div class="pf-label">Heute</div><div class="pf-num" id="pf-total-day">–</div></div>
+          <div id="pf-total-pl-box"><div class="pf-label">Gewinn / Verlust</div><div class="pf-num" id="pf-total-pl">–</div></div>
+        </div>
+      </div>
       <div class="card hero" id="pf-summary" hidden>
         <div class="hero-label">Dein SOXL-Depot · <span id="pf-shares"></span></div>
         <div class="hero-price" id="pf-value-eur">–</div>
@@ -109,6 +117,22 @@
           <div id="pf-pl-box"><div class="pf-label">Gewinn / Verlust</div><div class="pf-num" id="pf-pl">–</div></div>
         </div>
         <div class="hero-foot" id="pf-foot"></div>
+      </div>
+      <div id="pf-positions"></div>
+      <button id="pf-add-open" class="btn ghost full">+ Weiteren Wert hinzufügen</button>
+      <div class="card" id="pf-add" hidden>
+        <label for="pf-add-sym">Wert</label>
+        <select id="pf-add-sym" class="full"></select>
+        <p class="hint">Zur Auswahl stehen die Werte aus dem Reiter „Markt“. Weitere fügst du dort mit + hinzu.</p>
+        <label for="pf-add-shares" class="mt">Anzahl Anteile</label>
+        <input id="pf-add-shares" type="number" inputmode="decimal" min="0" step="any" placeholder="z. B. 200">
+        <label for="pf-add-cost" class="mt">Durchschnittlicher Kaufpreis je Anteil (freiwillig)</label>
+        <div class="row tight">
+          <input id="pf-add-cost" type="number" inputmode="decimal" min="0" step="any" placeholder="z. B. 85,40">
+          <select id="pf-add-cur" aria-label="Währung des Kaufpreises"><option value="EUR">€</option><option value="USD">$</option></select>
+        </div>
+        <div class="row"><button id="pf-add-save" class="btn">Speichern</button><button id="pf-add-cancel" class="btn ghost">Abbrechen</button></div>
+        <p id="pf-add-status" class="hint"></p>
       </div>
 
       <div class="card">
@@ -123,6 +147,7 @@
         <div class="row"><button id="pf-save" class="btn">Speichern</button></div>
         <p id="pf-status" class="hint"></p>
       </div>
+
     </section>
 
     <!-- Termine (folgt) -->
@@ -135,7 +160,7 @@
 
     <!-- Tagesbericht (folgt) -->
     <section id="view-bericht" class="view">
-      <h2>Tagesbericht</h2>
+      <h2>Tagesbericht für SOXL</h2>
       <article class="card report" id="report">
         <p class="hint">Lade Bericht …</p>
       </article>

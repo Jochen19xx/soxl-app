@@ -194,3 +194,10 @@ select.full { width: 100%; }
 .add-results li { cursor: pointer; }
 .add-results .del { background: none; border: 0; color: var(--down); font-size: 14px; cursor: pointer; padding: 4px 0 4px 12px; }
 .add-results .addbtn { color: var(--accent); font-size: 22px; padding-left: 12px; }
+.btn.full { width: 100%; margin: 4px 0 12px; }
+.pf-total { border: 1px solid var(--accent); }
+.pf-pos .pf-pos-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.pf-pos .pf-pos-value { font-size: 26px; font-weight: 700; margin: 4px 0 2px; }
+.pf-pos .pf-pos-actions { display: flex; gap: 16px; margin-top: 10px; }
+.pf-pos .pf-pos-actions button { background: none; border: 0; color: var(--accent); font: inherit; font-size: 14px; padding: 0; cursor: pointer; }
+.pf-pos .pf-pos-actions .del { color: var(--down); }

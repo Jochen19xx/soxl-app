@@ -1,10 +1,10 @@
 import { SERVER_URL, MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, DEFAULT_WATCH, EXTRA_HOLDINGS, getApiKey, setApiKey, restoreApiKey, loadState, saveState } from './config.js';
 import { createFinnhub, usdToEur, lastFinnhub } from './api.js';
 
-const VERSION = '2026-10-08.23';
+const VERSION = '2026-10-08.24';
 import { demo } from './demo.js';
 import { upcomingEvents } from './events.js';
-import { getPortfolio, setPortfolio, portfolioFigures } from './portfolio.js';
+import { getPortfolio, setPortfolio, portfolioFigures, getPositions, setPositions, positionFigures } from './portfolio.js';
 import { renderCandles, renderRsi } from './chart.js';
 import { trend, rsiZone } from './trend.js';
 import { pushSupport, permission, enablePush, listAlarms, addAlarm, deleteAlarm, sendTest, getPrefs, setPrefs } from './alarms.js';
@@ -236,6 +236,7 @@ function renderPortfolio() {
   const f = portfolioFigures(p, v && { price: v.price, prevClose: v.base }, state.eur?.rate);
   $('#pf-summary').hidden = !f;
   $('#mini-pf').hidden = !f || !isMain();
+  renderPositions(f);
   if (!f) return;
   $('#pf-shares').textContent = `${p.shares.toLocaleString('de-DE')} Anteile`;
   $('#pf-value-eur').textContent = money(f.valueUsd, f.valueEur);
@@ -253,6 +254,75 @@ function renderPortfolio() {
   $('#mini-pf').innerHTML = `<div><div class="pf-label">Dein Depot</div><div class="pf-num">${money(f.valueUsd, f.valueEur)}</div></div>
     <div class="pf-num ${dir(f.dayUsd)}">${signedMoney(f.dayUsd, f.dayEur)}<small>heute</small></div>`;
 }
+
+// Weitere Positionen (z. B. VVSM) und Gesamtdepot in Euro.
+const posLabel = (pos) => pos.label || labelOf(pos.symbol);
+function renderPositions(soxl) {
+  const list = getPositions();
+  let totalEur = soxl?.valueEur ?? 0, dayEur = soxl?.dayEur ?? 0, plEur = soxl?.plEur ?? 0, hasPl = soxl?.plEur != null, complete = !soxl || soxl.valueEur != null;
+  $('#pf-positions').innerHTML = list.map((pos, i) => {
+    const q = state.yq[pos.symbol], f = positionFigures(pos, q, state.eur?.rate);
+    if (!f) { complete = false; return `<div class="card pf-pos"><div class="pf-pos-head"><b>${esc(posLabel(pos))}</b><span class="hint">${pos.shares.toLocaleString('de-DE')} Anteile</span></div><p class="hint">Kurs wird geladen …</p></div>`; }
+    if (f.valueEur == null) complete = false; else { totalEur += f.valueEur; dayEur += f.dayEur; }
+    if (f.plEur != null) { plEur += f.plEur; hasPl = true; }
+    const main = f.valueEur != null ? eur(f.valueEur) : money$(f.value, f.currency);
+    return `<div class="card pf-pos">
+      <div class="hero-label">Dein ${esc(posLabel(pos))}-Depot · ${pos.shares.toLocaleString('de-DE')} Anteile</div>
+      <div class="pf-pos-value">${main}</div>
+      ${f.currency !== 'EUR' ? `<div class="hero-eur">${money$(f.value, f.currency)}</div>` : ''}
+      <div class="pf-grid">
+        <div><div class="pf-label">Heute</div><div class="pf-num ${dir(f.day)}">${f.dayEur != null ? (f.dayEur > 0 ? '+' : '') + eur(f.dayEur) : signed(f.day)}<small>${pct(f.dayPct)}</small></div></div>
+        ${f.plEur != null ? `<div><div class="pf-label">Gewinn / Verlust</div><div class="pf-num ${dir(f.plEur)}">${(f.plEur > 0 ? '+' : '') + eur(f.plEur)}<small>${pct(f.plPct)}</small></div></div>` : ''}
+      </div>
+      <div class="pf-pos-actions"><button data-edit="${i}">Bearbeiten</button><button class="del" data-del="${i}">Entfernen</button></div>
+    </div>`;
+  }).join('');
+  // Gesamtdepot nur, wenn es mehr als eine Position gibt.
+  const count = list.length + (soxl ? 1 : 0);
+  $('#pf-total').hidden = count < 2;
+  if (count < 2) return;
+  $('#pf-total-count').textContent = `${count} Werte`;
+  $('#pf-total-value').textContent = eur(totalEur) + (complete ? '' : ' *');
+  $('#pf-total-day').innerHTML = `${(dayEur > 0 ? '+' : '') + eur(dayEur)}<small>${pct(totalEur - dayEur ? dayEur / (totalEur - dayEur) * 100 : 0)}</small>`;
+  $('#pf-total-day').className = 'pf-num ' + dir(dayEur);
+  $('#pf-total-pl-box').hidden = !hasPl;
+  $('#pf-total-pl').textContent = (plEur > 0 ? '+' : '') + eur(plEur);
+  $('#pf-total-pl').className = 'pf-num ' + dir(plEur);
+}
+
+function fillAddForm(pos) {
+  const opts = [...watch.map((w) => ({ symbol: w.symbol, label: w.label || w.symbol, name: w.name })),
+    ...getPositions().filter((p) => !watch.some((w) => w.symbol === p.symbol))];
+  $('#pf-add-sym').innerHTML = opts.length ? opts.map((o) => `<option value="${esc(o.symbol)}">${esc(o.label || o.symbol)}${o.name ? ' · ' + esc(o.name) : ''}</option>`).join('')
+    : '<option value="">Erst im Reiter „Markt“ mit + einen Wert hinzufügen</option>';
+  $('#pf-add-sym').value = pos?.symbol || opts[0]?.symbol || '';
+  $('#pf-add-shares').value = pos?.shares || '';
+  $('#pf-add-cost').value = pos?.cost || '';
+  $('#pf-add-cur').value = pos?.currency || 'EUR';
+  $('#pf-add-status').textContent = '';
+  $('#pf-add').hidden = false; $('#pf-add-open').hidden = true;
+}
+$('#pf-add-open').addEventListener('click', () => fillAddForm());
+$('#pf-add-cancel').addEventListener('click', () => { $('#pf-add').hidden = true; $('#pf-add-open').hidden = false; });
+$('#pf-add-save').addEventListener('click', () => {
+  const num = (v) => parseFloat(String(v).replace(',', '.')) || 0;
+  const symbol = $('#pf-add-sym').value, shares = num($('#pf-add-shares').value), cost = num($('#pf-add-cost').value);
+  if (!symbol) { $('#pf-add-status').textContent = 'Bitte zuerst einen Wert wählen.'; return; }
+  if (!(shares > 0) || cost < 0) { $('#pf-add-status').textContent = 'Bitte eine Anzahl größer als 0 eingeben.'; return; }
+  const w = watch.find((x) => x.symbol === symbol) || getPositions().find((x) => x.symbol === symbol) || {};
+  const list = getPositions().filter((p) => p.symbol !== symbol);
+  list.push({ symbol, label: w.label || labelOf(symbol), name: w.name || '', shares, cost, currency: $('#pf-add-cur').value });
+  setPositions(list);
+  $('#pf-add').hidden = true; $('#pf-add-open').hidden = false;
+  renderPortfolio(); loadOther();
+});
+$('#pf-positions').addEventListener('click', (e) => {
+  const b = e.target.closest('button');
+  if (!b) return;
+  const list = getPositions();
+  if (b.dataset.edit != null) { fillAddForm(list[+b.dataset.edit]); $('#pf-add').scrollIntoView({ block: 'center' }); }
+  if (b.dataset.del != null) { list.splice(+b.dataset.del, 1); setPositions(list); renderPortfolio(); }
+});
 
 function fillPortfolioForm() {
   const p = getPortfolio();
@@ -469,12 +539,12 @@ async function loadExtended() {
 // Kurse der weiteren Werte (Chips) und, falls ausgewählt, ihrer Top 10.
 async function loadOther() {
   if (!api?.yquote) return;
-  const syms = new Set(watch.map((w) => w.symbol));
+  const syms = new Set([...watch.map((w) => w.symbol), ...getPositions().map((p) => p.symbol)]);
   if (!isMain()) EXTRA_HOLDINGS[sel]?.list.forEach((h) => syms.add(h.symbol));
   const list = [...syms];
   const res = await Promise.allSettled(list.map((s) => api.yquote(s)));
   res.forEach((r, i) => { if (r.status === 'fulfilled') state.yq[list[i]] = r.value; });
-  renderMain(); renderHoldings(); renderSession();
+  renderMain(); renderHoldings(); renderSession(); renderPortfolio();
 }
 
 async function loadNews() {
