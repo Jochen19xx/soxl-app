@@ -1,5 +1,7 @@
 import { MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey, restoreApiKey } from './config.js';
-import { createFinnhub, usdToEur } from './api.js';
+import { createFinnhub, usdToEur, lastFinnhub } from './api.js';
+
+const VERSION = '2026-10-08.7';
 import { demo } from './demo.js';
 import { upcomingEvents } from './events.js';
 import { toGerman, cachedGerman } from './translate.js';
@@ -211,7 +213,19 @@ function show(view, tab = view) {
   window.scrollTo(0, 0);
 }
 document.querySelectorAll('.tabbar button').forEach((b) => b.addEventListener('click', () => show(b.dataset.view)));
-$('#btn-settings').addEventListener('click', () => show('settings'));
+$('#btn-settings').addEventListener('click', () => { show('settings'); renderDiag(); });
+
+// Zeigt, welcher Schlüssel gespeichert ist und was Finnhub zuletzt geantwortet hat.
+function renderDiag() {
+  const key = getApiKey();
+  const masked = key ? `${key.slice(0, 4)}…${key.slice(-3)} (${key.length} Zeichen)` : 'keiner';
+  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  const last = lastFinnhub.ok == null ? 'noch keine Abfrage'
+    : `${lastFinnhub.ok ? '✓' : '✗'} ${lastFinnhub.message} (${timeDe(lastFinnhub.time)} Uhr)`;
+  $('#diag').innerHTML = `Gespeicherter Schlüssel: <b>${esc(masked)}</b><br>
+    Letzte Abfrage: ${esc(last)}<br>
+    Geöffnet als: ${standalone ? 'installierte App' : 'Browser-Seite'} · Version ${VERSION}`;
+}
 
 $('#btn-save-key').addEventListener('click', async () => {
   const key = $('#api-key').value.trim();
@@ -224,7 +238,7 @@ $('#btn-save-key').addEventListener('click', async () => {
     if (e.status === 401 || e.status === 403) { $('#key-status').textContent = 'Das hat nicht geklappt: ' + e.message; return; }
   }
   setApiKey(key);
-  $('#key-status').textContent = 'Gespeichert. Echte Kurse werden geladen.';
+  $('#key-status').textContent = getApiKey() === key ? 'Gespeichert. Echte Kurse werden geladen.' : 'Speichern hat nicht geklappt: Der Browser lässt keine Daten ablegen (privater Modus?).';
   start(); show('markt');
 });
 $('#btn-clear-key').addEventListener('click', () => {

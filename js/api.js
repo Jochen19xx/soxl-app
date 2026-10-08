@@ -7,11 +7,28 @@ const FINNHUB = 'https://finnhub.io/api/v1';
 const FINNHUB_WS = 'wss://ws.finnhub.io';
 const FX_URL = 'https://api.frankfurter.dev/v1/latest?base=USD&symbols=EUR';
 
+// Ergebnis der letzten Finnhub-Abfrage, wird in den Einstellungen zur Fehlersuche angezeigt.
+export const lastFinnhub = { ok: null, message: '', time: 0 };
+
 async function getJson(url) {
-  const res = await fetch(url);
-  if (res.status === 401 || res.status === 403) throw new ApiError('Schlüssel ungültig oder Funktion nicht im kostenlosen Tarif', res.status);
-  if (res.status === 429) throw new ApiError('Zu viele Abfragen, kurz warten', res.status);
-  if (!res.ok) throw new ApiError(`Fehler ${res.status}`, res.status);
+  const track = url.startsWith(FINNHUB);
+  let res;
+  try { res = await fetch(url); }
+  catch {
+    if (track) Object.assign(lastFinnhub, { ok: false, message: 'Keine Verbindung zu Finnhub', time: Date.now() });
+    throw new ApiError('Keine Verbindung', 0);
+  }
+  if (!res.ok) {
+    let detail = '';
+    try { const body = await res.text(); detail = (JSON.parse(body).error || body).slice(0, 160); } catch {}
+    const msg = res.status === 401 ? 'Finnhub kennt diesen Schlüssel nicht'
+      : res.status === 403 ? 'Kein Zugriff im kostenlosen Tarif'
+      : res.status === 429 ? 'Zu viele Abfragen, kurz warten'
+      : `Fehler ${res.status}`;
+    if (track) Object.assign(lastFinnhub, { ok: false, message: `${msg} (${res.status}${detail ? ': ' + detail : ''})`, time: Date.now() });
+    throw new ApiError(msg + (detail ? ` (${detail})` : ''), res.status);
+  }
+  if (track) Object.assign(lastFinnhub, { ok: true, message: 'Verbindung zu Finnhub klappt', time: Date.now() });
   return res.json();
 }
 
