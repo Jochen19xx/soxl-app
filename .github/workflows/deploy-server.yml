@@ -1,0 +1,28 @@
+# Veröffentlicht den Server (server/) bei Cloudflare, sobald sich dort etwas ändert.
+# Benötigte Repository-Secrets: CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID, FINNHUB_KEY
+name: Server veröffentlichen
+on:
+  push:
+    branches: [main]
+    paths: ['server/**', '.github/workflows/deploy-server.yml']
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prüfen, ob Cloudflare eingerichtet ist
+        id: check
+        env:
+          TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: if [ -n "$TOKEN" ]; then echo "ready=true" >> "$GITHUB_OUTPUT"; else echo "Cloudflare-Secrets fehlen noch, überspringe."; fi
+      - name: Deploy
+        if: steps.check.outputs.ready == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: server
+          secrets: FINNHUB_KEY
+        env:
+          FINNHUB_KEY: ${{ secrets.FINNHUB_KEY }}

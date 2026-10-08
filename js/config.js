@@ -4,6 +4,10 @@
 
 export const MAIN_SYMBOL = 'SOXL';
 
+// Adresse des eigenen Servers (Cloudflare Worker, siehe server/). Ist sie gesetzt, braucht
+// die App keinen Schlüssel mehr; ein auf dem Gerät eingetragener Schlüssel hat Vorrang.
+export const SERVER_URL = '';
+
 // Top-10-Positionen des SOXL (geschätzte Gewichte, Stand 06.10.2026, Quelle: chartrow.com
 // auf Basis der N-PORT-Meldung vom 31.07.2026). Direxion veröffentlicht die genaue Liste
 // täglich; ein automatisches Update kommt mit dem Server-Teil.

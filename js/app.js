@@ -1,7 +1,7 @@
-import { MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey, restoreApiKey } from './config.js';
+import { SERVER_URL, MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey, restoreApiKey } from './config.js';
 import { createFinnhub, usdToEur, lastFinnhub } from './api.js';
 
-const VERSION = '2026-10-08.7';
+const VERSION = '2026-10-08.8';
 import { demo } from './demo.js';
 import { upcomingEvents } from './events.js';
 import { toGerman, cachedGerman } from './translate.js';
@@ -191,8 +191,8 @@ function scheduleRender(main) {
 function start() {
   stop();
   const key = getApiKey();
-  api = key ? createFinnhub(key) : demo;
-  $('#demo-banner').hidden = !!key;
+  api = key || SERVER_URL ? createFinnhub(key, SERVER_URL) : demo;
+  $('#demo-banner').hidden = !!(key || SERVER_URL);
   $('#api-key').value = key;
   loadQuotes(); loadNews(); loadEarnings(); loadFx();
   stopLive = api.live(SYMBOLS, onTrade, (s) => { state.live = s; renderSession(); });

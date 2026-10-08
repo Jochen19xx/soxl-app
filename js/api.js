@@ -11,7 +11,7 @@ const FX_URL = 'https://api.frankfurter.dev/v1/latest?base=USD&symbols=EUR';
 export const lastFinnhub = { ok: null, message: '', time: 0 };
 
 async function getJson(url) {
-  const track = url.startsWith(FINNHUB);
+  const track = url.includes('/api/v1') || url.includes('/finnhub/');
   let res;
   try { res = await fetch(url); }
   catch {
@@ -38,10 +38,14 @@ export class ApiError extends Error {
 
 const isoDate = (d) => d.toISOString().slice(0, 10);
 
-export function createFinnhub(token) {
+// Ohne Schlüssel (token leer) laufen alle Abfragen über den eigenen Server (server = dessen
+// Adresse), der den Schlüssel geheim hält. Mit Schlüssel spricht die App direkt mit Finnhub.
+export function createFinnhub(token, server = '') {
+  const base = token ? FINNHUB : `${server}/finnhub`;
+  const wsUrl = token ? `${FINNHUB_WS}?token=${encodeURIComponent(token)}` : `${server.replace(/^http/, 'ws')}/ws`;
   const q = (path, params = {}) => {
-    const qs = new URLSearchParams({ ...params, token });
-    return getJson(`${FINNHUB}${path}?${qs}`);
+    const qs = new URLSearchParams(token ? { ...params, token } : params);
+    return getJson(`${base}${path}?${qs}`);
   };
 
   return {
@@ -96,7 +100,7 @@ export function createFinnhub(token) {
         watchdog = setTimeout(() => ws && ws.close(), 120_000);
       };
       const connect = () => {
-        ws = new WebSocket(`${FINNHUB_WS}?token=${encodeURIComponent(token)}`);
+        ws = new WebSocket(wsUrl);
         ws.onopen = () => {
           retry = 1000; onState('live'); resetWatchdog();
           symbols.forEach((s) => ws.send(JSON.stringify({ type: 'subscribe', symbol: s })));
