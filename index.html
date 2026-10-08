@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SOXL</title>
+  <meta name="description" content="SOXL-Kurs, Top-10-Positionen und News">
+  <meta name="theme-color" content="#0f1115">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <!-- iPhone: als App auf den Home-Bildschirm -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SOXL">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>SOXL</h1>
+    <span id="session" class="badge">–</span>
+    <button id="btn-settings" class="icon-btn" aria-label="Einstellungen">⚙︎</button>
+  </header>
+
+  <div id="demo-banner" class="banner" hidden>
+    Beispieldaten. Trag in den Einstellungen deinen Finnhub-Schlüssel ein, dann siehst du echte Kurse.
+  </div>
+
+  <main>
+    <!-- Markt: SOXL-Kurs + Top 10 -->
+    <section id="view-markt" class="view active">
+      <div class="card hero">
+        <div class="hero-label">Direxion Daily Semiconductor Bull 3X</div>
+        <div class="hero-price" id="soxl-price">–</div>
+        <div class="hero-change" id="soxl-change">–</div>
+        <div class="hero-eur" id="soxl-eur"></div>
+        <div class="hero-meta">
+          <span>Vortag <b id="soxl-pc">–</b></span>
+          <span>Tief <b id="soxl-l">–</b></span>
+          <span>Hoch <b id="soxl-h">–</b></span>
+        </div>
+        <div class="hero-foot" id="soxl-updated"></div>
+      </div>
+
+      <h2>Top 10 im SOXL</h2>
+      <ul id="holdings" class="list"></ul>
+      <p class="hint" id="holdings-asof"></p>
+    </section>
+
+    <!-- News -->
+    <section id="view-news" class="view">
+      <h2>News</h2>
+      <ul id="news" class="list news"></ul>
+    </section>
+
+    <!-- Portfolio (folgt) -->
+    <section id="view-portfolio" class="view">
+      <h2>Portfolio</h2>
+      <div class="card placeholder">
+        <p>Hier trägst du bald deine Stückzahl und deinen Kaufpreis ein. Die App zeigt dann den aktuellen Wert in Dollar und Euro sowie deinen Gewinn oder Verlust.</p>
+        <p class="hint">Kommt im nächsten Schritt.</p>
+      </div>
+    </section>
+
+    <!-- Termine (folgt) -->
+    <section id="view-termine" class="view">
+      <h2>Termine</h2>
+      <ul id="events" class="list"></ul>
+      <div class="card placeholder">
+        <p>Vorschau auf wichtige Termine: Quartalszahlen der Top-10-Firmen, Fed-Zinsentscheide, Inflationsdaten.</p>
+        <p class="hint">Quartalszahlen werden schon geladen, Fed- und Inflationstermine folgen.</p>
+      </div>
+    </section>
+
+    <!-- Tagesbericht (folgt) -->
+    <section id="view-bericht" class="view">
+      <h2>Tagesbericht</h2>
+      <div class="card placeholder">
+        <p>Jeden Morgen ein kurzer Text, warum SOXL am Vortag gestiegen oder gefallen ist.</p>
+        <p class="hint">Kommt in einem späteren Schritt.</p>
+      </div>
+    </section>
+
+    <!-- Einstellungen -->
+    <section id="view-settings" class="view">
+      <h2>Einstellungen</h2>
+      <div class="card">
+        <label for="api-key">Finnhub-Schlüssel</label>
+        <input id="api-key" type="password" autocomplete="off" spellcheck="false" placeholder="Schlüssel einfügen">
+        <p class="hint">Bleibt nur auf diesem Gerät gespeichert. Kostenlos erhältlich auf finnhub.io.</p>
+        <div class="row">
+          <button id="btn-save-key" class="btn">Speichern</button>
+          <button id="btn-clear-key" class="btn ghost">Löschen</button>
+        </div>
+        <p id="key-status" class="hint"></p>
+      </div>
+      <div class="card placeholder">
+        <p><b>Preisalarme</b></p>
+        <p class="hint">Kommt in einem späteren Schritt.</p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="tabbar">
+    <button data-view="markt" class="active"><span>📈</span>Markt</button>
+    <button data-view="news"><span>📰</span>News</button>
+    <button data-view="portfolio"><span>💼</span>Portfolio</button>
+    <button data-view="termine"><span>📅</span>Termine</button>
+    <button data-view="bericht"><span>📝</span>Bericht</button>
+  </nav>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
