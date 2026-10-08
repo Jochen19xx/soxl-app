@@ -1,0 +1,39 @@
+# Manuell startbare Prüfung: Liefert der Server Kurse und Live-Trades (z. B. vorbörslich)?
+name: Datenprüfung
+on: workflow_dispatch
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Kursabfrage und Live-Trades prüfen
+        run: |
+          cat > check.mjs <<'JS'
+          const S = 'https://aktiengurus.veith-jochen.workers.dev';
+          const hdr = { Origin: 'https://jochen19xx.github.io' };
+          const fmt = (ms) => new Date(ms).toLocaleString('de-DE', { timeZone: 'Europe/Berlin' });
+          console.log('Jetzt:', fmt(Date.now()), '| New York:', new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
+          const q = await (await fetch(`${S}/finnhub/quote?symbol=SOXL`, { headers: hdr })).json();
+          console.log('Quote SOXL: Kurs', q.c, 'Vortag', q.pc, 'Zeitstempel', fmt(q.t * 1000));
+          const syms = ['SOXL', 'NVDA', 'AMD'];
+          const trades = {};
+          await new Promise((resolve) => {
+            const ws = new WebSocket(S.replace('https', 'wss') + '/ws');
+            ws.onopen = () => { console.log('WebSocket offen'); syms.forEach((s) => ws.send(JSON.stringify({ type: 'subscribe', symbol: s }))); };
+            ws.onmessage = (e) => {
+              const m = JSON.parse(e.data);
+              if (m.type === 'trade') for (const t of m.data) (trades[t.s] ||= []).push(t);
+              else if (m.type !== 'ping') console.log('Nachricht:', JSON.stringify(m).slice(0, 200));
+            };
+            ws.onerror = (e) => console.log('WebSocket-Fehler', e.message || '');
+            ws.onclose = (e) => { console.log('WebSocket zu', e.code); resolve(); };
+            setTimeout(() => { ws.close(); resolve(); }, 90000);
+          });
+          for (const s of syms) {
+            const t = trades[s] || [];
+            const last = t.at(-1);
+            console.log(`${s}: ${t.length} Trades in 90 s`, last ? `| letzter ${last.p} um ${fmt(last.t)}` : '');
+          }
+          JS
+          node check.mjs
