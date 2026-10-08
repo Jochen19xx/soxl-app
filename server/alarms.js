@@ -141,7 +141,8 @@ export class AlarmStore {
 
     if (path === '/push/device' && request.method === 'POST') {
       if (!/^[A-Za-z0-9-]{16,64}$/.test(id || '') || !body.subscription?.endpoint?.startsWith('https://')) return json({ error: 'Ungültig' }, 400);
-      const dev = (await this.device(id)) || { alarms: [], inbox: [] };
+      // Neues Gerät: automatischer Alarm bei ±10 % zum Vortag (Jochens Wunsch).
+      const dev = (await this.device(id)) || { alarms: [{ id: 'auto10', type: 'move', value: 10, created: Date.now() }], inbox: [] };
       dev.subscription = { endpoint: body.subscription.endpoint };
       await this.storage.put('dev:' + id, dev);
       await this.storage.put('ep:' + body.subscription.endpoint, id);

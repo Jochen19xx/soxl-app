@@ -1,6 +1,6 @@
 // Service Worker: hält die App-Dateien offline vor, damit sie wie eine echte App startet.
 // Kurse und News werden nie zwischengespeichert, die kommen immer frisch aus dem Netz.
-const CACHE = 'soxl-v13';
+const CACHE = 'soxl-v14';
 const FILES = ['./', 'index.html', 'css/style.css', 'js/app.js', 'js/api.js', 'js/config.js', 'js/demo.js', 'js/events.js', 'js/translate.js', 'js/portfolio.js', 'js/alarms.js',
   'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'];
 
@@ -19,7 +19,7 @@ self.addEventListener('fetch', (e) => {
   if (url.origin !== location.origin) return; // Datenabrufe direkt ans Netz
   // Erst Netz (für Updates), bei Funkloch aus dem Speicher.
   e.respondWith(
-    fetch(e.request)
+    fetch(e.request, { cache: 'no-cache' }) // nie eine alte Version aus dem Browser-Speicher
       .then((res) => { const copy = res.clone(); caches.open(CACHE).then((c) => c.put(e.request, copy)); return res; })
       .catch(() => caches.match(e.request))
   );

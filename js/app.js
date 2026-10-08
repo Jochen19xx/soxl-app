@@ -1,7 +1,7 @@
 import { SERVER_URL, MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey, restoreApiKey } from './config.js';
 import { createFinnhub, usdToEur, lastFinnhub } from './api.js';
 
-const VERSION = '2026-10-08.13';
+const VERSION = '2026-10-08.14';
 import { demo } from './demo.js';
 import { upcomingEvents } from './events.js';
 import { getPortfolio, setPortfolio, portfolioFigures } from './portfolio.js';
@@ -324,12 +324,15 @@ async function renderAlarms() {
   if (support === 'ios-install') { info.textContent = 'Auf dem iPhone gehen Alarme nur in der installierten App: Safari, Teilen-Symbol, „Zum Home-Bildschirm“. Dann die App über das Symbol öffnen.'; return; }
   if (support !== 'ok') { info.textContent = 'Dieses Gerät oder dieser Browser unterstützt keine Push-Nachrichten.'; return; }
   if (permission() === 'denied') { info.textContent = 'Benachrichtigungen sind für diese App gesperrt. Du kannst sie in den Einstellungen deines Handys wieder erlauben.'; return; }
-  if (permission() !== 'granted') { info.textContent = 'Damit dich die App benachrichtigen kann, musst du das einmal erlauben.'; $('#alarm-enable').hidden = false; return; }
+  if (permission() !== 'granted') { info.textContent = 'Du bekommst automatisch eine Nachricht, wenn der SOXL sich um 10 % oder mehr zum Vortag bewegt. Dafür musst du einmal erlauben, dass die App dir Nachrichten schicken darf.'; $('#alarm-enable').hidden = false; return; }
   info.textContent = '';
   $('#alarm-ui').hidden = false;
   try {
     await enablePush({ ask: false });
     const alarms = await listAlarms();
+    info.textContent = alarms.some((a) => a.type === 'move')
+      ? 'Aktiv: Du bekommst automatisch eine Nachricht, wenn der SOXL sich deutlich zum Vortag bewegt. Weitere Alarme kannst du hier anlegen.'
+      : 'Benachrichtigungen sind erlaubt. Leg hier deine Alarme an.';
     $('#alarm-list').innerHTML = alarms.length ? alarms.map((a) => `<li><div class="left">${esc(ALARM_TEXT[a.type]?.(a) || a.type)}</div>
       <button class="del" data-id="${esc(a.id)}">Löschen</button></li>`).join('') : '<li class="empty">Noch keine Alarme.</li>';
   } catch (e) { $('#alarm-status').textContent = 'Server nicht erreichbar: ' + e.message; }
