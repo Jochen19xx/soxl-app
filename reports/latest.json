@@ -1,0 +1,34 @@
+{
+  "trading_day": "2026-10-07",
+  "created": "2026-10-08T09:00:36Z",
+  "headline": "SOXL fällt 3,3 % – steigende Zinsen bremsen Chipwerte",
+  "close": 158.91,
+  "change_pct": -3.26,
+  "paragraphs": [
+    "Nach den Rekorden vom Dienstag ging es am Mittwoch an der Wall Street leicht abwärts. Der Nasdaq verlor 0,2 %, der S&P 500 ebenfalls 0,2 %. SOXL schloss bei 158,91 Dollar und damit 3,3 % unter dem Vortag. Im Tagesverlauf lag der Kurs zeitweise sogar bei 151,42 Dollar.",
+    "Hauptgrund waren die Zinsen: Die Rendite zehnjähriger US-Staatsanleihen stieg kurzzeitig auf rund 5,35 %, so hoch wie seit 2002 nicht mehr. Die veröffentlichten Protokolle der letzten Fed-Sitzung deuten auf eine weitere Zinserhöhung bis Jahresende hin. Höhere Zinsen machen teure Wachstumsaktien wie Chipwerte weniger attraktiv. Ein Ölpreis um 100 Dollar je Barrel sorgte zusätzlich für Unruhe.",
+    "Bei den Top 10 war das Bild gemischt. Micron stieg um 4,1 %, Intel und Broadcom legten leicht zu. Nvidia (−0,7 %) und AMD (−0,6 %) gaben nur wenig nach. Deutlich schwächer waren Texas Instruments (−2,8 %), Analog Devices (−2,5 %) und Applied Materials (−1,8 %). Weil SOXL die Tagesbewegung dreifach abbildet, wurde daraus ein Minus von über 3 %."
+  ],
+  "drivers": [
+    "US-Anleiherenditen auf dem höchsten Stand seit 2002",
+    "Fed-Protokoll: weitere Zinserhöhung bis Jahresende wahrscheinlich",
+    "Schwäche bei Texas Instruments, Analog Devices und Applied Materials",
+    "Micron gegen den Trend mit +4,1 %",
+    "Ölpreis um 100 Dollar je Barrel"
+  ],
+  "outlook": "Am 14. Oktober kommen die US-Verbraucherpreise für September, am 15. Oktober die Erzeugerpreise. Mitte Oktober beginnt außerdem die Berichtssaison mit ASML und TSMC; die nächste Fed-Sitzung endet am 28. Oktober.",
+  "sources": [
+    {
+      "title": "TheStreet: Stock Market Today (Oct. 7, 2026)",
+      "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-07-2026"
+    },
+    {
+      "title": "Yahoo Finance: Dow falls, S&P 500 and Nasdaq retreat from records amid bond market jitters",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-october-7-dow-sp-500-nasdaq-080241833.html"
+    },
+    {
+      "title": "Motley Fool via Yahoo Finance: Markets Edge Lower as Treasury Yields Surge",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-oct-7-211702509.html"
+    }
+  ]
+}
