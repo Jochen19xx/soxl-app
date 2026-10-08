@@ -4,6 +4,7 @@ Läuft werktags früh als GitHub Action und schreibt reports/data/market.json.
 Die Claude-Routine liest die Datei und schreibt daraus den Bericht.
 """
 import json
+import os
 import urllib.request
 from datetime import datetime, timezone
 
@@ -48,6 +49,7 @@ def main():
         "soxl": soxl,
         "top10": top,
     }
+    os.makedirs("reports/data", exist_ok=True)
     with open("reports/data/market.json", "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
     print(json.dumps(out, ensure_ascii=False)[:600])
