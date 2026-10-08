@@ -99,8 +99,8 @@ async function eurRate(storage) {
 }
 
 // Tageskerzen der letzten Monate (Yahoo), für die Trendwende.
-export async function dailyCandles(symbol, range = '6mo') {
-  const r = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=${range}`,
+export async function dailyCandles(symbol, range = '6mo', interval = '1d') {
+  const r = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?interval=${interval}&range=${range}`,
     { headers: { 'User-Agent': 'Mozilla/5.0', Accept: 'application/json' } });
   const res0 = (await r.json()).chart?.result?.[0];
   const q = res0?.indicators?.quote?.[0] || {};

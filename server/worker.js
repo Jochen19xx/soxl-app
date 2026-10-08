@@ -141,16 +141,18 @@ async function candles(request, url) {
   const origin = request.headers.get('Origin');
   const symbol = (url.searchParams.get('symbol') || 'SOXL').toUpperCase();
   if (!SYMBOL_RE.test(symbol)) return new Response('Bad symbol', { status: 400, headers: cors(origin) });
-  const cacheKey = new Request(`https://cache.local/candles6/${symbol}`);
+  // Zeiträume: 6 Monate Tageskerzen (Standard), 1 Jahr Wochenkerzen, gesamt Monatskerzen.
+  const [range, interval] = { '1y': ['1y', '1wk'], max: ['max', '1mo'] }[url.searchParams.get('range')] || ['6mo', '1d'];
+  const cacheKey = new Request(`https://cache.local/candles6/${symbol}/${range}`);
   let res = await caches.default.match(cacheKey);
   if (!res) {
     let body, status = 200;
     try {
-      const list = await dailyCandles(symbol); // 6 Monate, reicht für den 50-Tage-Schnitt
+      const list = await dailyCandles(symbol, range, interval); // 6 Monate Tageskerzen reichen für den 50-Tage-Schnitt
       if (!list.length) throw new Error('Keine Daten');
-      body = { symbol, candles: list };
+      body = { symbol, range, interval, candles: list };
     } catch (e) { body = { error: e.message }; status = 502; }
-    res = new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'max-age=60' } });
+    res = new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json', 'Cache-Control': `max-age=${range === '6mo' ? 60 : 600}` } });
     if (status === 200) await caches.default.put(cacheKey, res.clone());
   }
   res = new Response(res.body, res);
