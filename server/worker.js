@@ -1,8 +1,11 @@
 // Eigener Mini-Server für die App (Cloudflare Worker, kostenloser Tarif).
 // Hält den Finnhub-Schlüssel geheim: Die App fragt hier, der Server hängt den Schlüssel an.
-// Später kommen hier Tagesbericht und Push-Alarme dazu.
+// Außerdem: Preisalarme mit Push-Nachrichten (alarms.js). Später kommt der Tagesbericht dazu.
 //
 // Geheimnis im Worker: FINNHUB_KEY (wird per GitHub Actions oder im Cloudflare-Dashboard gesetzt).
+
+import { AlarmStore } from './alarms.js';
+export { AlarmStore };
 
 const FINNHUB = 'https://finnhub.io/api/v1';
 const ALLOWED_PATHS = new Set(['/quote', '/company-news', '/calendar/earnings']);
@@ -15,7 +18,8 @@ function cors(origin) {
   const ok = ALLOWED_ORIGINS.some((o) => origin === o || origin?.startsWith(o + ':'));
   return {
     'Access-Control-Allow-Origin': ok ? origin : ALLOWED_ORIGINS[0],
-    'Access-Control-Allow-Methods': 'GET, OPTIONS',
+    'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
     'Vary': 'Origin',
   };
 }
@@ -154,6 +158,19 @@ export default {
     if (url.pathname === '/holdings') return holdings(request);
     if (url.pathname === '/extended') return extendedQuote(request, url);
     if (url.pathname === '/ws' && request.headers.get('Upgrade') === 'websocket') return proxyWebSocket(env);
+    if (url.pathname.startsWith('/push/')) {
+      const store = env.ALARMS.get(env.ALARMS.idFromName('main'));
+      const res = await store.fetch(request);
+      const out = new Response(res.body, res);
+      for (const [k, v] of Object.entries(cors(request.headers.get('Origin')))) out.headers.set(k, v);
+      return out;
+    }
     return new Response('Werk 2 Aktiengurus Server läuft.', { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+  },
+
+  // Jede Minute: Preisalarme prüfen.
+  async scheduled(event, env, ctx) {
+    const store = env.ALARMS.get(env.ALARMS.idFromName('main'));
+    ctx.waitUntil(store.fetch('https://store/cron'));
   },
 };

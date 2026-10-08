@@ -38,3 +38,5 @@ jobs:
           curl -s -H 'Origin: https://jochen19xx.github.io' "https://aktiengurus.veith-jochen.workers.dev/holdings" -o /tmp/h.json
           python3 -c "import json;d=json.load(open('/tmp/h.json'));print('Top 10 Stand', d.get('asOf'), d.get('error','')); [print(' ', h['symbol'], h['weight'], h['name']) for h in d.get('holdings',[])]"
           python3 -c "import json,sys;sys.exit(0 if len(json.load(open('/tmp/h.json')).get('holdings',[]))>=5 else 1)"
+          curl -s -H 'Origin: https://jochen19xx.github.io' "https://aktiengurus.veith-jochen.workers.dev/push/key" -o /tmp/k.json
+          python3 -c "import json,sys;k=json.load(open('/tmp/k.json')).get('publicKey','');print('Push-Schlüssel vorhanden:', len(k)>80);sys.exit(0 if len(k)>80 else 1)"

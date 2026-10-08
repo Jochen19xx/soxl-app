@@ -1,3 +1,16 @@
 name = "aktiengurus"
 main = "worker.js"
 compatibility_date = "2026-09-01"
+
+# Preisalarme jede Minute prüfen
+[triggers]
+crons = ["* * * * *"]
+
+# Speicher für Geräte und Alarme
+[[durable_objects.bindings]]
+name = "ALARMS"
+class_name = "AlarmStore"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["AlarmStore"]

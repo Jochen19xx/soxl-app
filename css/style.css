@@ -104,3 +104,10 @@ select { padding: 12px; font-size: 16px; border-radius: 10px; border: 1px solid 
 .mini-pf { display: flex; width: 100%; justify-content: space-between; align-items: center; border: 0; color: var(--text); font: inherit; text-align: left; cursor: pointer; }
 .mini-pf[hidden] { display: none; }
 .mini-pf .pf-num { text-align: right; }
+
+.hint.first { margin: 0 0 10px; }
+select.full { width: 100%; }
+.alarm-list { margin-top: 8px; background: var(--bg); }
+.alarm-list li { padding: 10px 12px; }
+.alarm-list .del { background: none; border: 0; color: var(--down); font-size: 14px; cursor: pointer; padding: 4px 0 4px 12px; }
+.alarm-list li.empty { color: var(--muted); }

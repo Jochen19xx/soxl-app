@@ -1,7 +1,7 @@
 // Service Worker: hält die App-Dateien offline vor, damit sie wie eine echte App startet.
 // Kurse und News werden nie zwischengespeichert, die kommen immer frisch aus dem Netz.
-const CACHE = 'soxl-v12';
-const FILES = ['./', 'index.html', 'css/style.css', 'js/app.js', 'js/api.js', 'js/config.js', 'js/demo.js', 'js/events.js', 'js/translate.js', 'js/portfolio.js',
+const CACHE = 'soxl-v13';
+const FILES = ['./', 'index.html', 'css/style.css', 'js/app.js', 'js/api.js', 'js/config.js', 'js/demo.js', 'js/events.js', 'js/translate.js', 'js/portfolio.js', 'js/alarms.js',
   'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'];
 
 self.addEventListener('install', (e) => {
@@ -25,8 +25,29 @@ self.addEventListener('fetch', (e) => {
   );
 });
 
-// Vorgesehen für Preisalarme (Push kommt später über einen eigenen Server).
+// Preisalarme: Der Server schickt eine leere Push-Nachricht, den Text holen wir hier ab.
+const SERVER = 'https://aktiengurus.veith-jochen.workers.dev';
+
 self.addEventListener('push', (e) => {
-  const data = e.data ? e.data.json() : { title: 'Werk 2 Aktiengurus', body: '' };
-  e.waitUntil(self.registration.showNotification(data.title, { body: data.body, icon: 'icons/icon-192.png' }));
+  e.waitUntil((async () => {
+    let messages = [];
+    try {
+      const sub = await self.registration.pushManager.getSubscription();
+      const res = await fetch(`${SERVER}/push/inbox?endpoint=${encodeURIComponent(sub.endpoint)}`);
+      messages = (await res.json()).messages || [];
+    } catch {}
+    if (!messages.length) messages = [{ title: 'SOXL-Alarm', body: 'Ein Preisalarm wurde ausgelöst. Tippe, um die App zu öffnen.' }];
+    await Promise.all(messages.map((m, i) => self.registration.showNotification(m.title || 'SOXL-Alarm', {
+      body: m.body, icon: 'icons/icon-192.png', badge: 'icons/icon-192.png', tag: 'alarm-' + (m.time || Date.now()) + '-' + i,
+    })));
+  })());
+});
+
+self.addEventListener('notificationclick', (e) => {
+  e.notification.close();
+  e.waitUntil((async () => {
+    const all = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+    if (all.length) return all[0].focus();
+    return self.clients.openWindow('./');
+  })());
 });

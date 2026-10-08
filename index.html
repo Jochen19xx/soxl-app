@@ -116,21 +116,41 @@
 
     <!-- Einstellungen -->
     <section id="view-settings" class="view">
+      <h2>Preisalarme</h2>
+      <div class="card" id="alarm-card">
+        <p id="alarm-info" class="hint first"></p>
+        <button id="alarm-enable" class="btn" hidden>Benachrichtigungen erlauben</button>
+        <div id="alarm-ui" hidden>
+          <label for="alarm-type">Neuer Alarm</label>
+          <select id="alarm-type" class="full">
+            <option value="above">SOXL steigt über … $</option>
+            <option value="below">SOXL fällt unter … $</option>
+            <option value="move">SOXL bewegt sich um … % zum Vortag</option>
+            <option value="depotBelow">Mein Depot fällt unter … €</option>
+            <option value="depotAbove">Mein Depot steigt über … €</option>
+          </select>
+          <div class="row">
+            <input id="alarm-value" type="number" inputmode="decimal" min="0" step="any" placeholder="Wert">
+            <button id="alarm-add" class="btn">Anlegen</button>
+          </div>
+          <p id="alarm-status" class="hint"></p>
+          <ul id="alarm-list" class="list alarm-list"></ul>
+          <div class="row"><button id="alarm-test" class="btn ghost">Testnachricht senden</button></div>
+          <p class="hint">Der Server prüft jede Minute, auch wenn dein Handy aus ist. Zwischen 23 und 7 Uhr kommen keine Nachrichten.</p>
+        </div>
+      </div>
+
       <h2>Einstellungen</h2>
       <div class="card">
         <label for="api-key">Finnhub-Schlüssel</label>
         <input id="api-key" type="password" autocomplete="off" spellcheck="false" placeholder="Schlüssel einfügen">
-        <p class="hint">Bleibt nur auf diesem Gerät gespeichert. Kostenlos erhältlich auf finnhub.io.</p>
+        <p class="hint">Nicht mehr nötig: Die App holt ihre Daten über deinen Server. Nur für Tests.</p>
         <div class="row">
           <button id="btn-save-key" class="btn">Speichern</button>
           <button id="btn-clear-key" class="btn ghost">Löschen</button>
         </div>
         <p id="key-status" class="hint"></p>
         <p id="diag" class="hint diag"></p>
-      </div>
-      <div class="card placeholder">
-        <p><b>Preisalarme</b></p>
-        <p class="hint">Kommt in einem späteren Schritt.</p>
       </div>
     </section>
   </main>

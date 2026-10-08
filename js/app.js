@@ -1,10 +1,11 @@
 import { SERVER_URL, MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey, restoreApiKey } from './config.js';
 import { createFinnhub, usdToEur, lastFinnhub } from './api.js';
 
-const VERSION = '2026-10-08.12';
+const VERSION = '2026-10-08.13';
 import { demo } from './demo.js';
 import { upcomingEvents } from './events.js';
 import { getPortfolio, setPortfolio, portfolioFigures } from './portfolio.js';
+import { pushSupport, permission, enablePush, listAlarms, addAlarm, deleteAlarm, sendTest } from './alarms.js';
 import { toGerman, cachedGerman } from './translate.js';
 
 const $ = (sel) => document.querySelector(sel);
@@ -305,7 +306,66 @@ function show(view, tab = view) {
   window.scrollTo(0, 0);
 }
 document.querySelectorAll('.tabbar button').forEach((b) => b.addEventListener('click', () => { show(b.dataset.view); if (b.dataset.view === 'portfolio') fillPortfolioForm(); }));
-$('#btn-settings').addEventListener('click', () => { show('settings'); renderDiag(); });
+$('#btn-settings').addEventListener('click', () => { show('settings'); renderDiag(); renderAlarms(); });
+
+// ---------- Preisalarme ----------
+const ALARM_TEXT = {
+  above: (a) => `SOXL über ${usd(a.value)}`,
+  below: (a) => `SOXL unter ${usd(a.value)}`,
+  move: (a) => `SOXL ±${a.value.toLocaleString('de-DE')} % zum Vortag`,
+  depotBelow: (a) => `Depot unter ${eur(a.value)}`,
+  depotAbove: (a) => `Depot über ${eur(a.value)}`,
+};
+
+async function renderAlarms() {
+  const support = pushSupport();
+  const info = $('#alarm-info');
+  $('#alarm-enable').hidden = true; $('#alarm-ui').hidden = true;
+  if (support === 'ios-install') { info.textContent = 'Auf dem iPhone gehen Alarme nur in der installierten App: Safari, Teilen-Symbol, „Zum Home-Bildschirm“. Dann die App über das Symbol öffnen.'; return; }
+  if (support !== 'ok') { info.textContent = 'Dieses Gerät oder dieser Browser unterstützt keine Push-Nachrichten.'; return; }
+  if (permission() === 'denied') { info.textContent = 'Benachrichtigungen sind für diese App gesperrt. Du kannst sie in den Einstellungen deines Handys wieder erlauben.'; return; }
+  if (permission() !== 'granted') { info.textContent = 'Damit dich die App benachrichtigen kann, musst du das einmal erlauben.'; $('#alarm-enable').hidden = false; return; }
+  info.textContent = '';
+  $('#alarm-ui').hidden = false;
+  try {
+    await enablePush({ ask: false });
+    const alarms = await listAlarms();
+    $('#alarm-list').innerHTML = alarms.length ? alarms.map((a) => `<li><div class="left">${esc(ALARM_TEXT[a.type]?.(a) || a.type)}</div>
+      <button class="del" data-id="${esc(a.id)}">Löschen</button></li>`).join('') : '<li class="empty">Noch keine Alarme.</li>';
+  } catch (e) { $('#alarm-status').textContent = 'Server nicht erreichbar: ' + e.message; }
+}
+
+$('#alarm-enable').addEventListener('click', async () => {
+  try { await enablePush(); } catch (e) { $('#alarm-info').textContent = e.message; return; }
+  renderAlarms();
+});
+$('#alarm-type').addEventListener('change', () => {
+  const t = $('#alarm-type').value;
+  $('#alarm-value').placeholder = t === 'move' ? 'z. B. 5' : t.startsWith('depot') ? 'z. B. 120000' : 'z. B. 170';
+});
+$('#alarm-add').addEventListener('click', async () => {
+  const type = $('#alarm-type').value;
+  const value = parseFloat(String($('#alarm-value').value).replace(',', '.'));
+  const status = $('#alarm-status');
+  if (!(value > 0)) { status.textContent = 'Bitte einen Wert eingeben.'; return; }
+  const alarm = { type, value };
+  if (type.startsWith('depot')) {
+    alarm.shares = getPortfolio().shares;
+    if (!alarm.shares) { status.textContent = 'Trag zuerst unter „Portfolio“ deine Stückzahl ein.'; return; }
+  }
+  try { await addAlarm(alarm); status.textContent = 'Alarm angelegt.'; $('#alarm-value').value = ''; renderAlarms(); }
+  catch (e) { status.textContent = 'Das hat nicht geklappt: ' + e.message; }
+});
+$('#alarm-list').addEventListener('click', async (e) => {
+  const btn = e.target.closest('button.del');
+  if (!btn) return;
+  try { await deleteAlarm(btn.dataset.id); renderAlarms(); } catch (err) { $('#alarm-status').textContent = err.message; }
+});
+$('#alarm-test').addEventListener('click', async () => {
+  $('#alarm-status').textContent = 'Sende …';
+  try { await sendTest(); $('#alarm-status').textContent = 'Gesendet. Die Nachricht sollte gleich erscheinen.'; }
+  catch (e) { $('#alarm-status').textContent = 'Senden fehlgeschlagen: ' + e.message; }
+});
 
 // Zeigt, welcher Schlüssel gespeichert ist und was Finnhub zuletzt geantwortet hat.
 function renderDiag() {
