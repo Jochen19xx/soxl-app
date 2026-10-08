@@ -51,8 +51,20 @@
     <!-- News -->
     <section id="view-news" class="view">
       <h2>News</h2>
-      <p class="hint">Antippen öffnet den Artikel automatisch auf Deutsch übersetzt.</p>
       <ul id="news" class="list news"></ul>
+    </section>
+
+    <!-- Lesansicht einer News, auf Deutsch -->
+    <section id="view-article" class="view">
+      <button id="btn-back" class="back">‹ News</button>
+      <article class="card article">
+        <div class="hint" id="article-meta"></div>
+        <h3 id="article-title"></h3>
+        <p id="article-body"></p>
+        <a id="article-full" class="btn" target="_blank" rel="noopener">Ganzen Artikel lesen (übersetzt)</a>
+        <p class="hint orig">Original: <span id="article-orig-title"></span></p>
+      </article>
+      <p class="hint">Automatisch übersetzt. Die Quelle liefert hier nur eine Zusammenfassung, den vollständigen Text öffnet der Knopf auf Deutsch.</p>
     </section>
 
     <!-- Portfolio (folgt) -->

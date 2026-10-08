@@ -22,7 +22,7 @@ export const demo = {
   async news() {
     const now = Date.now();
     return [
-      { title: 'Beispiel: Chipwerte legen nach starken Zahlen zu', source: 'Beispiel', symbol: 'NVDA', time: now - 36e5, url: '#' },
+      { title: 'Beispiel: Chipwerte legen nach starken Zahlen zu', summary: 'Beispieltext: Halbleiteraktien stiegen am Dienstag deutlich, nachdem mehrere Hersteller ihre Prognosen angehoben hatten.', source: 'Beispiel', symbol: 'NVDA', time: now - 36e5, url: '#' },
       { title: 'Beispiel: Halbleiter-Index schwankt vor Inflationsdaten', source: 'Beispiel', symbol: 'SOXL', time: now - 3 * 36e5, url: '#' },
       { title: 'Beispiel: TSMC meldet höheren Monatsumsatz', source: 'Beispiel', symbol: 'TSM', time: now - 8 * 36e5, url: '#' },
     ];

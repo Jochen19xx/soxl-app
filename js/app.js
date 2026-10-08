@@ -2,6 +2,7 @@ import { MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POL
 import { createFinnhub, usdToEur } from './api.js';
 import { demo } from './demo.js';
 import { upcomingEvents } from './events.js';
+import { toGerman, cachedGerman } from './translate.js';
 
 const $ = (sel) => document.querySelector(sel);
 const SYMBOLS = [MAIN_SYMBOL, ...HOLDINGS.map((h) => h.symbol)];
@@ -81,16 +82,42 @@ function renderHoldings() {
   $('#holdings-asof').textContent = `Gewichte geschätzt, Stand ${HOLDINGS_ASOF}.`;
 }
 
-// Artikel über Google Übersetzer öffnen, damit sie auf Deutsch erscheinen (kein Schlüssel nötig).
+// Ganzen Artikel über Google Übersetzer öffnen (nur auf Wunsch, aus der Lesansicht heraus).
 const germanUrl = (url) => /^https?:/.test(url)
   ? `https://translate.google.com/translate?sl=auto&tl=de&hl=de&u=${encodeURIComponent(url)}` : url;
 
+let newsItems = [];
+
 function renderNews(items) {
-  $('#news').innerHTML = items.length ? items.map((n) => `<li>
-      <a href="${esc(germanUrl(n.url))}" target="_blank" rel="noopener">${esc(n.title)}</a>
-      <div class="meta"><span class="tag">${esc(n.symbol)}</span> · ${esc(n.source)} · ${ago(n.time)} · <a class="orig" href="${esc(n.url)}" target="_blank" rel="noopener">Original</a></div>
+  newsItems = items;
+  $('#news').innerHTML = items.length ? items.map((n, i) => `<li data-i="${i}" role="button" tabindex="0">
+      <div class="headline">${esc(cachedGerman(n.title) || n.title)}</div>
+      <div class="meta"><span class="tag">${esc(n.symbol)}</span> · ${esc(n.source)} · ${ago(n.time)}</div>
     </li>`).join('') : '<li class="empty">Keine News gefunden.</li>';
+  // Überschriften im Hintergrund übersetzen und dann austauschen.
+  toGerman(items.map((n) => n.title)).then((de) => {
+    if (items !== newsItems) return;
+    document.querySelectorAll('#news li[data-i] .headline').forEach((el, i) => { el.textContent = de[i]; });
+  });
 }
+
+async function openArticle(i) {
+  const n = newsItems[i];
+  if (!n) return;
+  $('#article-title').textContent = cachedGerman(n.title) || n.title;
+  $('#article-meta').textContent = `${n.symbol} · ${n.source} · ${ago(n.time)}`;
+  $('#article-body').textContent = n.summary ? 'Wird übersetzt …' : 'Zu dieser Meldung liefert die Quelle keine Zusammenfassung.';
+  $('#article-orig-title').textContent = n.title;
+  $('#article-full').href = germanUrl(n.url);
+  $('#article-full').hidden = !/^https?:/.test(n.url);
+  show('article', 'news');
+  const [title, body] = await toGerman([n.title, n.summary || '']);
+  if (newsItems[i] !== n) return;
+  $('#article-title').textContent = title;
+  if (n.summary) $('#article-body').textContent = body;
+}
+$('#news').addEventListener('click', (e) => { const li = e.target.closest('li[data-i]'); if (li) openArticle(+li.dataset.i); });
+$('#btn-back').addEventListener('click', () => show('news'));
 
 const KIND_ICON = { fed: '🏦', macro: '📊', earnings: '💰', market: '🔔' };
 const dayKey = (d) => d.toLocaleDateString('sv-SE');
@@ -178,9 +205,9 @@ function stop() {
 }
 
 // ---------- Navigation & Einstellungen ----------
-function show(view) {
+function show(view, tab = view) {
   document.querySelectorAll('.view').forEach((v) => v.classList.toggle('active', v.id === 'view-' + view));
-  document.querySelectorAll('.tabbar button').forEach((b) => b.classList.toggle('active', b.dataset.view === view));
+  document.querySelectorAll('.tabbar button').forEach((b) => b.classList.toggle('active', b.dataset.view === tab));
   window.scrollTo(0, 0);
 }
 document.querySelectorAll('.tabbar button').forEach((b) => b.addEventListener('click', () => show(b.dataset.view)));
