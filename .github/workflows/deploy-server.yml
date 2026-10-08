@@ -26,3 +26,12 @@ jobs:
           secrets: FINNHUB_KEY
         env:
           FINNHUB_KEY: ${{ secrets.FINNHUB_KEY }}
+      - name: Server testen
+        if: steps.check.outputs.ready == 'true'
+        run: |
+          sleep 5
+          code=$(curl -s -o /tmp/q.json -w '%{http_code}' -H 'Origin: https://jochen19xx.github.io' \
+            "https://aktiengurus.veith-jochen.workers.dev/finnhub/quote?symbol=SOXL")
+          echo "HTTP $code"
+          python3 -c "import json;d=json.load(open('/tmp/q.json'));print('SOXL-Kurs vorhanden:', bool(d.get('c')) or bool(d.get('pc')))"
+          test "$code" = "200"
