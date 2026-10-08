@@ -1,7 +1,7 @@
 // Service Worker: hält die App-Dateien offline vor, damit sie wie eine echte App startet.
 // Kurse und News werden nie zwischengespeichert, die kommen immer frisch aus dem Netz.
-const CACHE = 'soxl-v16';
-const FILES = ['./', 'index.html', 'css/style.css', 'js/app.js', 'js/api.js', 'js/config.js', 'js/demo.js', 'js/events.js', 'js/translate.js', 'js/portfolio.js', 'js/alarms.js', 'js/chart.js',
+const CACHE = 'soxl-v17';
+const FILES = ['./', 'index.html', 'css/style.css', 'js/app.js', 'js/api.js', 'js/config.js', 'js/demo.js', 'js/events.js', 'js/translate.js', 'js/portfolio.js', 'js/alarms.js', 'js/chart.js', 'js/trend.js',
   'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'];
 
 self.addEventListener('install', (e) => {
@@ -38,7 +38,7 @@ self.addEventListener('push', (e) => {
     } catch {}
     if (!messages.length) messages = [{ title: 'SOXL-Alarm', body: 'Ein Preisalarm wurde ausgelöst. Tippe, um die App zu öffnen.' }];
     await Promise.all(messages.map((m, i) => self.registration.showNotification(m.title || 'SOXL-Alarm', {
-      body: m.body, icon: 'icons/icon-192.png', badge: 'icons/icon-192.png', tag: 'alarm-' + (m.time || Date.now()) + '-' + i,
+      body: m.body, icon: 'icons/icon-192.png', badge: 'icons/icon-192.png', tag: 'alarm-' + (m.time || Date.now()) + '-' + i, data: { url: m.url },
     })));
   })());
 });
@@ -46,8 +46,12 @@ self.addEventListener('push', (e) => {
 self.addEventListener('notificationclick', (e) => {
   e.notification.close();
   e.waitUntil((async () => {
+    const url = e.notification.data?.url || './';
     const all = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
-    if (all.length) return all[0].focus();
-    return self.clients.openWindow('./');
+    if (all.length) {
+      if (url.includes('#bericht')) all[0].postMessage({ open: 'bericht' });
+      return all[0].focus();
+    }
+    return self.clients.openWindow(url);
   })());
 });

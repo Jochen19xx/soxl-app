@@ -45,10 +45,17 @@
       </div>
       <button class="card mini-pf" id="mini-pf" hidden></button>
 
+      <div class="card trend" id="trend" hidden>
+        <div class="trend-head"><span class="light" id="trend-light"></span><b id="trend-title"></b></div>
+        <p id="trend-text" class="trend-text"></p>
+        <p class="hint">Hinweis aus vergangenen Kursen, keine Vorhersage und keine Anlageberatung.</p>
+      </div>
+
       <h2>Chart · letzte 3 Wochen</h2>
       <div class="card chart-card">
         <div class="chart-info" id="chart-info">Lade Kerzen …</div>
         <svg id="chart" class="chart" role="img" aria-label="SOXL Tageskerzen der letzten drei Wochen"></svg>
+        <div class="legend"><span class="ma20">━ 20-Tage-Schnitt</span><span class="ma50">━ 50-Tage-Schnitt</span></div>
       </div>
 
       <h2>Top 10 im SOXL</h2>
@@ -123,11 +130,18 @@
 
     <!-- Einstellungen -->
     <section id="view-settings" class="view">
-      <h2>Preisalarme</h2>
+      <h2>Benachrichtigungen</h2>
       <div class="card" id="alarm-card">
         <p id="alarm-info" class="hint first"></p>
         <button id="alarm-enable" class="btn" hidden>Benachrichtigungen erlauben</button>
         <div id="alarm-ui" hidden>
+          <div class="toggles">
+            <label class="toggle"><span><b>Trendwende-Warnung</b><small>Wenn der 20-Tage-Schnitt den 50-Tage-Schnitt kreuzt (nach US-Börsenschluss)</small></span>
+              <input type="checkbox" id="pref-trend"><i></i></label>
+            <label class="toggle"><span><b>Neuer Tagesbericht</b><small>Sobald morgens der Bericht zum Vortag da ist</small></span>
+              <input type="checkbox" id="pref-report"><i></i></label>
+          </div>
+          <h3 class="sub">Preisalarme</h3>
           <label for="alarm-type">Neuer Alarm</label>
           <select id="alarm-type" class="full">
             <option value="above">SOXL steigt über … $</option>

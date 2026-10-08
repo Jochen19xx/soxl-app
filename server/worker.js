@@ -4,7 +4,7 @@
 //
 // Geheimnis im Worker: FINNHUB_KEY (wird per GitHub Actions oder im Cloudflare-Dashboard gesetzt).
 
-import { AlarmStore } from './alarms.js';
+import { AlarmStore, dailyCandles } from './alarms.js';
 export { AlarmStore };
 
 const FINNHUB = 'https://finnhub.io/api/v1';
@@ -139,17 +139,12 @@ async function candles(request, url) {
   const origin = request.headers.get('Origin');
   const symbol = (url.searchParams.get('symbol') || 'SOXL').toUpperCase();
   if (!/^[A-Z.]{1,6}$/.test(symbol)) return new Response('Bad symbol', { status: 400, headers: cors(origin) });
-  const cacheKey = new Request(`https://cache.local/candles/${symbol}`);
+  const cacheKey = new Request(`https://cache.local/candles6/${symbol}`);
   let res = await caches.default.match(cacheKey);
   if (!res) {
     let body, status = 200;
     try {
-      const r = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=2mo`,
-        { headers: { 'User-Agent': 'Mozilla/5.0', Accept: 'application/json' } });
-      const res0 = (await r.json()).chart?.result?.[0];
-      const q = res0?.indicators?.quote?.[0] || {};
-      const list = (res0?.timestamp || []).map((t, i) => ({ t: t * 1000, o: q.open[i], h: q.high[i], l: q.low[i], c: q.close[i], v: q.volume[i] }))
-        .filter((k) => k.o != null && k.c != null && k.h != null && k.l != null);
+      const list = await dailyCandles(symbol); // 6 Monate, reicht für den 50-Tage-Schnitt
       if (!list.length) throw new Error('Keine Daten');
       body = { symbol, candles: list };
     } catch (e) { body = { error: e.message }; status = 502; }

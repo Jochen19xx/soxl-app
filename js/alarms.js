@@ -54,3 +54,5 @@ export const listAlarms = async () => (await call(`/push/alarms?id=${deviceId()}
 export const addAlarm = (alarm) => call('/push/alarms', 'POST', { id: deviceId(), alarm });
 export const deleteAlarm = (alarmId) => call(`/push/alarms?id=${deviceId()}&alarmId=${encodeURIComponent(alarmId)}`, 'DELETE');
 export const sendTest = () => call('/push/test', 'POST', { id: deviceId() });
+export const getPrefs = async () => (await call(`/push/prefs?id=${deviceId()}`)).prefs;
+export const setPrefs = (prefs) => call('/push/prefs', 'POST', { id: deviceId(), prefs });

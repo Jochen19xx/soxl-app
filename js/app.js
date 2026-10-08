@@ -1,12 +1,13 @@
 import { SERVER_URL, MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey, restoreApiKey } from './config.js';
 import { createFinnhub, usdToEur, lastFinnhub } from './api.js';
 
-const VERSION = '2026-10-08.16';
+const VERSION = '2026-10-08.17';
 import { demo } from './demo.js';
 import { upcomingEvents } from './events.js';
 import { getPortfolio, setPortfolio, portfolioFigures } from './portfolio.js';
 import { renderCandles } from './chart.js';
-import { pushSupport, permission, enablePush, listAlarms, addAlarm, deleteAlarm, sendTest } from './alarms.js';
+import { trend } from './trend.js';
+import { pushSupport, permission, enablePush, listAlarms, addAlarm, deleteAlarm, sendTest, getPrefs, setPrefs } from './alarms.js';
 import { toGerman, cachedGerman } from './translate.js';
 
 const $ = (sel) => document.querySelector(sel);
@@ -107,6 +108,7 @@ function renderMain(flash = false) {
   $('#soxl-updated').textContent = `Stand ${timeDe(v.time)} Uhr${v.ext ? ' (' + v.ext + ')' : ''}`;
   if (flash) { const p = $('#soxl-price'); p.classList.remove('flash'); void p.offsetWidth; p.classList.add('flash'); }
   renderPortfolio();
+  renderTrend();
 }
 
 // ---------- Portfolio ----------
@@ -272,12 +274,31 @@ $('#report-archive').addEventListener('click', (e) => {
   if (li) { loadReport(li.dataset.day); window.scrollTo(0, 0); }
 });
 
-// Tageskerzen der letzten drei Wochen (15 Handelstage).
+// Tageskerzen der letzten drei Wochen (15 Handelstage) mit 20- und 50-Tage-Schnitt.
+let dailyCandles = [];
 async function loadChart() {
   try {
-    const candles = (await api.candles(MAIN_SYMBOL)).slice(-15);
-    renderCandles($('#chart'), $('#chart-info'), candles);
+    dailyCandles = await api.candles(MAIN_SYMBOL);
+    const t = trend(dailyCandles), n = 15;
+    const lines = t ? [{ cls: 'ma20', label: 'Ø20', values: t.shortLine.slice(-n) }, { cls: 'ma50', label: 'Ø50', values: t.longLine.slice(-n) }] : [];
+    renderCandles($('#chart'), $('#chart-info'), dailyCandles.slice(-n), lines);
+    renderTrend();
   } catch { $('#chart-info').textContent = 'Chart gerade nicht verfügbar.'; }
+}
+
+// Trend-Ampel: aktueller Kurs gegen 20- und 50-Tage-Schnitt.
+const TREND_TITLE = { up: 'Aufwärtstrend', down: 'Abwärtstrend', mixed: 'Kein klarer Trend' };
+function renderTrend() {
+  const t = dailyCandles.length && trend(dailyCandles, view(MAIN_SYMBOL)?.price);
+  const box = $('#trend');
+  box.hidden = !t;
+  if (!t) return;
+  box.className = 'card trend ' + t.state;
+  $('#trend-title').textContent = (t.state === 'mixed' ? '' : 'Achtung: ') + TREND_TITLE[t.state];
+  const rel = (avg) => `${t.price >= avg ? 'über' : 'unter'} dem ${avg === t.short ? '20' : '50'}-Tage-Schnitt (${usd(avg)})`;
+  let text = `Der Kurs (${usd(t.price)}) liegt ${rel(t.short)} und ${rel(t.long)}.`;
+  if (t.cross) text += ` Letzte Trendwende am ${new Date(t.cross.t).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' })}, da hat der 20-Tage-Schnitt den 50-Tage-Schnitt nach ${t.cross.dir === 'up' ? 'oben' : 'unten'} gekreuzt.`;
+  $('#trend-text').textContent = text;
 }
 
 // Vor-/Nachbörsenkurse, nur außerhalb der regulären Handelszeit.
@@ -379,7 +400,18 @@ async function renderAlarms() {
       : 'Benachrichtigungen sind erlaubt. Leg hier deine Alarme an.';
     $('#alarm-list').innerHTML = alarms.length ? alarms.map((a) => `<li><div class="left">${esc(ALARM_TEXT[a.type]?.(a) || a.type)}</div>
       <button class="del" data-id="${esc(a.id)}">Löschen</button></li>`).join('') : '<li class="empty">Noch keine Alarme.</li>';
+    const prefs = await getPrefs();
+    $('#pref-trend').checked = prefs.trend; $('#pref-report').checked = prefs.report;
   } catch (e) { $('#alarm-status').textContent = 'Server nicht erreichbar: ' + e.message; }
+}
+
+// Schalter für Trendwende-Warnung und Tagesbericht.
+for (const key of ['trend', 'report']) {
+  $(`#pref-${key}`).addEventListener('change', async (e) => {
+    const on = e.target.checked;
+    try { await setPrefs({ [key]: on }); $('#alarm-status').textContent = `${key === 'trend' ? 'Trendwende-Warnung' : 'Nachricht zum Tagesbericht'} ${on ? 'eingeschaltet' : 'ausgeschaltet'}.`; }
+    catch (err) { e.target.checked = !on; $('#alarm-status').textContent = 'Nicht gespeichert: ' + err.message; }
+  });
 }
 
 $('#alarm-enable').addEventListener('click', async () => {
@@ -452,4 +484,8 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catc
 renderSession();
 renderHoldings();
 restoreApiKey().then(start);
-window.addEventListener('hashchange', () => { if (/key=/.test(location.hash)) restoreApiKey().then(start); });
+// Aus einer Nachricht zum Tagesbericht geöffnet: gleich den Bericht zeigen.
+const openFromHash = () => { if (location.hash === '#bericht') { show('bericht'); loadReport(); history.replaceState(null, '', location.pathname); } };
+openFromHash();
+window.addEventListener('hashchange', () => { if (/key=/.test(location.hash)) restoreApiKey().then(start); else openFromHash(); });
+navigator.serviceWorker?.addEventListener('message', (e) => { if (e.data?.open === 'bericht') { show('bericht'); loadReport(); } });

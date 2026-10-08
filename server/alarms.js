@@ -5,7 +5,10 @@
 // Die Push-Nachrichten sind leer; der Service Worker der App holt den Text danach über
 // /push/inbox ab. So entfällt die Verschlüsselung des Inhalts.
 
+import { crossToday } from '../js/trend.js';
+
 const FINNHUB = 'https://finnhub.io/api/v1';
+const REPORT_URL = 'https://jochen19xx.github.io/soxl-app/reports/latest.json';
 const SUBJECT = 'https://jochen19xx.github.io/soxl-app/';
 const QUIET_FROM = 23, QUIET_TO = 7; // Ruhezeit (deutsche Zeit)
 
@@ -95,6 +98,16 @@ async function eurRate(storage) {
   } catch { return cached?.rate ?? null; }
 }
 
+// Tageskerzen der letzten Monate (Yahoo), für die Trendwende.
+export async function dailyCandles(symbol, range = '6mo') {
+  const r = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=${range}`,
+    { headers: { 'User-Agent': 'Mozilla/5.0', Accept: 'application/json' } });
+  const res0 = (await r.json()).chart?.result?.[0];
+  const q = res0?.indicators?.quote?.[0] || {};
+  return (res0?.timestamp || []).map((t, i) => ({ t: t * 1000, o: q.open[i], h: q.high[i], l: q.low[i], c: q.close[i], v: q.volume[i] }))
+    .filter((k) => k.o != null && k.c != null && k.h != null && k.l != null);
+}
+
 // ---------- Alarmlogik (rein, gut testbar) ----------
 // Gibt die Nachrichten zurück und verändert die Alarme (löschen bzw. Zustand fortschreiben).
 export function evaluate(alarms, { price, base, label, day, rate }) {
@@ -124,6 +137,9 @@ export function evaluate(alarms, { price, base, label, day, rate }) {
 
 // ---------- Durable Object ----------
 const TYPES = new Set(['above', 'below', 'move', 'depotBelow', 'depotAbove']);
+// Weitere Nachrichten, pro Gerät abschaltbar; neue Geräte haben beide an.
+const DEFAULT_PREFS = { trend: true, report: true };
+const prefsOf = (dev) => ({ ...DEFAULT_PREFS, ...(dev.prefs || {}) });
 const json = (data, status = 200) => new Response(JSON.stringify(data), { status, headers: { 'Content-Type': 'application/json' } });
 
 export class AlarmStore {
@@ -166,6 +182,16 @@ export class AlarmStore {
 
     if (path === '/push/alarms' && request.method === 'GET') return json({ alarms: dev.alarms });
 
+    if (path === '/push/prefs' && request.method === 'GET') return json({ prefs: prefsOf(dev) });
+
+    if (path === '/push/prefs' && request.method === 'POST') {
+      const p = prefsOf(dev);
+      for (const k of Object.keys(DEFAULT_PREFS)) if (typeof body.prefs?.[k] === 'boolean') p[k] = body.prefs[k];
+      dev.prefs = p;
+      await this.storage.put('dev:' + id, dev);
+      return json({ prefs: p });
+    }
+
     if (path === '/push/alarms' && request.method === 'POST') {
       const a = body.alarm || {};
       const value = Number(a.value);
@@ -196,9 +222,66 @@ export class AlarmStore {
   }
 
   async check(now = new Date()) {
+    if (isQuiet(now)) return { skipped: 'Ruhezeit' };
+    const extra = {};
+    try { extra.report = await this.checkReport(now); } catch (e) { extra.report = { error: e.message }; }
+    try { extra.trend = await this.checkTrend(now); } catch (e) { extra.trend = { error: e.message }; }
+    return { ...extra, ...(await this.checkPrices(now)) };
+  }
+
+  // Nachricht an alle Geräte, die diese Art Nachricht wollen (pref: 'trend' | 'report').
+  async broadcast(pref, message) {
+    const keys = await vapidKeys(this.storage);
+    let sent = 0;
+    for (const [key, dev] of await this.storage.list({ prefix: 'dev:' })) {
+      if (!dev.subscription || !prefsOf(dev)[pref]) continue;
+      dev.inbox = [...(dev.inbox || []), { ...message, time: Date.now() }].slice(-10);
+      const status = await sendPush(keys, dev.subscription);
+      if (status === 404 || status === 410) { await this.storage.delete(key); await this.storage.delete('ep:' + dev.subscription.endpoint); continue; }
+      await this.storage.put(key, dev);
+      sent++;
+    }
+    return sent;
+  }
+
+  // Neuer Tagesbericht: morgens alle 5 Minuten nachsehen, ob latest.json einen neuen Tag hat.
+  async checkReport(now) {
+    const h = zoned(now, 'Europe/Berlin').hour;
+    if (h < 7 || h >= 12 || now.getUTCMinutes() % 5) return { skipped: true };
+    const r = await fetch(`${REPORT_URL}?t=${now.getTime()}`, { headers: { 'Cache-Control': 'no-cache' } });
+    if (!r.ok) return { status: r.status };
+    const rep = await r.json();
+    const known = await this.storage.get('reportDay');
+    if (!rep.trading_day || rep.trading_day === known) return { day: known };
+    await this.storage.put('reportDay', rep.trading_day);
+    if (!known) return { day: rep.trading_day, first: true }; // erster Lauf: nur merken
+    const pct = typeof rep.change_pct === 'number' ? ` (${fmtPct(rep.change_pct)})` : '';
+    const sent = await this.broadcast('report', { title: 'Neuer Tagesbericht', body: `${rep.headline}${pct}`, url: './#bericht' });
+    return { day: rep.trading_day, sent };
+  }
+
+  // Trendwende: einmal pro Handelstag nach US-Börsenschluss (16:15 New Yorker Zeit) prüfen,
+  // ob der 20-Tage-Schnitt den 50-Tage-Schnitt gekreuzt hat.
+  async checkTrend(now) {
+    const ny = zoned(now, 'America/New_York');
+    if (ny.weekday === 'Sat' || ny.weekday === 'Sun' || ny.minutes < 975) return { skipped: true };
+    if ((await this.storage.get('trendDay')) === ny.date) return { done: ny.date };
+    const daily = await dailyCandles('SOXL');
+    await this.storage.put('trendDay', ny.date);
+    const last = daily.at(-1);
+    if (!last || zoned(new Date(last.t), 'America/New_York').date !== ny.date) return { holiday: ny.date };
+    const dir = crossToday(daily.map((k) => k.c));
+    if (!dir) return { day: ny.date, cross: null };
+    const body = dir === 'up'
+      ? `Trendwende nach oben: Der 20-Tage-Schnitt hat den 50-Tage-Schnitt von unten gekreuzt. Schluss ${fmtUsd(last.c)}.`
+      : `Trendwende nach unten: Der 20-Tage-Schnitt hat den 50-Tage-Schnitt von oben gekreuzt. Schluss ${fmtUsd(last.c)}.`;
+    const sent = await this.broadcast('trend', { title: dir === 'up' ? 'SOXL: Aufwärtstrend' : 'SOXL: Abwärtstrend', body });
+    return { day: ny.date, cross: dir, sent };
+  }
+
+  async checkPrices(now) {
     const { session, day } = usSession(now);
     if (session === 'closed') return { skipped: 'Börse zu' };
-    if (isQuiet(now)) return { skipped: 'Ruhezeit' };
     const devices = await this.storage.list({ prefix: 'dev:' });
     const active = [...devices].filter(([, d]) => d.alarms?.length);
     if (!active.length) return { skipped: 'Keine Alarme' };
