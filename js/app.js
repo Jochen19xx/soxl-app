@@ -1,7 +1,7 @@
 import { SERVER_URL, MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey, restoreApiKey } from './config.js';
 import { createFinnhub, usdToEur, lastFinnhub } from './api.js';
 
-const VERSION = '2026-10-08.15';
+const VERSION = '2026-10-08.16';
 import { demo } from './demo.js';
 import { upcomingEvents } from './events.js';
 import { getPortfolio, setPortfolio, portfolioFigures } from './portfolio.js';
@@ -237,6 +237,41 @@ async function loadQuotes() {
   renderMain(); renderHoldings();
 }
 
+// ---------- Tagesbericht (von der Claude-Routine ins Repository geschrieben) ----------
+const dateDe = (iso) => new Date(iso + 'T12:00:00').toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' });
+
+function renderReport(r) {
+  const el = $('#report');
+  if (!r) { el.innerHTML = '<p>Noch kein Tagesbericht vorhanden. Der erste kommt am nächsten Werktag gegen 7 Uhr.</p>'; return; }
+  const list = (items) => `<ul>${items.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`;
+  el.innerHTML = `<div class="hint">Bericht zu ${esc(dateDe(r.trading_day))}</div>
+    <h3>${esc(r.headline)}</h3>
+    <div class="big ${dir(r.change_pct)}">Schluss ${usd(r.close)} · ${pct(r.change_pct)}</div>
+    ${(r.paragraphs || []).map((p) => `<p>${esc(p)}</p>`).join('')}
+    ${r.drivers?.length ? `<h4>Die wichtigsten Gründe</h4>${list(r.drivers)}` : ''}
+    ${r.outlook ? `<h4>Worauf es heute ankommt</h4><p>${esc(r.outlook)}</p>` : ''}
+    ${r.sources?.length ? `<h4>Quellen</h4><ul class="sources">${r.sources.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></li>`).join('')}</ul>` : ''}
+    <p class="hint">Automatisch von Claude erstellt. Keine Anlageberatung.</p>`;
+}
+
+async function loadReport(day) {
+  try {
+    const res = await fetch(`reports/${day || 'latest'}.json`, { cache: 'no-cache' });
+    renderReport(res.ok ? await res.json() : null);
+  } catch { renderReport(null); }
+  try {
+    const days = await (await fetch('reports/index.json', { cache: 'no-cache' })).json();
+    $('#report-archive-title').hidden = days.length < 2;
+    $('#report-archive').innerHTML = days.slice(0, 30).map((d) => `<li data-day="${esc(d.trading_day)}">
+      <div class="left"><div class="sym">${esc(dateDe(d.trading_day))}</div><div class="name">${esc(d.headline || '')}</div></div>
+      <div class="right chg ${dir(d.change_pct)}">${d.change_pct != null ? pct(d.change_pct) : ''}</div></li>`).join('');
+  } catch {}
+}
+$('#report-archive').addEventListener('click', (e) => {
+  const li = e.target.closest('li[data-day]');
+  if (li) { loadReport(li.dataset.day); window.scrollTo(0, 0); }
+});
+
 // Tageskerzen der letzten drei Wochen (15 Handelstage).
 async function loadChart() {
   try {
@@ -314,7 +349,7 @@ function show(view, tab = view) {
   document.querySelectorAll('.tabbar button').forEach((b) => b.classList.toggle('active', b.dataset.view === tab));
   window.scrollTo(0, 0);
 }
-document.querySelectorAll('.tabbar button').forEach((b) => b.addEventListener('click', () => { show(b.dataset.view); if (b.dataset.view === 'portfolio') fillPortfolioForm(); }));
+document.querySelectorAll('.tabbar button').forEach((b) => b.addEventListener('click', () => { show(b.dataset.view); if (b.dataset.view === 'portfolio') fillPortfolioForm(); if (b.dataset.view === 'bericht') loadReport(); }));
 $('#btn-settings').addEventListener('click', () => { show('settings'); renderDiag(); renderAlarms(); });
 
 // ---------- Preisalarme ----------
