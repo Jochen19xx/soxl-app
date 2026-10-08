@@ -96,11 +96,45 @@ async function holdings(request) {
   return res;
 }
 
+// Kurs inklusive Vor- und Nachbörse (Yahoo Finance, ohne Schlüssel). Finnhubs kostenloser
+// Tarif liefert außerhalb der Handelszeit nur den Schlusskurs.
+async function extendedQuote(request, url) {
+  const origin = request.headers.get('Origin');
+  const symbol = (url.searchParams.get('symbol') || '').toUpperCase();
+  if (!/^[A-Z.]{1,6}$/.test(symbol)) return new Response('Bad symbol', { status: 400, headers: cors(origin) });
+  const cacheKey = new Request(`https://cache.local/ext/${symbol}`);
+  let res = await caches.default.match(cacheKey);
+  if (!res) {
+    let body, status = 200;
+    try {
+      const r = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1m&range=1d&includePrePost=true`,
+        { headers: { 'User-Agent': 'Mozilla/5.0', Accept: 'application/json' } });
+      const j = await r.json();
+      const res0 = j.chart?.result?.[0];
+      const ts = res0?.timestamp || [];
+      const closes = res0?.indicators?.quote?.[0]?.close || [];
+      let i = closes.length - 1;
+      while (i >= 0 && closes[i] == null) i--;
+      if (i < 0) throw new Error('Keine Daten');
+      const m = res0.meta;
+      const t = ts[i] * 1000;
+      const p = m.currentTradingPeriod || {};
+      const session = t < p.regular?.start * 1000 ? 'pre' : t >= p.regular?.end * 1000 ? 'post' : 'regular';
+      body = { symbol, price: closes[i], time: t, session, regularPrice: m.regularMarketPrice, prevClose: m.chartPreviousClose ?? m.previousClose };
+    } catch (e) { body = { error: e.message }; status = 502; }
+    res = new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'max-age=15' } });
+    if (status === 200) await caches.default.put(cacheKey, res.clone());
+  }
+  res = new Response(res.body, res);
+  for (const [k, v] of Object.entries(cors(origin))) res.headers.set(k, v);
+  return res;
+}
+
 // Live-Kurse: Verbindung der App wird an Finnhubs WebSocket durchgereicht.
 async function proxyWebSocket(env) {
   const upstreamRes = await fetch(`https://ws.finnhub.io/?token=${env.FINNHUB_KEY}`, { headers: { Upgrade: 'websocket' } });
   const upstream = upstreamRes.webSocket;
-  if (!upstream) return new Response('Upstream failed', { status: 502 });
+  if (!upstream) return new Response(`Upstream ${upstreamRes.status}: ${(await upstreamRes.text()).slice(0, 200)}`, { status: 502 });
   upstream.accept();
   const [client, server] = Object.values(new WebSocketPair());
   server.accept();
@@ -118,6 +152,7 @@ export default {
     if (request.method === 'OPTIONS') return new Response(null, { headers: cors(request.headers.get('Origin')) });
     if (url.pathname.startsWith('/finnhub/')) return proxyFinnhub(request, env, url);
     if (url.pathname === '/holdings') return holdings(request);
+    if (url.pathname === '/extended') return extendedQuote(request, url);
     if (url.pathname === '/ws' && request.headers.get('Upgrade') === 'websocket') return proxyWebSocket(env);
     return new Response('Werk 2 Aktiengurus Server läuft.', { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
   },

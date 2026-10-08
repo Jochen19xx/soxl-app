@@ -16,10 +16,14 @@ jobs:
           console.log('Jetzt:', fmt(Date.now()), '| New York:', new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
           const q = await (await fetch(`${S}/finnhub/quote?symbol=SOXL`, { headers: hdr })).json();
           console.log('Quote SOXL: Kurs', q.c, 'Vortag', q.pc, 'Zeitstempel', fmt(q.t * 1000));
+          const ext = await fetch(`${S}/extended?symbol=SOXL`, { headers: hdr });
+          console.log('Erweiterter Kurs:', ext.status, await ext.text());
+          const wsHttp = await fetch(`${S}/ws`, { headers: { ...hdr, Upgrade: 'websocket', Connection: 'Upgrade', 'Sec-WebSocket-Version': '13', 'Sec-WebSocket-Key': 'dGhlIHNhbXBsZSBub25jZQ==' } }).catch((e) => ({ status: 'Fehler ' + e.message, text: async () => '' }));
+          console.log('WS-Proxy Antwort:', wsHttp.status, (await wsHttp.text()).slice(0, 200));
           const syms = ['SOXL', 'NVDA', 'AMD'];
           const trades = {};
           await new Promise((resolve) => {
-            const ws = new WebSocket(S.replace('https', 'wss') + '/ws');
+            const ws = new WebSocket(process.env.FINNHUB_KEY ? `wss://ws.finnhub.io?token=${process.env.FINNHUB_KEY}` : S.replace('https', 'wss') + '/ws');
             ws.onopen = () => { console.log('WebSocket offen'); syms.forEach((s) => ws.send(JSON.stringify({ type: 'subscribe', symbol: s }))); };
             ws.onmessage = (e) => {
               const m = JSON.parse(e.data);
@@ -37,3 +41,5 @@ jobs:
           }
           JS
           node check.mjs
+        env:
+          FINNHUB_KEY: ${{ secrets.FINNHUB_KEY }}
