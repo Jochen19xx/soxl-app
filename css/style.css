@@ -158,3 +158,24 @@ select.full { width: 100%; }
 .toggle input:checked + i { background: var(--up); }
 .toggle input:checked + i::after { transform: translateX(18px); }
 .sub { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 14px 0 8px; }
+
+/* RSI */
+.rsi-box { margin: 10px 0 4px; padding-top: 10px; border-top: 1px solid var(--line); }
+.rsi-row { display: flex; justify-content: space-between; font-size: 14px; }
+.rsi-row b.over { color: var(--down); } .rsi-row b.under { color: var(--up); }
+.rsi-bar { position: relative; display: flex; height: 8px; border-radius: 4px; overflow: visible; margin: 8px 0 2px; }
+.rsi-bar .z { display: block; height: 100%; }
+.rsi-bar .under { width: 30%; background: rgba(34,197,94,.35); border-radius: 4px 0 0 4px; }
+.rsi-bar .mid { width: 40%; background: #3a3f4a; }
+.rsi-bar .over { width: 30%; background: rgba(239,68,68,.35); border-radius: 0 4px 4px 0; }
+.rsi-bar #rsi-dot { position: absolute; top: -4px; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 3px var(--card); }
+.rsi-scale { position: relative; height: 14px; font-size: 10px; color: var(--muted); }
+.rsi-scale span { position: absolute; transform: translateX(-50%); } .rsi-scale span:first-child { transform: none; }
+.rsi-scale span:last-child { transform: translateX(-100%); }
+.rsi-text { font-size: 13px; margin: 6px 0 0; color: var(--muted); line-height: 1.4; }
+.rsi-chart { margin-top: 6px; }
+.chart .rsiline { fill: none; stroke: #c084fc; stroke-width: 1.5; }
+.chart .rsizone { fill: rgba(255,255,255,.03); }
+.chart .rsilevel { stroke: var(--line); stroke-dasharray: 3 3; }
+.chart-info .rsi { color: #c084fc; }
+.chart .rsi-label { fill: #c084fc; }

@@ -1,12 +1,12 @@
 import { SERVER_URL, MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey, restoreApiKey } from './config.js';
 import { createFinnhub, usdToEur, lastFinnhub } from './api.js';
 
-const VERSION = '2026-10-08.17';
+const VERSION = '2026-10-08.18';
 import { demo } from './demo.js';
 import { upcomingEvents } from './events.js';
 import { getPortfolio, setPortfolio, portfolioFigures } from './portfolio.js';
-import { renderCandles } from './chart.js';
-import { trend } from './trend.js';
+import { renderCandles, renderRsi } from './chart.js';
+import { trend, rsiZone } from './trend.js';
 import { pushSupport, permission, enablePush, listAlarms, addAlarm, deleteAlarm, sendTest, getPrefs, setPrefs } from './alarms.js';
 import { toGerman, cachedGerman } from './translate.js';
 
@@ -280,8 +280,11 @@ async function loadChart() {
   try {
     dailyCandles = await api.candles(MAIN_SYMBOL);
     const t = trend(dailyCandles), n = 15;
-    const lines = t ? [{ cls: 'ma20', label: 'Ø20', values: t.shortLine.slice(-n) }, { cls: 'ma50', label: 'Ø50', values: t.longLine.slice(-n) }] : [];
+    const lines = t ? [{ cls: 'ma20', label: 'Ø20', values: t.shortLine.slice(-n) }, { cls: 'ma50', label: 'Ø50', values: t.longLine.slice(-n) },
+      { cls: 'rsi', label: 'RSI', values: t.rsiLine.slice(-n), digits: 0, draw: false }] : [];
     renderCandles($('#chart'), $('#chart-info'), dailyCandles.slice(-n), lines);
+    $('#rsi-chart').hidden = !t;
+    if (t) renderRsi($('#rsi-chart'), t.rsiLine.slice(-n));
     renderTrend();
   } catch { $('#chart-info').textContent = 'Chart gerade nicht verfügbar.'; }
 }
@@ -299,6 +302,23 @@ function renderTrend() {
   let text = `Der Kurs (${usd(t.price)}) liegt ${rel(t.short)} und ${rel(t.long)}.`;
   if (t.cross) text += ` Letzte Trendwende am ${new Date(t.cross.t).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' })}, da hat der 20-Tage-Schnitt den 50-Tage-Schnitt nach ${t.cross.dir === 'up' ? 'oben' : 'unten'} gekreuzt.`;
   $('#trend-text').textContent = text;
+
+  // RSI: zeigt, wie stark und einseitig sich der Kurs zuletzt bewegt hat.
+  $('#trend-rsi').hidden = t.rsi == null;
+  if (t.rsi == null) return;
+  const zone = rsiZone(t.rsi), r = Math.round(t.rsi);
+  $('#rsi-value').textContent = `${r} · ${{ over: 'überkauft', under: 'überverkauft', neutral: 'neutral' }[zone]}`;
+  $('#rsi-value').className = zone;
+  $('#rsi-dot').style.left = `${Math.min(100, Math.max(0, t.rsi))}%`;
+  const both = {
+    'up-over': 'Aufwärtstrend, aber der RSI ist über 70: Der Kurs ist zuletzt sehr schnell gestiegen. Danach kommt es oft zu einer Verschnaufpause oder einem Rücksetzer.',
+    'up-under': 'Aufwärtstrend, aber der RSI ist unter 30: Der Kurs ist zuletzt stark gefallen, obwohl der Trend noch nach oben zeigt.',
+    'down-under': 'Abwärtstrend, und der RSI ist unter 30: Der Kurs ist zuletzt sehr stark gefallen. Danach kommt es oft zu einer Gegenbewegung nach oben, der Trend bleibt aber abwärts.',
+    'down-over': 'Abwärtstrend, aber der RSI ist über 70: Der Kurs hat sich zuletzt kräftig erholt. Ob daraus eine Trendwende wird, zeigen die Schnitte.',
+  }[`${t.state}-${zone}`];
+  $('#rsi-text').textContent = both || (zone === 'over' ? 'Über 70: Der Kurs ist zuletzt sehr schnell gestiegen (überkauft).'
+    : zone === 'under' ? 'Unter 30: Der Kurs ist zuletzt sehr stark gefallen (überverkauft).'
+    : 'Zwischen 30 und 70: Der Kurs ist weder überkauft noch überverkauft.');
 }
 
 // Vor-/Nachbörsenkurse, nur außerhalb der regulären Handelszeit.

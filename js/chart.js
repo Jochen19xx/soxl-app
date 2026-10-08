@@ -14,7 +14,8 @@ function niceStep(range, count) {
 export function renderCandles(svg, info, candles, lines = []) {
   if (!candles.length) { svg.innerHTML = ''; return; }
   const plotW = W - RIGHT, plotH = H - BOTTOM - TOP;
-  const extra = lines.flatMap((ln) => ln.values.filter((v) => v != null));
+  const drawn = lines.filter((ln) => ln.draw !== false); // draw: false = nur in der Info-Zeile
+  const extra = drawn.flatMap((ln) => ln.values.filter((v) => v != null));
   const lo = Math.min(...candles.map((k) => k.l), ...extra), hi = Math.max(...candles.map((k) => k.h), ...extra);
   const pad = (hi - lo) * 0.06 || 1;
   const min = lo - pad, max = hi + pad;
@@ -43,7 +44,7 @@ export function renderCandles(svg, info, candles, lines = []) {
       <line x1="${x(i)}" x2="${x(i)}" y1="${y(k.h)}" y2="${y(k.l)}"/>
       <rect x="${x(i) - bodyW / 2}" y="${top}" width="${bodyW}" height="${h}" rx="1"/></g>`;
   });
-  for (const ln of lines) {
+  for (const ln of drawn) {
     const pts = ln.values.map((v, i) => (v == null ? null : `${x(i).toFixed(1)},${y(v).toFixed(1)}`)).filter(Boolean);
     if (pts.length > 1) out += `<polyline class="maline ${ln.cls}" points="${pts.join(' ')}"/>`;
   }
@@ -59,9 +60,26 @@ export function renderCandles(svg, info, candles, lines = []) {
     const chg = prev ? (k.c / prev.c - 1) * 100 : null;
     info.innerHTML = `<b>${dayLong(k.t)}</b> · Eröffnung ${num(k.o)} · Hoch ${num(k.h)} · Tief ${num(k.l)} · Schluss <b>${num(k.c)}</b>`
       + (chg != null ? ` <span class="${chg >= 0 ? 'up' : 'down'}">(${chg > 0 ? '+' : ''}${num(chg, 1)} %)</span>` : '')
-      + lines.filter((ln) => ln.values[i] != null).map((ln) => ` · <span class="${ln.cls}">${ln.label} ${num(ln.values[i])}</span>`).join('');
+      + lines.filter((ln) => ln.values[i] != null).map((ln) => ` · <span class="${ln.cls}">${ln.label} ${num(ln.values[i], ln.digits ?? 2)}</span>`).join('');
     svg.querySelectorAll('.candle').forEach((g) => g.classList.toggle('sel', +g.dataset.i === i));
   };
   svg.onclick = (e) => { const g = e.target.closest('.candle'); if (g) showInfo(+g.dataset.i); };
   showInfo(candles.length - 1);
+}
+
+// RSI unter dem Chart, gleiche Breite und Kerzenraster wie oben.
+export function renderRsi(svg, values) {
+  const h = 74, top = 6, bottom = 6, plotW = W - RIGHT, plotH = h - top - bottom;
+  const y = (v) => top + (100 - v) / 100 * plotH;
+  const slot = plotW / values.length, x = (i) => slot * i + slot / 2;
+  let out = `<rect class="rsizone" x="0" y="${y(70)}" width="${plotW}" height="${y(30) - y(70)}"/>`;
+  for (const lv of [30, 70]) {
+    out += `<line class="rsilevel" x1="0" x2="${plotW}" y1="${y(lv)}" y2="${y(lv)}"/>`;
+    out += `<text class="axis" x="${plotW + 6}" y="${y(lv) + 4}">${lv}</text>`;
+  }
+  const pts = values.map((v, i) => (v == null ? null : `${x(i).toFixed(1)},${y(v).toFixed(1)}`)).filter(Boolean);
+  if (pts.length > 1) out += `<polyline class="rsiline" points="${pts.join(' ')}"/>`;
+  out += `<text class="axis rsi-label" x="${plotW + 6}" y="${top + 8}">RSI</text>`;
+  svg.setAttribute('viewBox', `0 0 ${W} ${h}`);
+  svg.innerHTML = out;
 }
