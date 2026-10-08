@@ -1,7 +1,7 @@
 import { SERVER_URL, MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey, restoreApiKey } from './config.js';
 import { createFinnhub, usdToEur, lastFinnhub } from './api.js';
 
-const VERSION = '2026-10-08.11';
+const VERSION = '2026-10-08.12';
 import { demo } from './demo.js';
 import { upcomingEvents } from './events.js';
 import { getPortfolio, setPortfolio, portfolioFigures } from './portfolio.js';
@@ -29,6 +29,7 @@ async function loadHoldings() {
 
 const state = {
   quotes: {},      // symbol -> quote
+  ext: {},         // symbol -> Kurs inkl. Vor-/Nachbörse
   eur: null,       // { rate, date }
   live: 'offline',
 };
@@ -73,18 +74,35 @@ function renderSession() {
 }
 
 // ---------- Darstellung ----------
+// Was für ein Symbol angezeigt wird: während des Handels der Finnhub-Kurs, außerhalb der
+// Handelszeit der Vor- bzw. Nachbörsenkurs, verglichen mit dem letzten Schlusskurs.
+function view(sym) {
+  const q = state.quotes[sym], e = state.ext[sym];
+  if (e?.price && e.session !== 'regular' && marketSession() !== 'open') {
+    const base = e.regularPrice ?? q?.price;
+    return { price: e.price, base, change: e.price - base, changePct: base ? (e.price / base - 1) * 100 : 0,
+      time: e.time, ext: e.session === 'pre' ? 'Vorbörse' : 'Nachbörse', q };
+  }
+  if (!q) return null;
+  return { price: q.price, base: q.prevClose, change: q.change, changePct: q.changePct, time: q.time, q };
+}
+
 function renderMain(flash = false) {
-  const q = state.quotes[MAIN_SYMBOL];
-  if (!q) return;
-  $('#soxl-price').textContent = usd(q.price);
+  const v = view(MAIN_SYMBOL);
+  if (!v) return;
+  const q = v.q;
+  $('#soxl-price').textContent = usd(v.price);
   const ch = $('#soxl-change');
-  ch.textContent = `${signed(q.change)} (${pct(q.changePct)})`;
-  ch.className = 'hero-change ' + dir(q.change);
-  $('#soxl-eur').textContent = state.eur ? `≈ ${eur(q.price * state.eur.rate)}` : '';
-  $('#soxl-pc').textContent = usd(q.prevClose);
-  $('#soxl-l').textContent = usd(q.low);
-  $('#soxl-h').textContent = usd(q.high);
-  $('#soxl-updated').textContent = `Stand ${timeDe(q.time)} Uhr`;
+  ch.textContent = `${signed(v.change)} (${pct(v.changePct)})${v.ext ? ' · ' + v.ext : ''}`;
+  ch.className = 'hero-change ' + dir(v.change);
+  $('#soxl-eur').textContent = state.eur ? `≈ ${eur(v.price * state.eur.rate)}` : '';
+  $('#soxl-ext').hidden = !v.ext;
+  if (v.ext && q) $('#soxl-ext').textContent = `Letzter Schlusskurs ${usd(v.base)}${q.prevClose ? ` (${pct((v.base / q.prevClose - 1) * 100)} zum Vortag)` : ''}`;
+  $('#soxl-pc-label').textContent = v.ext ? 'Schluss' : 'Vortag';
+  $('#soxl-pc').textContent = usd(v.base);
+  $('#soxl-l').textContent = q ? usd(q.low) : '–';
+  $('#soxl-h').textContent = q ? usd(q.high) : '–';
+  $('#soxl-updated').textContent = `Stand ${timeDe(v.time)} Uhr${v.ext ? ' (' + v.ext + ')' : ''}`;
   if (flash) { const p = $('#soxl-price'); p.classList.remove('flash'); void p.offsetWidth; p.classList.add('flash'); }
   renderPortfolio();
 }
@@ -95,7 +113,8 @@ const signedMoney = (usdVal, eurVal) => ((eurVal ?? usdVal) > 0 ? '+' : '') + mo
 
 function renderPortfolio() {
   const p = getPortfolio();
-  const f = portfolioFigures(p, state.quotes[MAIN_SYMBOL], state.eur?.rate);
+  const v = view(MAIN_SYMBOL);
+  const f = portfolioFigures(p, v && { price: v.price, prevClose: v.base }, state.eur?.rate);
   $('#pf-summary').hidden = !f;
   $('#mini-pf').hidden = !f;
   if (!f) return;
@@ -135,7 +154,7 @@ $('#mini-pf').addEventListener('click', () => show('portfolio'));
 
 function renderHoldings() {
   $('#holdings').innerHTML = holdings.map((h) => {
-    const q = state.quotes[h.symbol];
+    const q = view(h.symbol);
     return `<li data-sym="${h.symbol}">
       <div class="left"><div class="sym">${h.symbol}</div><div class="name">${esc(h.name)}</div></div>
       <div class="weight">${h.weight.toLocaleString('de-DE', { minimumFractionDigits: 1 })} %</div>
@@ -216,6 +235,14 @@ async function loadQuotes() {
   renderMain(); renderHoldings();
 }
 
+// Vor-/Nachbörsenkurse, nur außerhalb der regulären Handelszeit.
+async function loadExtended() {
+  if (!api.extended || marketSession() === 'open') return;
+  const results = await Promise.allSettled(SYMBOLS.map((s) => api.extended(s)));
+  results.forEach((r, i) => { if (r.status === 'fulfilled' && r.value.price) state.ext[SYMBOLS[i]] = r.value; });
+  renderMain(); renderHoldings();
+}
+
 async function loadNews() {
   try { renderNews(await api.news(NEWS_SYMBOLS)); }
   catch (e) { $('#news').innerHTML = `<li class="empty">${esc(e.message)}</li>`; }
@@ -259,10 +286,10 @@ async function start() {
   $('#api-key').value = key;
   loadNews(); loadFx();
   await loadHoldings();
-  loadQuotes(); loadEarnings();
+  loadQuotes(); loadExtended(); loadEarnings();
   stopLive = api.live(SYMBOLS, onTrade, (s) => { state.live = s; renderSession(); });
   // Zusätzlich regelmäßig abfragen: liefert Tageshoch/-tief und überbrückt Live-Ausfälle.
-  pollTimer = setInterval(() => { if (!document.hidden) loadQuotes(); renderSession(); }, POLL_MS);
+  pollTimer = setInterval(() => { if (!document.hidden) { loadQuotes(); loadExtended(); } renderSession(); }, key ? POLL_MS : 20_000);
   newsTimer = setInterval(() => { if (!document.hidden) loadNews(); }, NEWS_POLL_MS);
 }
 
@@ -311,7 +338,7 @@ $('#btn-clear-key').addEventListener('click', () => {
 });
 
 // Beim Zurückkehren in die App sofort aktualisieren.
-document.addEventListener('visibilitychange', () => { if (!document.hidden) { loadQuotes(); renderSession(); } });
+document.addEventListener('visibilitychange', () => { if (!document.hidden) { loadQuotes(); loadExtended(); renderSession(); } });
 
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 

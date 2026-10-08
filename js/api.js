@@ -91,6 +91,12 @@ export function createFinnhub(token, server = '') {
         .map((e) => ({ date: e.date, symbol: e.symbol, hour: e.hour }));
     },
 
+    // Letzter Kurs inklusive Vor-/Nachbörse (nur über den eigenen Server).
+    async extended(symbol) {
+      if (!server) throw new ApiError('Kein Server');
+      return getJson(`${server}/extended?symbol=${encodeURIComponent(symbol)}`);
+    },
+
     // Aktuelle Top-10 mit Gewichten (nur über den eigenen Server).
     async holdings() {
       if (!server) throw new ApiError('Kein Server');
@@ -101,6 +107,9 @@ export function createFinnhub(token, server = '') {
 
     // Live-Trades per WebSocket. onTrade(symbol, price, timeMs). Verbindet sich bei Abbruch neu.
     live(symbols, onTrade, onState = () => {}) {
+      // Über den eigenen Server gibt es (noch) keine Live-Verbindung: Finnhub nimmt sie dort
+      // nicht an. Die App fragt stattdessen alle paar Sekunden ab.
+      if (!token) { onState('offline'); return () => {}; }
       let ws, closed = false, retry = 1000, watchdog;
       const resetWatchdog = () => {
         clearTimeout(watchdog);
