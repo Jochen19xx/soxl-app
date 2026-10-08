@@ -1,13 +1,30 @@
 import { SERVER_URL, MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey, restoreApiKey } from './config.js';
 import { createFinnhub, usdToEur, lastFinnhub } from './api.js';
 
-const VERSION = '2026-10-08.9';
+const VERSION = '2026-10-08.10';
 import { demo } from './demo.js';
 import { upcomingEvents } from './events.js';
 import { toGerman, cachedGerman } from './translate.js';
 
 const $ = (sel) => document.querySelector(sel);
-const SYMBOLS = [MAIN_SYMBOL, ...HOLDINGS.map((h) => h.symbol)];
+// Top-10: zuerst die eingebaute Liste, beim Start durch Direxions aktuelle Liste ersetzt.
+let holdings = HOLDINGS;
+let holdingsNote = `Gewichte geschätzt, Stand ${HOLDINGS_ASOF}.`;
+let SYMBOLS = [MAIN_SYMBOL, ...holdings.map((h) => h.symbol)];
+const KNOWN_NAMES = Object.fromEntries(HOLDINGS.map((h) => [h.symbol, h.name]));
+const prettyName = (s) => s.toLowerCase().replace(/\b(inc|corp|corporation|co|ltd|plc|sa|nv|adr|sponsored|class [a-z]|com|new)\b\.?/g, '')
+  .replace(/\s+/g, ' ').trim().replace(/(^|\s)\S/g, (c) => c.toUpperCase());
+
+async function loadHoldings() {
+  try {
+    const r = await api.holdings();
+    holdings = r.holdings.map((h) => ({ ...h, name: KNOWN_NAMES[h.symbol] || prettyName(h.name) }));
+    SYMBOLS = [MAIN_SYMBOL, ...holdings.map((h) => h.symbol)];
+    const d = r.asOf ? new Date(r.asOf) : null;
+    holdingsNote = `Gewichte laut Direxion, Stand ${d && !isNaN(d) ? d.toLocaleDateString('de-DE') : r.asOf}.`;
+  } catch { /* eingebaute Liste bleibt */ }
+  renderHoldings();
+}
 
 const state = {
   quotes: {},      // symbol -> quote
@@ -71,7 +88,7 @@ function renderMain(flash = false) {
 }
 
 function renderHoldings() {
-  $('#holdings').innerHTML = HOLDINGS.map((h) => {
+  $('#holdings').innerHTML = holdings.map((h) => {
     const q = state.quotes[h.symbol];
     return `<li data-sym="${h.symbol}">
       <div class="left"><div class="sym">${h.symbol}</div><div class="name">${esc(h.name)}</div></div>
@@ -81,7 +98,7 @@ function renderHoldings() {
         <div class="chg ${q ? dir(q.change) : ''}">${q ? pct(q.changePct) : ''}</div>
       </div></li>`;
   }).join('');
-  $('#holdings-asof').textContent = `Gewichte geschätzt, Stand ${HOLDINGS_ASOF}.`;
+  $('#holdings-asof').textContent = holdingsNote;
 }
 
 // Ganzen Artikel über Google Übersetzer öffnen (nur auf Wunsch, aus der Lesansicht heraus).
@@ -125,7 +142,7 @@ const KIND_ICON = { fed: '🏦', macro: '📊', earnings: '💰', market: '🔔'
 const dayKey = (d) => d.toLocaleDateString('sv-SE');
 
 function renderEvents(earnings) {
-  const names = Object.fromEntries([...HOLDINGS, ...EARNINGS_EXTRA].map((h) => [h.symbol, h.name]));
+  const names = Object.fromEntries([...holdings, ...EARNINGS_EXTRA].map((h) => [h.symbol, h.name]));
   const events = upcomingEvents(earnings, names, 28);
   const today = dayKey(new Date()), tomorrow = dayKey(new Date(Date.now() + 864e5));
   let html = '', last = '';
@@ -160,7 +177,7 @@ async function loadNews() {
 
 async function loadEarnings() {
   renderEvents([]); // feste Termine sofort zeigen, Quartalszahlen kommen dazu
-  try { renderEvents(await api.earnings([...HOLDINGS, ...EARNINGS_EXTRA].map((h) => h.symbol))); } catch { /* feste Termine bleiben */ }
+  try { renderEvents(await api.earnings([...holdings, ...EARNINGS_EXTRA].map((h) => h.symbol))); } catch { /* feste Termine bleiben */ }
 }
 
 async function loadFx() {
@@ -188,13 +205,15 @@ function scheduleRender(main) {
   requestAnimationFrame(() => { renderQueued = false; renderMain(flashMain); renderHoldings(); flashMain = false; });
 }
 
-function start() {
+async function start() {
   stop();
   const key = getApiKey();
   api = key || SERVER_URL ? createFinnhub(key, SERVER_URL) : demo;
   $('#demo-banner').hidden = !!(key || SERVER_URL);
   $('#api-key').value = key;
-  loadQuotes(); loadNews(); loadEarnings(); loadFx();
+  loadNews(); loadFx();
+  await loadHoldings();
+  loadQuotes(); loadEarnings();
   stopLive = api.live(SYMBOLS, onTrade, (s) => { state.live = s; renderSession(); });
   // Zusätzlich regelmäßig abfragen: liefert Tageshoch/-tief und überbrückt Live-Ausfälle.
   pollTimer = setInterval(() => { if (!document.hidden) loadQuotes(); renderSession(); }, POLL_MS);

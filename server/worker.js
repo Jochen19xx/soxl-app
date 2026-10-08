@@ -42,6 +42,60 @@ async function proxyFinnhub(request, env, url) {
   return res;
 }
 
+// Aktuelle Top-10-Positionen aus Direxions täglicher Bestandsliste (CSV).
+const HOLDINGS_CSV = 'https://www.direxion.com/holdings/SOXL.csv';
+const NOT_A_STOCK = /SWAP|CASH|TREAS|MONEY MARKET|GOVT|FUND|BILL|COLLATERAL/i;
+
+function parseCsvLine(line) {
+  const out = []; let cur = '', quoted = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"') { if (quoted && line[i + 1] === '"') { cur += '"'; i++; } else quoted = !quoted; }
+    else if (ch === ',' && !quoted) { out.push(cur); cur = ''; }
+    else cur += ch;
+  }
+  out.push(cur);
+  return out.map((v) => v.trim());
+}
+
+export function parseHoldings(csv) {
+  const lines = csv.split(/\r?\n/);
+  const h = lines.findIndex((l) => l.includes('StockTicker'));
+  if (h < 0) throw new Error('Unbekanntes Format');
+  const cols = parseCsvLine(lines[h]);
+  const idx = (name) => cols.indexOf(name);
+  const [iDate, iTicker, iDesc, iPct, iShares] = ['TradeDate', 'StockTicker', 'SecurityDescription', 'HoldingsPercent', 'Shares'].map(idx);
+  const rows = lines.slice(h + 1).filter((l) => l.trim()).map(parseCsvLine);
+  const stocks = rows
+    .filter((r) => r[iTicker] && /^[A-Z.]{1,6}$/.test(r[iTicker].split(' ')[0]) && !NOT_A_STOCK.test(r[iDesc]) && Number(r[iShares]) > 0)
+    .map((r) => ({ symbol: r[iTicker].split(' ')[0], name: r[iDesc], weight: Math.round(parseFloat(r[iPct]) * 10) / 10 }))
+    .filter((x) => x.weight > 0)
+    .sort((a, b) => b.weight - a.weight)
+    .slice(0, 10);
+  if (stocks.length < 5) throw new Error('Zu wenige Positionen erkannt');
+  return { asOf: rows[0]?.[iDate] || '', holdings: stocks };
+}
+
+async function holdings(request) {
+  const origin = request.headers.get('Origin');
+  const cacheKey = new Request('https://cache.local/holdings');
+  let res = await caches.default.match(cacheKey);
+  if (!res) {
+    try {
+      const csv = await (await fetch(HOLDINGS_CSV, { headers: { 'User-Agent': 'Mozilla/5.0' } })).text();
+      res = new Response(JSON.stringify(parseHoldings(csv)), {
+        headers: { 'Content-Type': 'application/json', 'Cache-Control': 'max-age=21600' },
+      });
+      await caches.default.put(cacheKey, res.clone());
+    } catch (e) {
+      res = new Response(JSON.stringify({ error: e.message }), { status: 502, headers: { 'Content-Type': 'application/json' } });
+    }
+  }
+  res = new Response(res.body, res);
+  for (const [k, v] of Object.entries(cors(origin))) res.headers.set(k, v);
+  return res;
+}
+
 // Live-Kurse: Verbindung der App wird an Finnhubs WebSocket durchgereicht.
 async function proxyWebSocket(env) {
   const upstreamRes = await fetch(`https://ws.finnhub.io/?token=${env.FINNHUB_KEY}`, { headers: { Upgrade: 'websocket' } });
@@ -63,6 +117,7 @@ export default {
     const url = new URL(request.url);
     if (request.method === 'OPTIONS') return new Response(null, { headers: cors(request.headers.get('Origin')) });
     if (url.pathname.startsWith('/finnhub/')) return proxyFinnhub(request, env, url);
+    if (url.pathname === '/holdings') return holdings(request);
     if (url.pathname === '/ws' && request.headers.get('Upgrade') === 'websocket') return proxyWebSocket(env);
     return new Response('Werk 2 Aktiengurus Server läuft.', { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
   },

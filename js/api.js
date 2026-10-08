@@ -91,6 +91,14 @@ export function createFinnhub(token, server = '') {
         .map((e) => ({ date: e.date, symbol: e.symbol, hour: e.hour }));
     },
 
+    // Aktuelle Top-10 mit Gewichten (nur über den eigenen Server).
+    async holdings() {
+      if (!server) throw new ApiError('Kein Server');
+      const r = await getJson(`${server}/holdings`);
+      if (!r.holdings?.length) throw new ApiError('Keine Daten');
+      return r;
+    },
+
     // Live-Trades per WebSocket. onTrade(symbol, price, timeMs). Verbindet sich bei Abbruch neu.
     live(symbols, onTrade, onState = () => {}) {
       let ws, closed = false, retry = 1000, watchdog;

@@ -31,5 +31,6 @@ export const demo = {
     const d = (n) => new Date(Date.now() + n * 864e5).toISOString().slice(0, 10);
     return [{ date: d(6), symbol: 'TSM', hour: 'bmo' }, { date: d(13), symbol: 'AMD', hour: 'amc' }];
   },
+  async holdings() { throw new Error('Beispieldaten'); },
   live() { return () => {}; },
 };
