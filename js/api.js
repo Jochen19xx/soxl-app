@@ -103,6 +103,21 @@ export function createFinnhub(token, server = '') {
       return (await getJson(`${server}/candles?symbol=${encodeURIComponent(symbol)}`)).candles;
     },
 
+    // Kurs eines beliebigen Werts (Yahoo, über den eigenen Server), gleiche Form wie quote().
+    async yquote(symbol) {
+      if (!server) throw new ApiError('Kein Server');
+      const r = await getJson(`${server}/yquote?symbol=${encodeURIComponent(symbol)}`);
+      if (!r.price) throw new ApiError(`Kein Kurs für ${symbol}`);
+      const change = r.prevClose ? r.price - r.prevClose : 0;
+      return { ...r, change, changePct: r.prevClose ? (change / r.prevClose) * 100 : 0 };
+    },
+
+    // Suche nach Name, Kürzel oder ISIN.
+    async search(q) {
+      if (!server) throw new ApiError('Kein Server');
+      return getJson(`${server}/search?q=${encodeURIComponent(q)}`);
+    },
+
     // Aktuelle Top-10 mit Gewichten (nur über den eigenen Server).
     async holdings() {
       if (!server) throw new ApiError('Kein Server');

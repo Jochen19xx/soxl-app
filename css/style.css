@@ -180,3 +180,17 @@ select.full { width: 100%; }
 .chart-info .rsi { color: #c084fc; }
 .chart .rsi-label { fill: #c084fc; }
 .rsi-row small { color: var(--muted); font-size: 11px; margin-left: 4px; }
+
+/* Auswahl der Werte im Reiter Markt */
+.chips { display: flex; gap: 8px; overflow-x: auto; padding: 2px 0 12px; scrollbar-width: none; }
+.chips::-webkit-scrollbar { display: none; }
+.chip { flex: none; display: flex; flex-direction: column; align-items: flex-start; gap: 1px; background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 12px; padding: 7px 12px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+.chip small { font-size: 11px; font-weight: 500; color: var(--muted); }
+.chip small.up { color: var(--up); } .chip small.down { color: var(--down); }
+.chip.active { border-color: var(--accent); background: rgba(96,165,250,.12); }
+.chip.add { justify-content: center; align-items: center; font-size: 22px; font-weight: 400; min-width: 46px; color: var(--accent); }
+.add-card input { width: 100%; }
+.add-results { margin: 10px 0; }
+.add-results li { cursor: pointer; }
+.add-results .del { background: none; border: 0; color: var(--down); font-size: 14px; cursor: pointer; padding: 4px 0 4px 12px; }
+.add-results .addbtn { color: var(--accent); font-size: 22px; padding-left: 12px; }

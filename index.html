@@ -30,8 +30,16 @@
   <main>
     <!-- Markt: SOXL-Kurs + Top 10 -->
     <section id="view-markt" class="view active">
+      <div class="chips" id="chips" role="tablist" aria-label="Wert auswählen"></div>
+      <div class="card add-card" id="add-card" hidden>
+        <label for="add-q">Wert hinzufügen</label>
+        <input id="add-q" type="search" autocomplete="off" placeholder="Name, Kürzel oder ISIN, z. B. Nvidia oder VVSM">
+        <ul id="add-results" class="list add-results"></ul>
+        <div id="add-mine-box"><h3 class="sub">Deine Werte</h3><ul id="add-mine" class="list add-results"></ul></div>
+        <button id="add-close" class="btn ghost">Fertig</button>
+      </div>
       <div class="card hero">
-        <div class="hero-label"><b>SOXL</b> · Direxion Daily Semiconductor Bull 3X</div>
+        <div class="hero-label" id="hero-label"><b>SOXL</b> · Direxion Daily Semiconductor Bull 3X</div>
         <div class="hero-price" id="soxl-price">–</div>
         <div class="hero-change" id="soxl-change">–</div>
         <div class="hero-eur" id="soxl-eur"></div>
@@ -57,7 +65,7 @@
         <p class="hint">Hinweis aus vergangenen Kursen, keine Vorhersage und keine Anlageberatung.</p>
       </div>
 
-      <h2>Chart · letzte 3 Wochen</h2>
+      <h2 id="chart-title">Chart · letzte 3 Wochen</h2>
       <div class="card chart-card">
         <div class="chart-info" id="chart-info">Lade Kerzen …</div>
         <svg id="chart" class="chart" role="img" aria-label="SOXL Tageskerzen der letzten drei Wochen"></svg>
@@ -65,7 +73,7 @@
         <svg id="rsi-chart" class="chart rsi-chart" role="img" aria-label="RSI der letzten drei Wochen"></svg>
       </div>
 
-      <h2>Top 10 im SOXL</h2>
+      <h2 id="holdings-title">Top 10 im SOXL</h2>
       <ul id="holdings" class="list"></ul>
       <p class="hint" id="holdings-asof"></p>
     </section>

@@ -32,6 +32,8 @@ export const demo = {
     return [{ date: d(6), symbol: 'TSM', hour: 'bmo' }, { date: d(13), symbol: 'AMD', hour: 'amc' }];
   },
   async holdings() { throw new Error('Beispieldaten'); },
+  async yquote() { throw new Error('Beispieldaten'); },
+  async search() { return []; },
   async candles() {
     let c = 40; const out = [];
     for (let i = 20; i >= 0; i--) {

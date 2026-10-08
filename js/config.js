@@ -24,6 +24,31 @@ export const HOLDINGS = [
   { symbol: 'TXN',  name: 'Texas Instruments',      weight: 2.7 },
 ];
 
+// Weitere Werte im Reiter „Markt“ (oben auswählbar, mit + erweiterbar). Kurse kommen über
+// den eigenen Server von Yahoo. VVSM: VanEck Semiconductor UCITS ETF an Xetra, in Euro.
+export const DEFAULT_WATCH = [
+  { symbol: 'VVSM.DE', label: 'VVSM', name: 'VanEck Semiconductor UCITS ETF', isin: 'IE00BMC38736' },
+];
+
+// Top 10 des VVSM laut Factsheet von VanEck (Stand 30.09.2026). Yahoo-Kürzel für die Kurse.
+export const EXTRA_HOLDINGS = {
+  'VVSM.DE': {
+    asOf: '30.09.2026', source: 'VanEck-Factsheet',
+    list: [
+      { symbol: 'AMD',       label: 'AMD',  name: 'Advanced Micro Devices', weight: 10.99 },
+      { symbol: 'TSM',       label: 'TSM',  name: 'Taiwan Semiconductor',   weight: 9.98 },
+      { symbol: 'MU',        label: 'MU',   name: 'Micron Technology',      weight: 9.88 },
+      { symbol: 'NVDA',      label: 'NVDA', name: 'NVIDIA',                 weight: 9.73 },
+      { symbol: 'AVGO',      label: 'AVGO', name: 'Broadcom',               weight: 9.18 },
+      { symbol: '000660.KS', label: 'SK Hynix', name: 'SK Hynix (Seoul)',   weight: 8.83 },
+      { symbol: 'ASML',      label: 'ASML', name: 'ASML',                   weight: 8.41 },
+      { symbol: 'INTC',      label: 'INTC', name: 'Intel',                  weight: 6.74 },
+      { symbol: 'LRCX',      label: 'LRCX', name: 'Lam Research',           weight: 4.41 },
+      { symbol: 'AMAT',      label: 'AMAT', name: 'Applied Materials',      weight: 4.41 },
+    ],
+  },
+};
+
 // Weitere Chipfirmen, deren Quartalszahlen den ganzen Sektor bewegen (nur für die Termine).
 export const EARNINGS_EXTRA = [
   { symbol: 'TSM',  name: 'Taiwan Semiconductor' },
