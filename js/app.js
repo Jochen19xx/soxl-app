@@ -1,7 +1,7 @@
 import { SERVER_URL, MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey, restoreApiKey } from './config.js';
 import { createFinnhub, usdToEur, lastFinnhub } from './api.js';
 
-const VERSION = '2026-10-08.20';
+const VERSION = '2026-10-08.21';
 import { demo } from './demo.js';
 import { upcomingEvents } from './events.js';
 import { getPortfolio, setPortfolio, portfolioFigures } from './portfolio.js';
@@ -509,6 +509,27 @@ $('#btn-clear-key').addEventListener('click', () => {
 document.addEventListener('visibilitychange', () => { if (!document.hidden) { loadQuotes(); loadExtended(); renderSession(); if (Date.now() - chartLoadedAt > NEWS_POLL_MS) loadChart(); } });
 
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+
+// Automatische Updates: regelmäßig nachsehen, ob es eine neuere App-Version gibt, und dann
+// neu laden (nicht, solange gerade etwas eingetippt wird).
+async function checkForUpdate() {
+  try {
+    const src = await (await fetch(`js/app.js?v=${Date.now()}`, { cache: 'no-store' })).text();
+    const latest = src.match(/const VERSION = '([^']+)'/)?.[1];
+    if (!latest || latest === VERSION) return;
+    let tried = null;
+    try { tried = sessionStorage.getItem('updateTried'); } catch {}
+    if (tried === latest) return; // schon einmal versucht, nicht endlos neu laden
+    navigator.serviceWorker?.getRegistration().then((r) => r?.update()).catch(() => {});
+    const typing = ['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement?.tagName);
+    if (typing || document.hidden) return;
+    try { sessionStorage.setItem('updateTried', latest); } catch {}
+    location.reload();
+  } catch { /* offline: später wieder */ }
+}
+setTimeout(checkForUpdate, 5000);
+setInterval(() => { if (!document.hidden) checkForUpdate(); }, NEWS_POLL_MS);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) checkForUpdate(); });
 
 renderSession();
 renderHoldings();
