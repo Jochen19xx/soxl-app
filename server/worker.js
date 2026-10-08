@@ -134,6 +134,33 @@ async function extendedQuote(request, url) {
   return res;
 }
 
+// Tageskerzen der letzten Wochen (Yahoo Finance; Finnhubs Kerzen kosten Geld).
+async function candles(request, url) {
+  const origin = request.headers.get('Origin');
+  const symbol = (url.searchParams.get('symbol') || 'SOXL').toUpperCase();
+  if (!/^[A-Z.]{1,6}$/.test(symbol)) return new Response('Bad symbol', { status: 400, headers: cors(origin) });
+  const cacheKey = new Request(`https://cache.local/candles/${symbol}`);
+  let res = await caches.default.match(cacheKey);
+  if (!res) {
+    let body, status = 200;
+    try {
+      const r = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=2mo`,
+        { headers: { 'User-Agent': 'Mozilla/5.0', Accept: 'application/json' } });
+      const res0 = (await r.json()).chart?.result?.[0];
+      const q = res0?.indicators?.quote?.[0] || {};
+      const list = (res0?.timestamp || []).map((t, i) => ({ t: t * 1000, o: q.open[i], h: q.high[i], l: q.low[i], c: q.close[i], v: q.volume[i] }))
+        .filter((k) => k.o != null && k.c != null && k.h != null && k.l != null);
+      if (!list.length) throw new Error('Keine Daten');
+      body = { symbol, candles: list };
+    } catch (e) { body = { error: e.message }; status = 502; }
+    res = new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'max-age=300' } });
+    if (status === 200) await caches.default.put(cacheKey, res.clone());
+  }
+  res = new Response(res.body, res);
+  for (const [k, v] of Object.entries(cors(origin))) res.headers.set(k, v);
+  return res;
+}
+
 // Live-Kurse: Verbindung der App wird an Finnhubs WebSocket durchgereicht.
 async function proxyWebSocket(env) {
   const upstreamRes = await fetch(`https://ws.finnhub.io/?token=${env.FINNHUB_KEY}`, { headers: { Upgrade: 'websocket' } });
@@ -157,6 +184,7 @@ export default {
     if (url.pathname.startsWith('/finnhub/')) return proxyFinnhub(request, env, url);
     if (url.pathname === '/holdings') return holdings(request);
     if (url.pathname === '/extended') return extendedQuote(request, url);
+    if (url.pathname === '/candles') return candles(request, url);
     if (url.pathname === '/ws' && request.headers.get('Upgrade') === 'websocket') return proxyWebSocket(env);
     if (url.pathname.startsWith('/push/')) {
       const store = env.ALARMS.get(env.ALARMS.idFromName('main'));
