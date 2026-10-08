@@ -9,9 +9,9 @@ import { toGerman, cachedGerman } from './translate.js';
 const $ = (sel) => document.querySelector(sel);
 // Top-10: zuerst die eingebaute Liste, beim Start durch Direxions aktuelle Liste ersetzt.
 let holdings = HOLDINGS;
-let holdingsNote = `Gewichte geschätzt, Stand ${HOLDINGS_ASOF}.`;
+let holdingsNote = `Anteil am Fondsvermögen laut Direxion, Stand ${HOLDINGS_ASOF}.`;
 let SYMBOLS = [MAIN_SYMBOL, ...holdings.map((h) => h.symbol)];
-const KNOWN_NAMES = Object.fromEntries(HOLDINGS.map((h) => [h.symbol, h.name]));
+const KNOWN_NAMES = Object.fromEntries([...HOLDINGS, ...EARNINGS_EXTRA].map((h) => [h.symbol, h.name]));
 const prettyName = (s) => s.toLowerCase().replace(/\b(inc|corp|corporation|co|ltd|plc|sa|nv|adr|sponsored|class [a-z]|com|new)\b\.?/g, '')
   .replace(/\s+/g, ' ').trim().replace(/(^|\s)\S/g, (c) => c.toUpperCase());
 
@@ -20,8 +20,8 @@ async function loadHoldings() {
     const r = await api.holdings();
     holdings = r.holdings.map((h) => ({ ...h, name: KNOWN_NAMES[h.symbol] || prettyName(h.name) }));
     SYMBOLS = [MAIN_SYMBOL, ...holdings.map((h) => h.symbol)];
-    const d = r.asOf ? new Date(r.asOf) : null;
-    holdingsNote = `Gewichte laut Direxion, Stand ${d && !isNaN(d) ? d.toLocaleDateString('de-DE') : r.asOf}.`;
+    const m = String(r.asOf).match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/); // Direxion: Monat/Tag/Jahr
+    holdingsNote = `Anteil am Fondsvermögen laut Direxion, Stand ${m ? `${m[2]}.${m[1]}.${m[3]}` : r.asOf}.`;
   } catch { /* eingebaute Liste bleibt */ }
   renderHoldings();
 }
@@ -177,7 +177,7 @@ async function loadNews() {
 
 async function loadEarnings() {
   renderEvents([]); // feste Termine sofort zeigen, Quartalszahlen kommen dazu
-  try { renderEvents(await api.earnings([...holdings, ...EARNINGS_EXTRA].map((h) => h.symbol))); } catch { /* feste Termine bleiben */ }
+  try { renderEvents(await api.earnings([...new Set([...holdings, ...EARNINGS_EXTRA].map((h) => h.symbol))])); } catch { /* feste Termine bleiben */ }
 }
 
 async function loadFx() {

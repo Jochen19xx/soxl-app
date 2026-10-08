@@ -8,25 +8,25 @@ export const MAIN_SYMBOL = 'SOXL';
 // die App keinen Schlüssel mehr; ein auf dem Gerät eingetragener Schlüssel hat Vorrang.
 export const SERVER_URL = 'https://aktiengurus.veith-jochen.workers.dev';
 
-// Top-10-Positionen des SOXL (geschätzte Gewichte, Stand 06.10.2026, Quelle: chartrow.com
-// auf Basis der N-PORT-Meldung vom 31.07.2026). Direxion veröffentlicht die genaue Liste
-// täglich; ein automatisches Update kommt mit dem Server-Teil.
-export const HOLDINGS_ASOF = '06.10.2026';
+// Rückfall-Liste der Top-10, falls der Server die aktuelle Liste von Direxion nicht liefern
+// kann (Stand 07.10.2026, Anteil am Fondsvermögen laut Direxion).
+export const HOLDINGS_ASOF = '07.10.2026';
 export const HOLDINGS = [
-  { symbol: 'AMD',  name: 'Advanced Micro Devices',  weight: 9.8 },
-  { symbol: 'NVDA', name: 'NVIDIA',                  weight: 8.8 },
-  { symbol: 'MU',   name: 'Micron Technology',       weight: 8.4 },
-  { symbol: 'AVGO', name: 'Broadcom',                weight: 6.6 },
-  { symbol: 'INTC', name: 'Intel',                   weight: 5.5 },
-  { symbol: 'MRVL', name: 'Marvell Technology',      weight: 5.5 },
-  { symbol: 'TSM',  name: 'Taiwan Semiconductor',    weight: 4.7 },
-  { symbol: 'AMAT', name: 'Applied Materials',       weight: 4.6 },
-  { symbol: 'LRCX', name: 'Lam Research',            weight: 4.1 },
-  { symbol: 'KLAC', name: 'KLA',                     weight: 4.0 },
+  { symbol: 'AMD',  name: 'Advanced Micro Devices', weight: 6.5 },
+  { symbol: 'INTC', name: 'Intel',                  weight: 5.9 },
+  { symbol: 'MU',   name: 'Micron Technology',      weight: 5.2 },
+  { symbol: 'NVDA', name: 'NVIDIA',                 weight: 5.1 },
+  { symbol: 'AVGO', name: 'Broadcom',               weight: 4.8 },
+  { symbol: 'MRVL', name: 'Marvell Technology',     weight: 3.2 },
+  { symbol: 'ADI',  name: 'Analog Devices',         weight: 2.7 },
+  { symbol: 'AMAT', name: 'Applied Materials',      weight: 2.7 },
+  { symbol: 'KLAC', name: 'KLA',                    weight: 2.7 },
+  { symbol: 'TXN',  name: 'Texas Instruments',      weight: 2.7 },
 ];
 
 // Weitere Chipfirmen, deren Quartalszahlen den ganzen Sektor bewegen (nur für die Termine).
 export const EARNINGS_EXTRA = [
+  { symbol: 'TSM',  name: 'Taiwan Semiconductor' },
   { symbol: 'ASML', name: 'ASML' },
   { symbol: 'QCOM', name: 'Qualcomm' },
   { symbol: 'TXN',  name: 'Texas Instruments' },
