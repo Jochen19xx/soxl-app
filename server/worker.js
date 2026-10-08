@@ -12,7 +12,7 @@ const ALLOWED_PATHS = new Set(['/quote', '/company-news', '/calendar/earnings'])
 const ALLOWED_ORIGINS = ['https://jochen19xx.github.io', 'http://localhost'];
 // Wie lange Antworten zwischengespeichert werden (Sekunden), damit mehrere Geräte
 // das kostenlose Finnhub-Limit nicht sprengen.
-const CACHE_SECONDS = { '/quote': 10, '/company-news': 300, '/calendar/earnings': 3600 };
+const CACHE_SECONDS = { '/quote': 10, '/company-news': 60, '/calendar/earnings': 3600 };
 
 function cors(origin) {
   const ok = ALLOWED_ORIGINS.some((o) => origin === o || origin?.startsWith(o + ':'));
@@ -148,7 +148,7 @@ async function candles(request, url) {
       if (!list.length) throw new Error('Keine Daten');
       body = { symbol, candles: list };
     } catch (e) { body = { error: e.message }; status = 502; }
-    res = new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'max-age=300' } });
+    res = new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'max-age=60' } });
     if (status === 200) await caches.default.put(cacheKey, res.clone());
   }
   res = new Response(res.body, res);

@@ -38,7 +38,7 @@ export const NEWS_SYMBOLS = ['SOXL', 'NVDA', 'AMD', 'AVGO', 'MU', 'TSM'];
 
 // Wie oft Kurse ohne Live-Verbindung neu geladen werden (ms).
 export const POLL_MS = 60_000;
-export const NEWS_POLL_MS = 10 * 60_000;
+export const NEWS_POLL_MS = 60_000; // Chart, RSI, News usw. jede Minute neu
 
 // Der Schlüssel wird dreifach gespeichert (localStorage, IndexedDB, Cookie), weil Browser
 // einzelne Speicher gelegentlich leeren. Fehlt er an einer Stelle, wird er aus den anderen

@@ -1,7 +1,7 @@
 import { SERVER_URL, MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey, restoreApiKey } from './config.js';
 import { createFinnhub, usdToEur, lastFinnhub } from './api.js';
 
-const VERSION = '2026-10-08.21';
+const VERSION = '2026-10-08.22';
 import { demo } from './demo.js';
 import { upcomingEvents } from './events.js';
 import { getPortfolio, setPortfolio, portfolioFigures } from './portfolio.js';
@@ -256,7 +256,9 @@ function renderReport(r) {
     <p class="hint">Automatisch von Claude erstellt. Keine Anlageberatung.</p>`;
 }
 
+let reportDayShown = null; // null = neuester Bericht
 async function loadReport(day) {
+  reportDayShown = day || null;
   try {
     const res = await fetch(`reports/${day || 'latest'}.json`, { cache: 'no-cache' });
     renderReport(res.ok ? await res.json() : null);
@@ -342,8 +344,9 @@ async function loadNews() {
   catch (e) { $('#news').innerHTML = `<li class="empty">${esc(e.message)}</li>`; }
 }
 
+let eventsShown = false;
 async function loadEarnings() {
-  renderEvents([]); // feste Termine sofort zeigen, Quartalszahlen kommen dazu
+  if (!eventsShown) { renderEvents([]); eventsShown = true; } // feste Termine sofort zeigen, Quartalszahlen kommen dazu
   try { renderEvents(await api.earnings([...new Set([...holdings, ...EARNINGS_EXTRA].map((h) => h.symbol))])); } catch { /* feste Termine bleiben */ }
 }
 
@@ -384,7 +387,12 @@ async function start() {
   stopLive = api.live(SYMBOLS, onTrade, (s) => { state.live = s; renderSession(); });
   // Zusätzlich regelmäßig abfragen: liefert Tageshoch/-tief und überbrückt Live-Ausfälle.
   pollTimer = setInterval(() => { if (!document.hidden) { loadQuotes(); loadExtended(); } renderSession(); }, key ? POLL_MS : 20_000);
-  newsTimer = setInterval(() => { if (!document.hidden) { loadNews(); loadChart(); } }, NEWS_POLL_MS);
+  // Alles andere einmal pro Minute: Chart mit Trend und RSI, News, Termine, Euro-Kurs, Top 10, Bericht.
+  newsTimer = setInterval(() => {
+    if (document.hidden) return;
+    loadNews(); loadChart(); loadEarnings(); loadFx(); loadHoldings();
+    if ($('#view-bericht').classList.contains('active') && !reportDayShown) loadReport();
+  }, NEWS_POLL_MS);
 }
 
 function stop() {
@@ -506,7 +514,7 @@ $('#btn-clear-key').addEventListener('click', () => {
 });
 
 // Beim Zurückkehren in die App sofort aktualisieren.
-document.addEventListener('visibilitychange', () => { if (!document.hidden) { loadQuotes(); loadExtended(); renderSession(); if (Date.now() - chartLoadedAt > NEWS_POLL_MS) loadChart(); } });
+document.addEventListener('visibilitychange', () => { if (!document.hidden) { loadQuotes(); loadExtended(); renderSession(); if (Date.now() - chartLoadedAt > NEWS_POLL_MS) { loadChart(); loadNews(); } } });
 
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 
