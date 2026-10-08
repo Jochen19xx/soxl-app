@@ -12,6 +12,8 @@ const ALLOWED_PATHS = new Set(['/quote', '/company-news', '/calendar/earnings'])
 const ALLOWED_ORIGINS = ['https://jochen19xx.github.io', 'http://localhost'];
 // Wie lange Antworten zwischengespeichert werden (Sekunden), damit mehrere Geräte
 // das kostenlose Finnhub-Limit nicht sprengen.
+// Börsenkürzel wie SOXL, VVSM.DE, 000660.KS, BRK-B
+const SYMBOL_RE = /^[A-Z0-9][A-Z0-9.\-]{0,14}$/;
 const CACHE_SECONDS = { '/quote': 10, '/company-news': 60, '/calendar/earnings': 3600 };
 
 function cors(origin) {
@@ -105,7 +107,7 @@ async function holdings(request) {
 async function extendedQuote(request, url) {
   const origin = request.headers.get('Origin');
   const symbol = (url.searchParams.get('symbol') || '').toUpperCase();
-  if (!/^[A-Z.]{1,6}$/.test(symbol)) return new Response('Bad symbol', { status: 400, headers: cors(origin) });
+  if (!SYMBOL_RE.test(symbol)) return new Response('Bad symbol', { status: 400, headers: cors(origin) });
   const cacheKey = new Request(`https://cache.local/ext/${symbol}`);
   let res = await caches.default.match(cacheKey);
   if (!res) {
@@ -138,7 +140,7 @@ async function extendedQuote(request, url) {
 async function candles(request, url) {
   const origin = request.headers.get('Origin');
   const symbol = (url.searchParams.get('symbol') || 'SOXL').toUpperCase();
-  if (!/^[A-Z.]{1,6}$/.test(symbol)) return new Response('Bad symbol', { status: 400, headers: cors(origin) });
+  if (!SYMBOL_RE.test(symbol)) return new Response('Bad symbol', { status: 400, headers: cors(origin) });
   const cacheKey = new Request(`https://cache.local/candles6/${symbol}`);
   let res = await caches.default.match(cacheKey);
   if (!res) {
@@ -154,6 +156,59 @@ async function candles(request, url) {
   res = new Response(res.body, res);
   for (const [k, v] of Object.entries(cors(origin))) res.headers.set(k, v);
   return res;
+}
+
+// Antwort mit CORS und kurzem Zwischenspeicher (für die Yahoo-Endpunkte).
+async function cachedJson(request, key, seconds, make) {
+  const origin = request.headers.get('Origin');
+  const cacheKey = new Request(`https://cache.local/${key}`);
+  let res = await caches.default.match(cacheKey);
+  if (!res) {
+    let body, status = 200;
+    try { body = await make(); } catch (e) { body = { error: e.message }; status = 502; }
+    res = new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json', 'Cache-Control': `max-age=${seconds}` } });
+    if (status === 200) await caches.default.put(cacheKey, res.clone());
+  }
+  res = new Response(res.body, res);
+  for (const [k, v] of Object.entries(cors(origin))) res.headers.set(k, v);
+  return res;
+}
+
+// Kurs eines beliebigen Werts über Yahoo (z. B. VVSM.DE an Xetra, in Euro).
+async function yahooQuote(request, url) {
+  const symbol = (url.searchParams.get('symbol') || '').toUpperCase();
+  if (!SYMBOL_RE.test(symbol)) return new Response('Bad symbol', { status: 400, headers: cors(request.headers.get('Origin')) });
+  return cachedJson(request, `yq/${symbol}`, 15, async () => {
+    const r = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?interval=1m&range=1d`,
+      { headers: { 'User-Agent': 'Mozilla/5.0', Accept: 'application/json' } });
+    const res0 = (await r.json()).chart?.result?.[0];
+    const m = res0?.meta;
+    if (!m?.regularMarketPrice) throw new Error('Kein Kurs');
+    const closes = res0.indicators?.quote?.[0]?.close || [];
+    let i = closes.length - 1;
+    while (i >= 0 && closes[i] == null) i--;
+    const now = Date.now() / 1000, p = m.currentTradingPeriod || {};
+    const within = (x) => x && now >= x.start && now < x.end;
+    const session = within(p.regular) ? 'open' : within(p.pre) ? 'pre' : within(p.post) ? 'post' : 'closed';
+    return {
+      symbol, price: i >= 0 ? closes[i] : m.regularMarketPrice, prevClose: m.chartPreviousClose ?? m.previousClose,
+      high: m.regularMarketDayHigh, low: m.regularMarketDayLow, time: (i >= 0 ? res0.timestamp[i] : m.regularMarketTime) * 1000,
+      currency: m.currency, name: m.longName || m.shortName, exchange: m.fullExchangeName, timezone: m.exchangeTimezoneName, session,
+    };
+  });
+}
+
+// Suche nach Name, Kürzel oder ISIN (Yahoo).
+async function search(request, url) {
+  const q = (url.searchParams.get('q') || '').trim().slice(0, 40);
+  if (q.length < 2) return new Response('[]', { headers: { 'Content-Type': 'application/json', ...cors(request.headers.get('Origin')) } });
+  return cachedJson(request, `search/${encodeURIComponent(q.toLowerCase())}`, 3600, async () => {
+    const r = await fetch(`https://query2.finance.yahoo.com/v1/finance/search?q=${encodeURIComponent(q)}&quotesCount=12&newsCount=0`,
+      { headers: { 'User-Agent': 'Mozilla/5.0', Accept: 'application/json' } });
+    return ((await r.json()).quotes || [])
+      .filter((x) => x.symbol && ['EQUITY', 'ETF', 'MUTUALFUND', 'INDEX'].includes(x.quoteType))
+      .map((x) => ({ symbol: x.symbol, name: x.longname || x.shortname || x.symbol, exchange: x.exchDisp || x.exchange, type: x.typeDisp || x.quoteType }));
+  });
 }
 
 // Live-Kurse: Verbindung der App wird an Finnhubs WebSocket durchgereicht.
@@ -180,6 +235,8 @@ export default {
     if (url.pathname === '/holdings') return holdings(request);
     if (url.pathname === '/extended') return extendedQuote(request, url);
     if (url.pathname === '/candles') return candles(request, url);
+    if (url.pathname === '/yquote') return yahooQuote(request, url);
+    if (url.pathname === '/search') return search(request, url);
     if (url.pathname === '/ws' && request.headers.get('Upgrade') === 'websocket') return proxyWebSocket(env);
     if (url.pathname.startsWith('/push/')) {
       const store = env.ALARMS.get(env.ALARMS.idFromName('main'));

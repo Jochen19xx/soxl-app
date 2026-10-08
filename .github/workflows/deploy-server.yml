@@ -42,3 +42,9 @@ jobs:
           python3 -c "import json,sys;k=json.load(open('/tmp/k.json')).get('publicKey','');print('Push-Schlüssel vorhanden:', len(k)>80);sys.exit(0 if len(k)>80 else 1)"
           curl -s -H 'Origin: https://jochen19xx.github.io' "https://aktiengurus.veith-jochen.workers.dev/candles?symbol=SOXL" -o /tmp/c.json
           python3 -c "import json,sys;c=json.load(open('/tmp/c.json')).get('candles',[]);print('Tageskerzen:', len(c), c[-1] if c else '');sys.exit(0 if len(c)>=60 else 1)"
+          curl -s -H 'Origin: https://jochen19xx.github.io' "https://aktiengurus.veith-jochen.workers.dev/yquote?symbol=VVSM.DE" -o /tmp/y.json
+          python3 -c "import json,sys;d=json.load(open('/tmp/y.json'));print('VVSM:', d);sys.exit(0 if d.get('price') else 1)"
+          curl -s -H 'Origin: https://jochen19xx.github.io' "https://aktiengurus.veith-jochen.workers.dev/yquote?symbol=000660.KS" -o /tmp/y2.json
+          python3 -c "import json;print('SK Hynix:', json.load(open('/tmp/y2.json')))"
+          curl -s -H 'Origin: https://jochen19xx.github.io' "https://aktiengurus.veith-jochen.workers.dev/search?q=IE00BMC38736" -o /tmp/s.json
+          python3 -c "import json;print('Suche ISIN:', json.load(open('/tmp/s.json')))"
