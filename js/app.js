@@ -1,6 +1,7 @@
-import { MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey } from './config.js';
+import { MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey } from './config.js';
 import { createFinnhub, usdToEur } from './api.js';
 import { demo } from './demo.js';
+import { upcomingEvents } from './events.js';
 
 const $ = (sel) => document.querySelector(sel);
 const SYMBOLS = [MAIN_SYMBOL, ...HOLDINGS.map((h) => h.symbol)];
@@ -87,14 +88,27 @@ function renderNews(items) {
     </li>`).join('') : '<li class="empty">Keine News gefunden.</li>';
 }
 
-function renderEarnings(items) {
-  const name = Object.fromEntries(HOLDINGS.map((h) => [h.symbol, h.name]));
-  const when = { bmo: 'vor Börsenstart', amc: 'nach Börsenschluss' };
-  $('#events').innerHTML = items.map((e) => `<li>
-      <div class="left"><div class="sym">Quartalszahlen ${e.symbol}</div><div class="name">${esc(name[e.symbol] || '')}${when[e.hour] ? ' · ' + when[e.hour] : ''}</div></div>
-      <div class="right">${new Date(e.date + 'T12:00:00').toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit' })}</div>
-    </li>`).join('');
-  $('#events').hidden = !items.length;
+const KIND_ICON = { fed: '🏦', macro: '📊', earnings: '💰', market: '🔔' };
+const dayKey = (d) => d.toLocaleDateString('sv-SE');
+
+function renderEvents(earnings) {
+  const names = Object.fromEntries([...HOLDINGS, ...EARNINGS_EXTRA].map((h) => [h.symbol, h.name]));
+  const events = upcomingEvents(earnings, names, 28);
+  const today = dayKey(new Date()), tomorrow = dayKey(new Date(Date.now() + 864e5));
+  let html = '', last = '';
+  for (const e of events) {
+    if (e.date !== last) {
+      last = e.date;
+      const label = new Date(e.date + 'T12:00:00').toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: '2-digit' });
+      html += `<li class="day">${e.date === today ? 'Heute, ' : e.date === tomorrow ? 'Morgen, ' : ''}${label}</li>`;
+    }
+    const time = e.at ? timeDe(e.at) + ' Uhr' : '';
+    html += `<li class="ev ev-${e.kind}">
+      <div class="ev-icon">${KIND_ICON[e.kind] || '•'}</div>
+      <div class="left"><div class="ev-title">${esc(e.title)}</div><div class="name">${esc(e.detail || '')}</div></div>
+      <div class="right ev-time">${time}</div></li>`;
+  }
+  $('#events').innerHTML = html || '<li class="empty">Keine Termine in den nächsten vier Wochen.</li>';
 }
 
 // ---------- Laden ----------
@@ -112,7 +126,8 @@ async function loadNews() {
 }
 
 async function loadEarnings() {
-  try { renderEarnings(await api.earnings(HOLDINGS.map((h) => h.symbol))); } catch { renderEarnings([]); }
+  renderEvents([]); // feste Termine sofort zeigen, Quartalszahlen kommen dazu
+  try { renderEvents(await api.earnings([...HOLDINGS, ...EARNINGS_EXTRA].map((h) => h.symbol))); } catch { /* feste Termine bleiben */ }
 }
 
 async function loadFx() {

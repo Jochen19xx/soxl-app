@@ -1,7 +1,7 @@
 // Service Worker: hält die App-Dateien offline vor, damit sie wie eine echte App startet.
 // Kurse und News werden nie zwischengespeichert, die kommen immer frisch aus dem Netz.
-const CACHE = 'soxl-v2';
-const FILES = ['./', 'index.html', 'css/style.css', 'js/app.js', 'js/api.js', 'js/config.js', 'js/demo.js',
+const CACHE = 'soxl-v3';
+const FILES = ['./', 'index.html', 'css/style.css', 'js/app.js', 'js/api.js', 'js/config.js', 'js/demo.js', 'js/events.js',
   'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'];
 
 self.addEventListener('install', (e) => {

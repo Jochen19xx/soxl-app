@@ -27,6 +27,9 @@ export const demo = {
       { title: 'Beispiel: TSMC meldet höheren Monatsumsatz', source: 'Beispiel', symbol: 'TSM', time: now - 8 * 36e5, url: '#' },
     ];
   },
-  async earnings() { return []; },
+  async earnings() {
+    const d = (n) => new Date(Date.now() + n * 864e5).toISOString().slice(0, 10);
+    return [{ date: d(6), symbol: 'TSM', hour: 'bmo' }, { date: d(13), symbol: 'AMD', hour: 'amc' }];
+  },
   live() { return () => {}; },
 };

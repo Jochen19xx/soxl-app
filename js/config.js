@@ -21,6 +21,14 @@ export const HOLDINGS = [
   { symbol: 'KLAC', name: 'KLA',                     weight: 4.0 },
 ];
 
+// Weitere Chipfirmen, deren Quartalszahlen den ganzen Sektor bewegen (nur für die Termine).
+export const EARNINGS_EXTRA = [
+  { symbol: 'ASML', name: 'ASML' },
+  { symbol: 'QCOM', name: 'Qualcomm' },
+  { symbol: 'TXN',  name: 'Texas Instruments' },
+  { symbol: 'ARM',  name: 'Arm Holdings' },
+];
+
 // Für diese Werte werden Firmen-News geladen (zusätzlich zu SOXL selbst).
 export const NEWS_SYMBOLS = ['SOXL', 'NVDA', 'AMD', 'AVGO', 'MU', 'TSM'];
 

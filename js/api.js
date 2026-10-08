@@ -58,16 +58,16 @@ export function createFinnhub(token) {
         .slice(0, 50);
     },
 
-    // Quartalszahlen-Termine der nächsten Tage (für die Termin-Vorschau).
-    async earnings(symbols, days = 30) {
-      const from = new Date();
-      const to = new Date(Date.now() + days * 864e5);
-      const r = await q('/calendar/earnings', { from: isoDate(from), to: isoDate(to) });
-      const wanted = new Set(symbols);
-      return (r.earningsCalendar || [])
-        .filter((e) => wanted.has(e.symbol))
-        .map((e) => ({ date: e.date, symbol: e.symbol, hour: e.hour }))
-        .sort((a, b) => a.date.localeCompare(b.date));
+    // Quartalszahlen-Termine der nächsten Tage (für die Termin-Vorschau), je Firma abgefragt.
+    async earnings(symbols, days = 28) {
+      const from = isoDate(new Date());
+      const to = isoDate(new Date(Date.now() + days * 864e5));
+      const lists = await Promise.allSettled(symbols.map((symbol) => q('/calendar/earnings', { from, to, symbol })));
+      const seen = new Set();
+      return lists
+        .flatMap((r) => (r.status === 'fulfilled' ? r.value.earningsCalendar || [] : []))
+        .filter((e) => symbols.includes(e.symbol) && !seen.has(e.symbol + e.date) && seen.add(e.symbol + e.date))
+        .map((e) => ({ date: e.date, symbol: e.symbol, hour: e.hour }));
     },
 
     // Live-Trades per WebSocket. onTrade(symbol, price, timeMs). Verbindet sich bei Abbruch neu.

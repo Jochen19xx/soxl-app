@@ -77,3 +77,10 @@ input { width: 100%; padding: 12px; font-size: 16px; border-radius: 10px; border
 .tabbar button span { font-size: 20px; filter: grayscale(1); opacity: .7; }
 .tabbar button.active { color: var(--text); }
 .tabbar button.active span { filter: none; opacity: 1; }
+
+.events li.day { background: var(--bg); color: var(--muted); font-size: 13px; font-weight: 600; padding: 14px 16px 6px; border-top: 0; }
+.events .ev-icon { font-size: 20px; width: 26px; text-align: center; }
+.events .ev-title { font-weight: 600; }
+.events .name { white-space: normal; }
+.events .ev-time { font-size: 13px; color: var(--muted); white-space: nowrap; }
+.events .ev-fed .ev-title { color: var(--accent); }
