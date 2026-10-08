@@ -1,4 +1,4 @@
-# SOXL-App
+# Werk 2 Aktiengurus
 
 Web-App (PWA) für iPhone und Android: SOXL-Kurs in Echtzeit, Top-10-Positionen, News.
 Vorgesehen, aber noch nicht gebaut: Portfolio mit Einstandskurs und Gewinn, Preisalarme, Termin-Vorschau (Fed, Inflation), täglicher Bericht.
