@@ -32,5 +32,14 @@ export const demo = {
     return [{ date: d(6), symbol: 'TSM', hour: 'bmo' }, { date: d(13), symbol: 'AMD', hour: 'amc' }];
   },
   async holdings() { throw new Error('Beispieldaten'); },
+  async candles() {
+    let c = 40; const out = [];
+    for (let i = 20; i >= 0; i--) {
+      const d = new Date(Date.now() - i * 864e5); if (d.getDay() === 0 || d.getDay() === 6) continue;
+      const o = c, ch = Math.sin(i * 1.3) * 2.2; c = +(o + ch).toFixed(2);
+      out.push({ t: d.getTime(), o, c, h: Math.max(o, c) + 0.8, l: Math.min(o, c) - 0.8 });
+    }
+    return out;
+  },
   live() { return () => {}; },
 };

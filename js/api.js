@@ -97,6 +97,12 @@ export function createFinnhub(token, server = '') {
       return getJson(`${server}/extended?symbol=${encodeURIComponent(symbol)}`);
     },
 
+    // Tageskerzen (nur über den eigenen Server).
+    async candles(symbol) {
+      if (!server) throw new ApiError('Kein Server');
+      return (await getJson(`${server}/candles?symbol=${encodeURIComponent(symbol)}`)).candles;
+    },
+
     // Aktuelle Top-10 mit Gewichten (nur über den eigenen Server).
     async holdings() {
       if (!server) throw new ApiError('Kein Server');

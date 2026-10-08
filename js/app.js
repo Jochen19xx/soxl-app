@@ -1,10 +1,11 @@
 import { SERVER_URL, MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey, restoreApiKey } from './config.js';
 import { createFinnhub, usdToEur, lastFinnhub } from './api.js';
 
-const VERSION = '2026-10-08.14';
+const VERSION = '2026-10-08.15';
 import { demo } from './demo.js';
 import { upcomingEvents } from './events.js';
 import { getPortfolio, setPortfolio, portfolioFigures } from './portfolio.js';
+import { renderCandles } from './chart.js';
 import { pushSupport, permission, enablePush, listAlarms, addAlarm, deleteAlarm, sendTest } from './alarms.js';
 import { toGerman, cachedGerman } from './translate.js';
 
@@ -236,6 +237,14 @@ async function loadQuotes() {
   renderMain(); renderHoldings();
 }
 
+// Tageskerzen der letzten drei Wochen (15 Handelstage).
+async function loadChart() {
+  try {
+    const candles = (await api.candles(MAIN_SYMBOL)).slice(-15);
+    renderCandles($('#chart'), $('#chart-info'), candles);
+  } catch { $('#chart-info').textContent = 'Chart gerade nicht verfügbar.'; }
+}
+
 // Vor-/Nachbörsenkurse, nur außerhalb der regulären Handelszeit.
 async function loadExtended() {
   if (!api.extended || marketSession() === 'open') return;
@@ -287,11 +296,11 @@ async function start() {
   $('#api-key').value = key;
   loadNews(); loadFx();
   await loadHoldings();
-  loadQuotes(); loadExtended(); loadEarnings();
+  loadQuotes(); loadExtended(); loadEarnings(); loadChart();
   stopLive = api.live(SYMBOLS, onTrade, (s) => { state.live = s; renderSession(); });
   // Zusätzlich regelmäßig abfragen: liefert Tageshoch/-tief und überbrückt Live-Ausfälle.
   pollTimer = setInterval(() => { if (!document.hidden) { loadQuotes(); loadExtended(); } renderSession(); }, key ? POLL_MS : 20_000);
-  newsTimer = setInterval(() => { if (!document.hidden) loadNews(); }, NEWS_POLL_MS);
+  newsTimer = setInterval(() => { if (!document.hidden) { loadNews(); loadChart(); } }, NEWS_POLL_MS);
 }
 
 function stop() {

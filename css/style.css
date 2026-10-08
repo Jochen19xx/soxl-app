@@ -111,3 +111,18 @@ select.full { width: 100%; }
 .alarm-list li { padding: 10px 12px; }
 .alarm-list .del { background: none; border: 0; color: var(--down); font-size: 14px; cursor: pointer; padding: 4px 0 4px 12px; }
 .alarm-list li.empty { color: var(--muted); }
+
+.chart-card { padding: 12px 10px 8px 14px; }
+.chart { width: 100%; height: auto; display: block; touch-action: manipulation; }
+.chart-info { font-size: 12px; color: var(--muted); min-height: 32px; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+.chart-info b { color: var(--text); }
+.chart .grid { stroke: var(--line); stroke-width: 1; }
+.chart .axis { fill: var(--muted); font-size: 10px; }
+.chart .candle line { stroke-width: 1.2; }
+.chart .candle.up line { stroke: var(--up); } .chart .candle.up rect:not(.hit) { fill: var(--up); }
+.chart .candle.down line { stroke: var(--down); } .chart .candle.down rect:not(.hit) { fill: var(--down); }
+.chart .candle .hit { fill: transparent; }
+.chart .candle.sel .hit { fill: rgba(255,255,255,.06); }
+.chart .lastline { stroke: var(--accent); stroke-dasharray: 3 3; stroke-width: 1; }
+.chart .lastbox { fill: var(--accent); }
+.chart .lastlabel { fill: #08101f; font-size: 10px; font-weight: 700; }
