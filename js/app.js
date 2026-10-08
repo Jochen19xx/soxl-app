@@ -81,10 +81,14 @@ function renderHoldings() {
   $('#holdings-asof').textContent = `Gewichte geschätzt, Stand ${HOLDINGS_ASOF}.`;
 }
 
+// Artikel über Google Übersetzer öffnen, damit sie auf Deutsch erscheinen (kein Schlüssel nötig).
+const germanUrl = (url) => /^https?:/.test(url)
+  ? `https://translate.google.com/translate?sl=auto&tl=de&hl=de&u=${encodeURIComponent(url)}` : url;
+
 function renderNews(items) {
   $('#news').innerHTML = items.length ? items.map((n) => `<li>
-      <a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.title)}</a>
-      <div class="meta"><span class="tag">${esc(n.symbol)}</span> · ${esc(n.source)} · ${ago(n.time)}</div>
+      <a href="${esc(germanUrl(n.url))}" target="_blank" rel="noopener">${esc(n.title)}</a>
+      <div class="meta"><span class="tag">${esc(n.symbol)}</span> · ${esc(n.source)} · ${ago(n.time)} · <a class="orig" href="${esc(n.url)}" target="_blank" rel="noopener">Original</a></div>
     </li>`).join('') : '<li class="empty">Keine News gefunden.</li>';
 }
 

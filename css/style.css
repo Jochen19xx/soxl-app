@@ -65,6 +65,7 @@ main { padding: 0 16px 16px; max-width: 640px; margin: 0 auto; }
 .news a { color: var(--text); text-decoration: none; font-weight: 600; display: block; }
 .news .meta { color: var(--muted); font-size: 12px; margin-top: 4px; }
 .news .tag { color: var(--accent); }
+.news .meta a.orig { display: inline; color: var(--muted); font-weight: 400; text-decoration: underline; }
 
 label { display: block; font-size: 14px; margin-bottom: 6px; }
 input { width: 100%; padding: 12px; font-size: 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--text); }
