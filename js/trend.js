@@ -64,3 +64,12 @@ export function rsi(values, n = RSI_DAYS) {
 
 // 'over' (überkauft, ab 70) | 'under' (überverkauft, bis 30) | 'neutral'
 export const rsiZone = (v) => (v >= 70 ? 'over' : v <= 30 ? 'under' : 'neutral');
+
+// Ist der RSI am letzten Tag über 70 gestiegen bzw. unter 30 gefallen? 'over' | 'under' | null
+export function rsiCrossToday(closes) {
+  const r = rsi(closes), now = r.at(-1), before = r.at(-2);
+  if (now == null || before == null) return null;
+  if (now >= 70 && before < 70) return 'over';
+  if (now <= 30 && before > 30) return 'under';
+  return null;
+}

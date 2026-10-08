@@ -1,7 +1,7 @@
 import { SERVER_URL, MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey, restoreApiKey } from './config.js';
 import { createFinnhub, usdToEur, lastFinnhub } from './api.js';
 
-const VERSION = '2026-10-08.18';
+const VERSION = '2026-10-08.19';
 import { demo } from './demo.js';
 import { upcomingEvents } from './events.js';
 import { getPortfolio, setPortfolio, portfolioFigures } from './portfolio.js';
@@ -421,15 +421,16 @@ async function renderAlarms() {
     $('#alarm-list').innerHTML = alarms.length ? alarms.map((a) => `<li><div class="left">${esc(ALARM_TEXT[a.type]?.(a) || a.type)}</div>
       <button class="del" data-id="${esc(a.id)}">Löschen</button></li>`).join('') : '<li class="empty">Noch keine Alarme.</li>';
     const prefs = await getPrefs();
-    $('#pref-trend').checked = prefs.trend; $('#pref-report').checked = prefs.report;
+    $('#pref-trend').checked = prefs.trend; $('#pref-rsi').checked = prefs.rsi !== false; $('#pref-report').checked = prefs.report;
   } catch (e) { $('#alarm-status').textContent = 'Server nicht erreichbar: ' + e.message; }
 }
 
-// Schalter für Trendwende-Warnung und Tagesbericht.
-for (const key of ['trend', 'report']) {
+// Schalter für Trendwende-Warnung, RSI-Warnung und Tagesbericht.
+const PREF_NAME = { trend: 'Trendwende-Warnung', rsi: 'RSI-Warnung', report: 'Nachricht zum Tagesbericht' };
+for (const key of ['trend', 'rsi', 'report']) {
   $(`#pref-${key}`).addEventListener('change', async (e) => {
     const on = e.target.checked;
-    try { await setPrefs({ [key]: on }); $('#alarm-status').textContent = `${key === 'trend' ? 'Trendwende-Warnung' : 'Nachricht zum Tagesbericht'} ${on ? 'eingeschaltet' : 'ausgeschaltet'}.`; }
+    try { await setPrefs({ [key]: on }); $('#alarm-status').textContent = `${PREF_NAME[key]} ${on ? 'eingeschaltet' : 'ausgeschaltet'}.`; }
     catch (err) { e.target.checked = !on; $('#alarm-status').textContent = 'Nicht gespeichert: ' + err.message; }
   });
 }

@@ -5,7 +5,7 @@
 // Die Push-Nachrichten sind leer; der Service Worker der App holt den Text danach über
 // /push/inbox ab. So entfällt die Verschlüsselung des Inhalts.
 
-import { crossToday } from '../js/trend.js';
+import { crossToday, rsi, rsiCrossToday } from '../js/trend.js';
 
 const FINNHUB = 'https://finnhub.io/api/v1';
 const REPORT_URL = 'https://jochen19xx.github.io/soxl-app/reports/latest.json';
@@ -138,7 +138,7 @@ export function evaluate(alarms, { price, base, label, day, rate }) {
 // ---------- Durable Object ----------
 const TYPES = new Set(['above', 'below', 'move', 'depotBelow', 'depotAbove']);
 // Weitere Nachrichten, pro Gerät abschaltbar; neue Geräte haben beide an.
-const DEFAULT_PREFS = { trend: true, report: true };
+const DEFAULT_PREFS = { trend: true, report: true, rsi: true };
 const prefsOf = (dev) => ({ ...DEFAULT_PREFS, ...(dev.prefs || {}) });
 const json = (data, status = 200) => new Response(JSON.stringify(data), { status, headers: { 'Content-Type': 'application/json' } });
 
@@ -260,8 +260,8 @@ export class AlarmStore {
     return { day: rep.trading_day, sent };
   }
 
-  // Trendwende: einmal pro Handelstag nach US-Börsenschluss (16:15 New Yorker Zeit) prüfen,
-  // ob der 20-Tage-Schnitt den 50-Tage-Schnitt gekreuzt hat.
+  // Einmal pro Handelstag nach US-Börsenschluss (16:15 New Yorker Zeit) prüfen, ob der
+  // 20-Tage-Schnitt den 50-Tage-Schnitt gekreuzt hat und ob der RSI über 70 / unter 30 gegangen ist.
   async checkTrend(now) {
     const ny = zoned(now, 'America/New_York');
     if (ny.weekday === 'Sat' || ny.weekday === 'Sun' || ny.minutes < 975) return { skipped: true };
@@ -270,13 +270,22 @@ export class AlarmStore {
     await this.storage.put('trendDay', ny.date);
     const last = daily.at(-1);
     if (!last || zoned(new Date(last.t), 'America/New_York').date !== ny.date) return { holiday: ny.date };
-    const dir = crossToday(daily.map((k) => k.c));
-    if (!dir) return { day: ny.date, cross: null };
-    const body = dir === 'up'
-      ? `Trendwende nach oben: Der 20-Tage-Schnitt hat den 50-Tage-Schnitt von unten gekreuzt. Schluss ${fmtUsd(last.c)}.`
-      : `Trendwende nach unten: Der 20-Tage-Schnitt hat den 50-Tage-Schnitt von oben gekreuzt. Schluss ${fmtUsd(last.c)}.`;
-    const sent = await this.broadcast('trend', { title: dir === 'up' ? 'SOXL: Aufwärtstrend' : 'SOXL: Abwärtstrend', body });
-    return { day: ny.date, cross: dir, sent };
+    const closes = daily.map((k) => k.c);
+    const result = { day: ny.date, cross: crossToday(closes), rsi: rsiCrossToday(closes) };
+    if (result.cross) {
+      const body = result.cross === 'up'
+        ? `Trendwende nach oben: Der 20-Tage-Schnitt hat den 50-Tage-Schnitt von unten gekreuzt. Schluss ${fmtUsd(last.c)}.`
+        : `Trendwende nach unten: Der 20-Tage-Schnitt hat den 50-Tage-Schnitt von oben gekreuzt. Schluss ${fmtUsd(last.c)}.`;
+      result.sentTrend = await this.broadcast('trend', { title: result.cross === 'up' ? 'SOXL: Aufwärtstrend' : 'SOXL: Abwärtstrend', body });
+    }
+    if (result.rsi) {
+      const value = Math.round(rsi(closes).at(-1));
+      const body = result.rsi === 'over'
+        ? `Der RSI ist auf ${value} gestiegen (über 70): SOXL ist überkauft, der Kurs ist zuletzt sehr schnell gestiegen. Schluss ${fmtUsd(last.c)}.`
+        : `Der RSI ist auf ${value} gefallen (unter 30): SOXL ist überverkauft, der Kurs ist zuletzt sehr stark gefallen. Schluss ${fmtUsd(last.c)}.`;
+      result.sentRsi = await this.broadcast('rsi', { title: result.rsi === 'over' ? 'SOXL: RSI über 70' : 'SOXL: RSI unter 30', body });
+    }
+    return result;
   }
 
   async checkPrices(now) {
