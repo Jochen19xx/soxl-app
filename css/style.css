@@ -179,3 +179,4 @@ select.full { width: 100%; }
 .chart .rsilevel { stroke: var(--line); stroke-dasharray: 3 3; }
 .chart-info .rsi { color: #c084fc; }
 .chart .rsi-label { fill: #c084fc; }
+.rsi-row small { color: var(--muted); font-size: 11px; margin-left: 4px; }

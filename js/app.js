@@ -1,7 +1,7 @@
 import { SERVER_URL, MAIN_SYMBOL, HOLDINGS, HOLDINGS_ASOF, EARNINGS_EXTRA, NEWS_SYMBOLS, POLL_MS, NEWS_POLL_MS, getApiKey, setApiKey, restoreApiKey } from './config.js';
 import { createFinnhub, usdToEur, lastFinnhub } from './api.js';
 
-const VERSION = '2026-10-08.19';
+const VERSION = '2026-10-08.20';
 import { demo } from './demo.js';
 import { upcomingEvents } from './events.js';
 import { getPortfolio, setPortfolio, portfolioFigures } from './portfolio.js';
@@ -275,10 +275,11 @@ $('#report-archive').addEventListener('click', (e) => {
 });
 
 // Tageskerzen der letzten drei Wochen (15 Handelstage) mit 20- und 50-Tage-Schnitt.
-let dailyCandles = [];
+let dailyCandles = [], chartLoadedAt = 0;
 async function loadChart() {
   try {
     dailyCandles = await api.candles(MAIN_SYMBOL);
+    chartLoadedAt = Date.now();
     const t = trend(dailyCandles), n = 15;
     const lines = t ? [{ cls: 'ma20', label: 'Ø20', values: t.shortLine.slice(-n) }, { cls: 'ma50', label: 'Ø50', values: t.longLine.slice(-n) },
       { cls: 'rsi', label: 'RSI', values: t.rsiLine.slice(-n), digits: 0, draw: false }] : [];
@@ -292,7 +293,14 @@ async function loadChart() {
 // Trend-Ampel: aktueller Kurs gegen 20- und 50-Tage-Schnitt.
 const TREND_TITLE = { up: 'Aufwärtstrend', down: 'Abwärtstrend', mixed: 'Kein klarer Trend' };
 function renderTrend() {
-  const t = dailyCandles.length && trend(dailyCandles, view(MAIN_SYMBOL)?.price);
+  // Während des Handels zählt der aktuelle Kurs als heutiger Schluss, so sind Ampel und RSI
+  // immer auf dem Stand des letzten Kursabrufs (jede Minute) statt des letzten Chart-Abrufs.
+  const v = view(MAIN_SYMBOL), last = dailyCandles.at(-1);
+  const nyDay = (ms) => new Date(ms).toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+  const live = marketSession() === 'open' && v?.price && last && nyDay(last.t) === nyDay(Date.now());
+  const candles = live ? [...dailyCandles.slice(0, -1), { ...last, c: v.price }] : dailyCandles;
+  const t = candles.length && trend(candles, v?.price);
+  $('#rsi-time').textContent = `Stand ${timeDe(live ? (v.time || Date.now()) : chartLoadedAt)} Uhr`;
   const box = $('#trend');
   box.hidden = !t;
   if (!t) return;
@@ -498,7 +506,7 @@ $('#btn-clear-key').addEventListener('click', () => {
 });
 
 // Beim Zurückkehren in die App sofort aktualisieren.
-document.addEventListener('visibilitychange', () => { if (!document.hidden) { loadQuotes(); loadExtended(); renderSession(); } });
+document.addEventListener('visibilitychange', () => { if (!document.hidden) { loadQuotes(); loadExtended(); renderSession(); if (Date.now() - chartLoadedAt > NEWS_POLL_MS) loadChart(); } });
 
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 
