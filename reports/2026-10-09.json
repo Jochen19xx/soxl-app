@@ -1,0 +1,33 @@
+{
+  "trading_day": "2026-10-09",
+  "created": "2026-10-12T04:58:37Z",
+  "headline": "SOXL verliert 1,9 % – Erholung am Morgen verpufft",
+  "close": 139.76,
+  "change_pct": -1.94,
+  "paragraphs": [
+    "Am Freitag startete SOXL mit 148,18 Dollar deutlich im Plus, gab die Gewinne aber im Tagesverlauf komplett ab. Am Ende stand ein Minus von 1,9 % auf 139,76 Dollar. Der breite Markt erholte sich dagegen: Der Nasdaq stieg um 0,6 %, der S&P 500 ebenfalls um 0,6 % und der Dow um 0,8 %.",
+    "Zum Start half ein Bericht, wonach OpenAI bis Jahresende 70 Milliarden Dollar Jahresumsatz erwartet. Das dämpfte die Sorgen vom Vortag. Belastend war ein Bericht aus Asien: Apple soll Bestellungen für Bauteile des iPhone 18 Pro um 15 bis 20 % gekürzt haben, auch wegen stark gestiegener Preise für Speicherchips. Zulieferer wie Skyworks fielen deutlich. Die Zinsen blieben hoch, die zehnjährige US-Rendite lag bei rund 5,25 %.",
+    "Bei den Top 10 überwogen leichte Verluste. Intel (−2,2 %), AMD (−2,0 %) und Texas Instruments (−1,6 %) gaben am stärksten nach. Broadcom (+0,4 %) und Marvell (+0,2 %) legten leicht zu."
+  ],
+  "drivers": [
+    "Gute Eröffnung nach beruhigendem OpenAI-Bericht, danach Gewinnmitnahmen",
+    "Bericht über gekürzte Apple-Bestellungen belastet Chip-Zulieferer",
+    "Hohe Speicherchip-Preise bremsen die Nachfrage nach Geräten",
+    "Anleiherenditen bleiben nahe dem höchsten Stand seit 2002"
+  ],
+  "outlook": "Am Dienstag beginnt mit den großen US-Banken die Berichtssaison; am 14. Oktober kommen die US-Verbraucherpreise, am 15. Oktober die Erzeugerpreise. Mitte Oktober folgen ASML und TSMC, die nächste Fed-Sitzung endet am 28. Oktober.",
+  "sources": [
+    {
+      "title": "Yahoo Finance: Dow, S&P 500, Nasdaq rally to cap volatile week as earnings season nears",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-october-9-dow-sp-500-nasdaq-080148117.html"
+    },
+    {
+      "title": "TheStreet: Stock Market Today (Oct. 9, 2026)",
+      "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-09-2026"
+    },
+    {
+      "title": "Yahoo Finance: Markets News, Oct. 9, 2026",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/markets-news-oct-9-2026-105547352.html"
+    }
+  ]
+}

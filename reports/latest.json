@@ -1,34 +1,33 @@
 {
-  "trading_day": "2026-10-08",
-  "created": "2026-10-09T04:58:19Z",
-  "headline": "SOXL bricht um 10,3 % ein – Zweifel an KI-Umsätzen treffen Chipwerte",
-  "close": 142.52,
-  "change_pct": -10.31,
+  "trading_day": "2026-10-09",
+  "created": "2026-10-12T04:58:37Z",
+  "headline": "SOXL verliert 1,9 % – Erholung am Morgen verpufft",
+  "close": 139.76,
+  "change_pct": -1.94,
   "paragraphs": [
-    "Für Chipaktien war Donnerstag ein schwarzer Tag. SOXL fiel um 10,3 % auf 142,52 Dollar und rutschte im Tagesverlauf sogar bis 136,32 Dollar ab. Der Nasdaq verlor 1,25 %, der S&P 500 knapp 0,5 %, der Dow schloss fast unverändert.",
-    "Auslöser war ein Bericht der Financial Times: Der Jahresumsatz von OpenAI liegt demnach rund 20 Milliarden Dollar unter den bisherigen Schätzungen. Das nährt Zweifel, ob sich die riesigen Ausgaben für KI-Rechenzentren auszahlen – und genau davon leben viele Chipfirmen. Der Halbleiter-Index SOX lag zeitweise 4 % im Minus. Dazu kamen hohe Zinsen: Zehnjährige US-Anleihen rentierten um 5,3 %, und der Ölpreis stieg wegen der Spannungen um den Iran.",
-    "Alle zehn größten Werte im SOXL gaben nach. Am stärksten fielen Intel (−5,3 %), Micron (−4,8 %), Broadcom (−4,4 %) und AMD (−3,9 %). Nvidia verlor 2,9 %. Selbst gute Nachrichten halfen nicht: TSMC meldete für September 55 % mehr Umsatz als vor einem Jahr, die Aktie gab trotzdem nach."
+    "Am Freitag startete SOXL mit 148,18 Dollar deutlich im Plus, gab die Gewinne aber im Tagesverlauf komplett ab. Am Ende stand ein Minus von 1,9 % auf 139,76 Dollar. Der breite Markt erholte sich dagegen: Der Nasdaq stieg um 0,6 %, der S&P 500 ebenfalls um 0,6 % und der Dow um 0,8 %.",
+    "Zum Start half ein Bericht, wonach OpenAI bis Jahresende 70 Milliarden Dollar Jahresumsatz erwartet. Das dämpfte die Sorgen vom Vortag. Belastend war ein Bericht aus Asien: Apple soll Bestellungen für Bauteile des iPhone 18 Pro um 15 bis 20 % gekürzt haben, auch wegen stark gestiegener Preise für Speicherchips. Zulieferer wie Skyworks fielen deutlich. Die Zinsen blieben hoch, die zehnjährige US-Rendite lag bei rund 5,25 %.",
+    "Bei den Top 10 überwogen leichte Verluste. Intel (−2,2 %), AMD (−2,0 %) und Texas Instruments (−1,6 %) gaben am stärksten nach. Broadcom (+0,4 %) und Marvell (+0,2 %) legten leicht zu."
   ],
   "drivers": [
-    "Bericht: OpenAI-Umsatz rund 20 Mrd. Dollar unter Schätzungen",
-    "Zweifel an den hohen KI-Investitionen belasten Chipwerte",
-    "Anleiherenditen nahe dem höchsten Stand seit 2002",
-    "Ölpreis steigt wegen Iran-Spannungen",
-    "Alle Top-10-Werte im Minus, Intel und Micron am schwächsten"
+    "Gute Eröffnung nach beruhigendem OpenAI-Bericht, danach Gewinnmitnahmen",
+    "Bericht über gekürzte Apple-Bestellungen belastet Chip-Zulieferer",
+    "Hohe Speicherchip-Preise bremsen die Nachfrage nach Geräten",
+    "Anleiherenditen bleiben nahe dem höchsten Stand seit 2002"
   ],
-  "outlook": "Am 14. Oktober kommen die US-Verbraucherpreise für September, am 15. Oktober die Erzeugerpreise. Mitte Oktober berichten ASML und TSMC über das Quartal; die nächste Fed-Sitzung endet am 28. Oktober.",
+  "outlook": "Am Dienstag beginnt mit den großen US-Banken die Berichtssaison; am 14. Oktober kommen die US-Verbraucherpreise, am 15. Oktober die Erzeugerpreise. Mitte Oktober folgen ASML und TSMC, die nächste Fed-Sitzung endet am 28. Oktober.",
   "sources": [
     {
-      "title": "Yahoo Finance: S&P 500, Nasdaq fall for second day in a row as AI trade takes a hit",
-      "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-october-8-dow-sp-500-nasdaq-080537884.html"
+      "title": "Yahoo Finance: Dow, S&P 500, Nasdaq rally to cap volatile week as earnings season nears",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-october-9-dow-sp-500-nasdaq-080148117.html"
     },
     {
-      "title": "EconCurrents: 08 October 2026 Market Close – Nasdaq Takes the Biggest Hit as Oil and Yields Rise",
-      "url": "https://econcurrents.substack.com/p/08-october-2026-market-close-and"
+      "title": "TheStreet: Stock Market Today (Oct. 9, 2026)",
+      "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-09-2026"
     },
     {
-      "title": "Motley Fool: Stock Market Midday, Oct. 8 – Stocks Edge Lower on Growing AI Caution",
-      "url": "https://fool.com/coverage/stock-market-today/2026/10/08/stock-market-midday-oct-8-stocks-edge-lower-on-growing-ai-caution"
+      "title": "Yahoo Finance: Markets News, Oct. 9, 2026",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/markets-news-oct-9-2026-105547352.html"
     }
   ]
 }
