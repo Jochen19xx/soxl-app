@@ -1,33 +1,33 @@
 {
-  "trading_day": "2026-10-09",
-  "created": "2026-10-12T04:58:37Z",
-  "headline": "SOXL verliert 1,9 % – Erholung am Morgen verpufft",
-  "close": 139.76,
-  "change_pct": -1.94,
+  "trading_day": "2026-10-12",
+  "created": "2026-10-13T04:58:22Z",
+  "headline": "SOXL fällt 8,1 % – Speicherchips unter Druck durch China-Konkurrenz",
+  "close": 128.4,
+  "change_pct": -8.13,
   "paragraphs": [
-    "Am Freitag startete SOXL mit 148,18 Dollar deutlich im Plus, gab die Gewinne aber im Tagesverlauf komplett ab. Am Ende stand ein Minus von 1,9 % auf 139,76 Dollar. Der breite Markt erholte sich dagegen: Der Nasdaq stieg um 0,6 %, der S&P 500 ebenfalls um 0,6 % und der Dow um 0,8 %.",
-    "Zum Start half ein Bericht, wonach OpenAI bis Jahresende 70 Milliarden Dollar Jahresumsatz erwartet. Das dämpfte die Sorgen vom Vortag. Belastend war ein Bericht aus Asien: Apple soll Bestellungen für Bauteile des iPhone 18 Pro um 15 bis 20 % gekürzt haben, auch wegen stark gestiegener Preise für Speicherchips. Zulieferer wie Skyworks fielen deutlich. Die Zinsen blieben hoch, die zehnjährige US-Rendite lag bei rund 5,25 %.",
-    "Bei den Top 10 überwogen leichte Verluste. Intel (−2,2 %), AMD (−2,0 %) und Texas Instruments (−1,6 %) gaben am stärksten nach. Broadcom (+0,4 %) und Marvell (+0,2 %) legten leicht zu."
+    "Der Wochenstart brachte für SOXL den nächsten deutlichen Rückschlag: minus 8,1 % auf 128,40 Dollar, das Tagestief lag bei 127,27 Dollar. Der breite Markt blieb ruhig. Der Nasdaq gab 0,4 % nach, der S&P 500 schloss fast unverändert, der Dow stieg sogar um 0,4 %.",
+    "Auslöser war vor allem eine Nachricht aus China: Der Speicherchip-Hersteller CXMT hat eine neue Speicher-Bauweise vorgestellt. Anleger fürchten mehr Konkurrenz und fallende Preise bei Speicherchips. Speicherwerte wie SanDisk (−6 %), SK Hynix (−4 %) und Micron (−3,9 %) gaben deutlich nach. Dazu kommt die allgemeine Vorsicht bei KI-Aktien nach den Kursrückgängen der vergangenen Woche.",
+    "Bei den Top 10 lagen fast alle im Minus: Micron (−3,9 %), Marvell (−3,4 %), Intel (−3,2 %), Lam Research (−2,9 %) und KLA (−2,8 %) traf es am stärksten. Nvidia verlor 1,3 %, nur Analog Devices hielt sich stabil."
   ],
   "drivers": [
-    "Gute Eröffnung nach beruhigendem OpenAI-Bericht, danach Gewinnmitnahmen",
-    "Bericht über gekürzte Apple-Bestellungen belastet Chip-Zulieferer",
-    "Hohe Speicherchip-Preise bremsen die Nachfrage nach Geräten",
-    "Anleiherenditen bleiben nahe dem höchsten Stand seit 2002"
+    "Neue Speicher-Technik von CXMT weckt Sorgen vor Konkurrenz aus China",
+    "Speicherwerte wie Micron, SK Hynix und SanDisk fallen deutlich",
+    "Anhaltende Vorsicht bei KI- und Chipaktien",
+    "Fast alle Top-10-Werte im Minus"
   ],
-  "outlook": "Am Dienstag beginnt mit den großen US-Banken die Berichtssaison; am 14. Oktober kommen die US-Verbraucherpreise, am 15. Oktober die Erzeugerpreise. Mitte Oktober folgen ASML und TSMC, die nächste Fed-Sitzung endet am 28. Oktober.",
+  "outlook": "Am 14. Oktober kommen die US-Verbraucherpreise für September, am 15. Oktober die Erzeugerpreise. In dieser Woche beginnt die Berichtssaison mit den großen Banken, Mitte Oktober folgen ASML und TSMC.",
   "sources": [
     {
-      "title": "Yahoo Finance: Dow, S&P 500, Nasdaq rally to cap volatile week as earnings season nears",
-      "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-october-9-dow-sp-500-nasdaq-080148117.html"
+      "title": "Motley Fool via Yahoo Finance: Dow Gains as Memory Stocks Weigh on Nasdaq",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-oct-12-212311190.html"
     },
     {
-      "title": "TheStreet: Stock Market Today (Oct. 9, 2026)",
-      "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-09-2026"
+      "title": "TradingKey: U.S. Stocks Mixed as CXMT's New Architecture Weighs on Memory Chip Stocks",
+      "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262212768-us-stocks-mixed-cxmt-new-architecture-memory-chip-stocks-tradingkey"
     },
     {
-      "title": "Yahoo Finance: Markets News, Oct. 9, 2026",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/markets-news-oct-9-2026-105547352.html"
+      "title": "Yahoo Finance: Dow gains, S&P 500 and Nasdaq slip as focus turns to earnings season kickoff",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-october-12-dow-sp-500-nasdaq-080321571.html"
     }
   ]
 }
