@@ -1,0 +1,37 @@
+{
+  "trading_day": "2026-10-13",
+  "created": "2026-10-14T04:59:56Z",
+  "headline": "SOXL schließt fast unverändert – starke Aufholjagd nach schwachem Start",
+  "close": 127.57,
+  "change_pct": -0.65,
+  "paragraphs": [
+    "SOXL beendete den Dienstag mit minus 0,65 % bei 127,57 Dollar, nach einem sehr unruhigen Tag. Zum Start lag der Kurs bei 118,42 Dollar und fiel zeitweise bis auf 115,84 Dollar. Danach holte er fast den ganzen Verlust wieder auf. Der breite Markt bewegte sich kaum: S&P 500 nahezu unverändert, Nasdaq minus 0,15 %, Dow minus 0,35 %.",
+    "Belastet hat erneut die Nachricht aus China: Der Speicherhersteller CXMT kommt mit einer neuen, sparsameren Speicher-Bauweise voran. In Südkorea fiel der Leitindex KOSPI um mehr als 5 %, Samsung und SK Hynix gaben deutlich nach. Dazu kam eine Bemerkung von Broadcom-Chef Hock Tan, manche KI-Anleger verhielten sich wie im Kasino.",
+    "Bei den Top 10 war das Bild geteilt. Hersteller von Chip-Maschinen verloren deutlich: Applied Materials minus 6,7 %, KLA minus 3,2 %. Anleger nahmen dort nach einem sehr starken Jahr Gewinne mit. Micron fiel um 3,6 %. Dagegen stiegen Texas Instruments (+2,2 %), Analog Devices (+2,1 %), AMD (+1,9 %), Intel (+1,4 %) und Nvidia (+1,0 %)."
+  ],
+  "drivers": [
+    "Neue Speicher-Technik von CXMT belastet erneut Speicherwerte",
+    "Gewinnmitnahmen bei Chip-Maschinenbauern wie Applied Materials und KLA",
+    "Aussage von Broadcom-Chef Hock Tan zu überzogenen KI-Erwartungen",
+    "Starke Erholung im Tagesverlauf, mehrere Top-10-Werte im Plus"
+  ],
+  "outlook": "Am 14. Oktober kommen die US-Verbraucherpreise für September, am 15. Oktober die Erzeugerpreise. Mitte Oktober legen ASML und TSMC ihre Quartalszahlen vor.",
+  "sources": [
+    {
+      "title": "TheStreet: Stock Market Today (Oct. 13, 2026): Nasdaq, S&P 500 flat as mixed bank earnings and chip weakness weigh on stocks",
+      "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-13-2026"
+    },
+    {
+      "title": "Yahoo Finance: Dow, S&P 500, Nasdaq slip as chip stocks fall, earnings roll in",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-october-13-dow-sp-500-nasdaq-chip-stocks-192419999.html"
+    },
+    {
+      "title": "24/7 Wall St.: Semiconductor Equipment Stocks Slide as Investors Take Profits on a Huge Year",
+      "url": "https://247wallst.com/investing/2026/10/13/semiconductor-equipment-stocks-slide-as-investors-take-profits-on-a-huge-year-applied-materials-sinks-7-lam-research-and-kla-drop-4/"
+    },
+    {
+      "title": "Yahoo Finance: Applied Materials Stocks Fall 5.7% Although Evercore Backs Its EPIC Strategy",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/applied-materials-stocks-fall-5-211550744.html"
+    }
+  ]
+}
