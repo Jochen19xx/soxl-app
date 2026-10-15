@@ -1,0 +1,39 @@
+{
+  "trading_day": "2026-10-14",
+  "created": "2026-10-15T04:58:59Z",
+  "headline": "SOXL stürzt 13,4 % ab – hohe Inflation weckt Angst vor Zinserhöhung",
+  "close": 110.54,
+  "change_pct": -13.35,
+  "paragraphs": [
+    "SOXL fiel am Mittwoch um 13,4 % auf 110,54 Dollar und schloss nahe am Tagestief von 109 Dollar. Auch der breite Markt gab deutlich nach: Der S&P 500 verlor 1,1 %, der Nasdaq rund 1,9 %. Für Nasdaq und S&P 500 war es der dritte Verlusttag in Folge.",
+    "Hauptgrund waren neue Inflationszahlen. Die Preise in den USA stiegen im September um 3,7 % zum Vorjahr, stärker als erwartet. Damit wächst die Sorge, dass die US-Notenbank die Zinsen noch einmal anhebt. Die Wahrscheinlichkeit dafür stieg laut Marktdaten von etwa 20 auf rund 46 %. Höhere Zinsen treffen teure Technologiewerte besonders.",
+    "Dazu kamen Zweifel an den hohen KI-Ausgaben. Broadcom-Chef Hock Tan hatte gewarnt, dass teure Finanzierung das KI-Wachstum bremsen könnte. Auch die Sorge vor Konkurrenz aus China bei Speicherchips hält an.",
+    "Alle Top-10-Werte lagen im Minus. Am stärksten fielen Marvell (−8,7 %), AMD (−5,7 %), Intel (−4,6 %) und Micron (−4,1 %). Nvidia verlor 3,2 %, Broadcom 3,1 %."
+  ],
+  "drivers": [
+    "Inflation im September höher als erwartet",
+    "Gestiegene Erwartung einer weiteren Zinserhöhung der Fed",
+    "Zweifel an der Finanzierung hoher KI-Ausgaben",
+    "Anhaltende Sorge vor Speicherchip-Konkurrenz aus China",
+    "Alle Top-10-Werte im Minus, Marvell und AMD am schwächsten"
+  ],
+  "outlook": "Am 15. Oktober kommen die US-Erzeugerpreise und die Einzelhandelsumsätze, dazu die Quartalszahlen von TSMC. In der kommenden Woche entscheidet die US-Notenbank über die Zinsen.",
+  "sources": [
+    {
+      "title": "Schwab: 'Hot' CPI Data Sends Yields, Rate Hike Odds Higher",
+      "url": "https://www.schwab.com/learn/story/stock-market-update-open"
+    },
+    {
+      "title": "MarketScreener: Nasdaq, S&P 500 Fall for Third Straight Session Following Hot CPI Data",
+      "url": "https://www.marketscreener.com/news/nasdaq-s-p-500-fall-for-third-straight-session-following-hot-cpi-data-ce785dd2d08bf622"
+    },
+    {
+      "title": "Yahoo Finance: Nvidia, Broadcom and Marvell Stocks Fall as AI Spending Concerns Grow",
+      "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-broadcom-marvell-stocks-fall-191611708.html"
+    },
+    {
+      "title": "Invezz: Intel, AMD stocks fall as chip sell-off deepens",
+      "url": "https://invezz.com/news/2026/10/14/intel-amd-stocks-fall-as-chip-sell-off-deepens/"
+    }
+  ]
+}
