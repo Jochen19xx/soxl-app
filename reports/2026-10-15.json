@@ -1,0 +1,39 @@
+{
+  "trading_day": "2026-10-15",
+  "created": "2026-10-16T04:58:56Z",
+  "headline": "SOXL verliert 2,9 % – nach tiefem Start großer Teil wieder aufgeholt",
+  "close": 107.35,
+  "change_pct": -2.89,
+  "paragraphs": [
+    "SOXL schloss am Donnerstag mit minus 2,9 % bei 107,35 Dollar. Der Tag begann sehr schwach: Zum Start lag der Kurs bei 98,35 Dollar, das Tief bei 95,23 Dollar. Bis zum Abend holte SOXL den größten Teil davon wieder auf. Der breite Markt stieg: Dow plus 1,1 %, S&P 500 plus 0,3 %, Nasdaq fast unverändert.",
+    "Über Nacht waren Speicherchip-Aktien in Asien eingebrochen: Der koreanische Leitindex KOSPI fiel um 8 %, SK Hynix um 11 % und Samsung um 9 %. Dazu kamen neue US-Preisdaten: Die Erzeugerpreise stiegen im September deutlich stärker als erwartet. Das hält die Sorge vor einer weiteren Zinserhöhung wach, denn höhere Zinsen machen den Bau neuer Rechenzentren teurer.",
+    "Der Chiphersteller TSMC meldete am Morgen einen Rekordgewinn, fast 69 % mehr als vor einem Jahr, und einen starken Ausblick. Die Aktie fiel trotzdem um 1,7 %.",
+    "Bei den Top 10 war es gemischt: Intel (−2,8 %), KLA (−2,4 %), Nvidia (−1,8 %) und AMD (−1,5 %) gaben nach. Qualcomm (+3,4 %) und Micron (+1,9 %) legten zu."
+  ],
+  "drivers": [
+    "Starker Kurseinbruch bei Speicherchips in Südkorea über Nacht",
+    "Erzeugerpreise im September viel höher als erwartet",
+    "Sorge vor weiterer Zinserhöhung der US-Notenbank",
+    "TSMC mit Rekordgewinn, Aktie trotzdem leicht im Minus",
+    "Deutliche Erholung von SOXL im Tagesverlauf"
+  ],
+  "outlook": "Die nächste Zinsentscheidung der US-Notenbank steht Ende Oktober an, einen Tag danach folgen am 29. Oktober die PCE-Inflationsdaten. Ab dem 20. Oktober legen viele große Unternehmen ihre Quartalszahlen vor.",
+  "sources": [
+    {
+      "title": "Schwab: Stocks Slip Early after Wholesale Inflation Surges",
+      "url": "https://www.schwab.com/learn/story/stock-market-update-open"
+    },
+    {
+      "title": "Yahoo Finance: TSMC stock drops despite record profit amid 'extremely robust demand' for AI chips",
+      "url": "https://ca.finance.yahoo.com/news/tsmc-stock-drops-despite-record-profit-amid-extremely-robust-demand-for-ai-chips-152649370.html"
+    },
+    {
+      "title": "Yahoo Finance: Stock Market Today (Oct. 15, 2026): Dow edges higher as tech sell-off pivots",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-oct-15-140429285.html"
+    },
+    {
+      "title": "Vista Partners: Stock Market Today, October 15, 2026: Dow Gains 556 Points as Investors Rotate Beyond AI",
+      "url": "https://vistapglobal.com/stock-market-today-october-15-2026-dow-gains-556-points-as-investors-rotate-beyond-ai-amwl-crwv-dhi-docs-eprx-ko-modd-nvda-ser-ysg-yum/"
+    }
+  ]
+}
