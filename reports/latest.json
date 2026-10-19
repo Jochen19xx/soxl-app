@@ -1,39 +1,34 @@
 {
-  "trading_day": "2026-10-15",
-  "created": "2026-10-16T04:58:56Z",
-  "headline": "SOXL verliert 2,9 % – nach tiefem Start großer Teil wieder aufgeholt",
-  "close": 107.35,
-  "change_pct": -2.89,
+  "trading_day": "2026-10-16",
+  "created": "2026-10-19T04:59:10Z",
+  "headline": "SOXL fällt 12,7 % – Chipwerte mit längster Verlustserie seit 2008",
+  "close": 93.67,
+  "change_pct": -12.74,
   "paragraphs": [
-    "SOXL schloss am Donnerstag mit minus 2,9 % bei 107,35 Dollar. Der Tag begann sehr schwach: Zum Start lag der Kurs bei 98,35 Dollar, das Tief bei 95,23 Dollar. Bis zum Abend holte SOXL den größten Teil davon wieder auf. Der breite Markt stieg: Dow plus 1,1 %, S&P 500 plus 0,3 %, Nasdaq fast unverändert.",
-    "Über Nacht waren Speicherchip-Aktien in Asien eingebrochen: Der koreanische Leitindex KOSPI fiel um 8 %, SK Hynix um 11 % und Samsung um 9 %. Dazu kamen neue US-Preisdaten: Die Erzeugerpreise stiegen im September deutlich stärker als erwartet. Das hält die Sorge vor einer weiteren Zinserhöhung wach, denn höhere Zinsen machen den Bau neuer Rechenzentren teurer.",
-    "Der Chiphersteller TSMC meldete am Morgen einen Rekordgewinn, fast 69 % mehr als vor einem Jahr, und einen starken Ausblick. Die Aktie fiel trotzdem um 1,7 %.",
-    "Bei den Top 10 war es gemischt: Intel (−2,8 %), KLA (−2,4 %), Nvidia (−1,8 %) und AMD (−1,5 %) gaben nach. Qualcomm (+3,4 %) und Micron (+1,9 %) legten zu."
+    "SOXL verlor am Freitag 12,7 % auf 93,67 Dollar und schloss fast auf dem Tagestief von 93,45 Dollar. Der wichtige Chip-Index aus Philadelphia fiel um 3,8 %. Es war sein achter Verlusttag in Folge, so eine lange Serie gab es seit 2008 nicht mehr. Der Nasdaq gab 2,1 % nach, der S&P 500 1,1 %, der Dow nur 0,3 %.",
+    "Anleger zweifeln immer stärker, ob sich die riesigen Ausgaben für KI-Rechenzentren auszahlen. Gleichzeitig verteuern hohe Zinsen und steigende Ölpreise die Finanzierung. Nach den hohen Inflationsdaten der Woche rechnen viele mit einer weiteren Zinserhöhung der US-Notenbank. Auch der hoch verschuldete Rechenzentrums-Betreiber CoreWeave fiel erneut deutlich.",
+    "Fast alle Top-10-Werte lagen klar im Minus: AMD (−6,0 %), Intel (−5,8 %), Micron (−5,6 %), Marvell (−5,6 %), KLA (−5,0 %) und Broadcom (−4,5 %). Nvidia hielt sich mit minus 1,4 % vergleichsweise gut."
   ],
   "drivers": [
-    "Starker Kurseinbruch bei Speicherchips in Südkorea über Nacht",
-    "Erzeugerpreise im September viel höher als erwartet",
-    "Sorge vor weiterer Zinserhöhung der US-Notenbank",
-    "TSMC mit Rekordgewinn, Aktie trotzdem leicht im Minus",
-    "Deutliche Erholung von SOXL im Tagesverlauf"
+    "Wachsende Zweifel am Nutzen der hohen KI-Ausgaben",
+    "Hohe Zinsen und Ölpreise verteuern die Finanzierung",
+    "Erwartung einer weiteren Zinserhöhung nach hohen Inflationsdaten",
+    "Chip-Index mit acht Verlusttagen in Folge",
+    "Alle Top-10-Werte im Minus, Nvidia am stabilsten"
   ],
-  "outlook": "Die nächste Zinsentscheidung der US-Notenbank steht Ende Oktober an, einen Tag danach folgen am 29. Oktober die PCE-Inflationsdaten. Ab dem 20. Oktober legen viele große Unternehmen ihre Quartalszahlen vor.",
+  "outlook": "Ab dem 20. Oktober läuft die Berichtssaison mit Netflix weiter, die großen Technologiekonzerne folgen in den Wochen danach. Die nächste Zinsentscheidung der US-Notenbank steht Ende Oktober an.",
   "sources": [
     {
-      "title": "Schwab: Stocks Slip Early after Wholesale Inflation Surges",
-      "url": "https://www.schwab.com/learn/story/stock-market-update-open"
+      "title": "Yahoo Finance: Chip Stocks Just Fell 8 Days in a Row, Their Longest Losing Streak Since 2008",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/chip-stocks-just-fell-8-161520543.html"
     },
     {
-      "title": "Yahoo Finance: TSMC stock drops despite record profit amid 'extremely robust demand' for AI chips",
-      "url": "https://ca.finance.yahoo.com/news/tsmc-stock-drops-despite-record-profit-amid-extremely-robust-demand-for-ai-chips-152649370.html"
+      "title": "TheStreet: Stock Market Today (Oct. 16, 2026): AI 'bubble' worries mount as Nasdaq, Russell 2000 sink on tech declines",
+      "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-16-2026"
     },
     {
-      "title": "Yahoo Finance: Stock Market Today (Oct. 15, 2026): Dow edges higher as tech sell-off pivots",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-oct-15-140429285.html"
-    },
-    {
-      "title": "Vista Partners: Stock Market Today, October 15, 2026: Dow Gains 556 Points as Investors Rotate Beyond AI",
-      "url": "https://vistapglobal.com/stock-market-today-october-15-2026-dow-gains-556-points-as-investors-rotate-beyond-ai-amwl-crwv-dhi-docs-eprx-ko-modd-nvda-ser-ysg-yum/"
+      "title": "Bloomberg: Chip Selloff Delivers $32 Billion Windfall for Short Sellers in Seven Days",
+      "url": "https://www.bloomberg.com/news/articles/2026-10-16/longest-chip-selloff-since-2006-mints-short-sellers-32-billion"
     }
   ]
 }
