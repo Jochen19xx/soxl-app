@@ -1,34 +1,38 @@
 {
-  "trading_day": "2026-10-16",
-  "created": "2026-10-19T04:59:10Z",
-  "headline": "SOXL fällt 12,7 % – Chipwerte mit längster Verlustserie seit 2008",
-  "close": 93.67,
-  "change_pct": -12.74,
+  "trading_day": "2026-10-19",
+  "created": "2026-10-20T04:58:56Z",
+  "headline": "SOXL steigt 5,3 % – Chipwerte beenden lange Verlustserie",
+  "close": 98.65,
+  "change_pct": 5.32,
   "paragraphs": [
-    "SOXL verlor am Freitag 12,7 % auf 93,67 Dollar und schloss fast auf dem Tagestief von 93,45 Dollar. Der wichtige Chip-Index aus Philadelphia fiel um 3,8 %. Es war sein achter Verlusttag in Folge, so eine lange Serie gab es seit 2008 nicht mehr. Der Nasdaq gab 2,1 % nach, der S&P 500 1,1 %, der Dow nur 0,3 %.",
-    "Anleger zweifeln immer stärker, ob sich die riesigen Ausgaben für KI-Rechenzentren auszahlen. Gleichzeitig verteuern hohe Zinsen und steigende Ölpreise die Finanzierung. Nach den hohen Inflationsdaten der Woche rechnen viele mit einer weiteren Zinserhöhung der US-Notenbank. Auch der hoch verschuldete Rechenzentrums-Betreiber CoreWeave fiel erneut deutlich.",
-    "Fast alle Top-10-Werte lagen klar im Minus: AMD (−6,0 %), Intel (−5,8 %), Micron (−5,6 %), Marvell (−5,6 %), KLA (−5,0 %) und Broadcom (−4,5 %). Nvidia hielt sich mit minus 1,4 % vergleichsweise gut."
+    "Nach acht Verlusttagen in Folge ging es für Chipaktien am Montag wieder nach oben. SOXL stieg um 5,3 % auf 98,65 Dollar. Zum Start lag der Kurs sogar bei 103,95 Dollar, im Tagesverlauf gab ein Teil des Gewinns wieder nach. Der Nasdaq legte gut 1 % zu, der S&P 500 rund 0,4 %, der Dow blieb fast unverändert.",
+    "Viele Anleger kauften nach dem starken Rückgang der Vorwoche wieder zu. In dieser Zeit hatte der Chip-Index rund 16 % verloren. Zudem sank die Sorge vor einer schnellen Zinserhöhung: Die Wahrscheinlichkeit für einen Zinsschritt im Oktober fiel laut Marktdaten auf etwa 15 %, nach bis zu 45 % in der Vorwoche. Auch der Ölpreis gab nach.",
+    "Fast alle Top-10-Werte lagen im Plus: Marvell (+4,1 %), Micron (+3,0 %), Intel (+2,4 %) nach einer besseren Einstufung durch JPMorgan, Broadcom (+1,8 %), AMD (+1,8 %) und Nvidia (+1,4 %). Analog Devices und Texas Instruments blieben knapp im Minus."
   ],
   "drivers": [
-    "Wachsende Zweifel am Nutzen der hohen KI-Ausgaben",
-    "Hohe Zinsen und Ölpreise verteuern die Finanzierung",
-    "Erwartung einer weiteren Zinserhöhung nach hohen Inflationsdaten",
-    "Chip-Index mit acht Verlusttagen in Folge",
-    "Alle Top-10-Werte im Minus, Nvidia am stabilsten"
+    "Gegenbewegung nach acht Verlusttagen des Chip-Index",
+    "Geringere Erwartung einer Zinserhöhung im Oktober",
+    "Fallender Ölpreis",
+    "Höhere Einstufung von Intel durch JPMorgan",
+    "Fast alle Top-10-Werte im Plus"
   ],
-  "outlook": "Ab dem 20. Oktober läuft die Berichtssaison mit Netflix weiter, die großen Technologiekonzerne folgen in den Wochen danach. Die nächste Zinsentscheidung der US-Notenbank steht Ende Oktober an.",
+  "outlook": "Am 21. Oktober legen Texas Instruments, Lam Research, Tesla und Meta ihre Quartalszahlen vor. Die nächste Zinsentscheidung der US-Notenbank folgt voraussichtlich am 28. Oktober.",
   "sources": [
     {
-      "title": "Yahoo Finance: Chip Stocks Just Fell 8 Days in a Row, Their Longest Losing Streak Since 2008",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/chip-stocks-just-fell-8-161520543.html"
+      "title": "Invezz: Nasdaq rises 1.1% as chip stocks rebound after last week's AI selloff",
+      "url": "https://invezz.com/news/2026/10/19/nasdaq-rises-1-1-as-chip-stocks-rebound-after-last-weeks-ai-selloff/"
     },
     {
-      "title": "TheStreet: Stock Market Today (Oct. 16, 2026): AI 'bubble' worries mount as Nasdaq, Russell 2000 sink on tech declines",
-      "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-16-2026"
+      "title": "Schwab: Tech Rebounds to Start Critical Earnings Stretch",
+      "url": "https://www.schwab.com/learn/story/stock-market-update-open"
     },
     {
-      "title": "Bloomberg: Chip Selloff Delivers $32 Billion Windfall for Short Sellers in Seven Days",
-      "url": "https://www.bloomberg.com/news/articles/2026-10-16/longest-chip-selloff-since-2006-mints-short-sellers-32-billion"
+      "title": "TheStreet: Stock Market Today (Oct. 19, 2026): Nasdaq climbs as tech rebounds from sell-off",
+      "url": "https://www.thestreet.com/stock-market-today/stock-market-today-oct-19-2026-nasdaq-futures-climb-as-tech-rebound-from-sell-off"
+    },
+    {
+      "title": "Bloomberg: Tech Stocks Pull S&P 500 Higher as Opportunistic Buyers Step In",
+      "url": "https://www.bloomberg.com/news/articles/2026-10-19/us-futures-climb-with-semiconductor-stocks-rebounding-after-rout"
     }
   ]
 }
