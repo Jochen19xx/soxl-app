@@ -1,18 +1,17 @@
 {
-  "generated_utc": "2026-10-20T04:50:39+00:00",
-  "trading_day": "2026-10-19",
+  "generated_utc": "2026-10-21T04:51:26+00:00",
+  "trading_day": "2026-10-20",
   "soxl": {
     "symbol": "SOXL",
-    "date": "2026-10-19",
-    "open": 103.95,
-    "high": 104.98,
-    "low": 97.8,
-    "close": 98.65,
-    "prev_close": 93.67,
-    "change_pct": 5.32,
-    "volume": 94573000,
+    "date": "2026-10-20",
+    "open": 94.52,
+    "high": 102.62,
+    "low": 91.35,
+    "close": 97.55,
+    "prev_close": 98.65,
+    "change_pct": -1.12,
+    "volume": 97546400,
     "last_10_closes": [
-      164.26,
       158.91,
       142.52,
       139.76,
@@ -21,89 +20,90 @@
       110.54,
       107.35,
       93.67,
-      98.65
+      98.65,
+      97.55
     ]
   },
   "top10": [
     {
       "symbol": "AMD",
       "name": "ADVANCED MICRO DEVICES",
-      "weight": 6.5,
-      "close": 538.05,
-      "change_pct": 1.76,
-      "date": "2026-10-19"
+      "weight": 6.3,
+      "close": 534.74,
+      "change_pct": -0.62,
+      "date": "2026-10-20"
     },
     {
       "symbol": "INTC",
       "name": "INTEL CORP",
-      "weight": 5.8,
-      "close": 92.03,
-      "change_pct": 2.43,
-      "date": "2026-10-19"
+      "weight": 5.6,
+      "close": 91.69,
+      "change_pct": -0.37,
+      "date": "2026-10-20"
     },
     {
       "symbol": "NVDA",
       "name": "NVIDIA CORP",
-      "weight": 5.6,
-      "close": 217.09,
-      "change_pct": 1.38,
-      "date": "2026-10-19"
+      "weight": 5.4,
+      "close": 216.47,
+      "change_pct": -0.29,
+      "date": "2026-10-20"
     },
     {
       "symbol": "MU",
       "name": "MICRON TECHNOLOGY INC",
-      "weight": 5.3,
-      "close": 904.9,
-      "change_pct": 2.97,
-      "date": "2026-10-19"
+      "weight": 5.2,
+      "close": 896.07,
+      "change_pct": -0.98,
+      "date": "2026-10-20"
     },
     {
       "symbol": "AVGO",
       "name": "BROADCOM INC",
-      "weight": 5.1,
-      "close": 334.59,
-      "change_pct": 1.78,
-      "date": "2026-10-19"
-    },
-    {
-      "symbol": "ADI",
-      "name": "ANALOG DEVICES INC",
-      "weight": 3.1,
-      "close": 394.35,
-      "change_pct": -0.28,
-      "date": "2026-10-19"
+      "weight": 4.9,
+      "close": 334.37,
+      "change_pct": -0.07,
+      "date": "2026-10-20"
     },
     {
       "symbol": "MRVL",
       "name": "MARVELL TECHNOLOGY INC",
       "weight": 3.1,
-      "close": 237.09,
-      "change_pct": 4.06,
-      "date": "2026-10-19"
+      "close": 240.42,
+      "change_pct": 1.4,
+      "date": "2026-10-20"
+    },
+    {
+      "symbol": "ADI",
+      "name": "ANALOG DEVICES INC",
+      "weight": 3,
+      "close": 397.05,
+      "change_pct": 0.68,
+      "date": "2026-10-20"
     },
     {
       "symbol": "TXN",
       "name": "TEXAS INSTRUMENTS INC",
-      "weight": 3.1,
-      "close": 276.15,
-      "change_pct": -0.12,
-      "date": "2026-10-19"
+      "weight": 2.9,
+      "close": 277.78,
+      "change_pct": 0.59,
+      "date": "2026-10-20"
     },
     {
       "symbol": "QCOM",
       "name": "QUALCOMM INC",
-      "weight": 2.9,
-      "close": 173.53,
-      "change_pct": 0.83,
-      "date": "2026-10-19"
+      "weight": 2.8,
+      "close": 175.71,
+      "change_pct": 1.26,
+      "date": "2026-10-20"
     },
     {
       "symbol": "KLAC",
       "name": "KLA CORP",
-      "weight": 2.7,
-      "close": 166.4,
-      "change_pct": 0.4,
-      "date": "2026-10-19"
+      "weight": 2.6,
+      "close": 161.74,
+      "change_pct": -2.8,
+      "date": "2026-10-20"
     }
   ]
 }
