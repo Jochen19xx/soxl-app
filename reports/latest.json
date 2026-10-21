@@ -1,38 +1,38 @@
 {
-  "trading_day": "2026-10-19",
-  "created": "2026-10-20T04:58:56Z",
-  "headline": "SOXL steigt 5,3 % – Chipwerte beenden lange Verlustserie",
-  "close": 98.65,
-  "change_pct": 5.32,
+  "trading_day": "2026-10-20",
+  "created": "2026-10-21T04:59:20Z",
+  "headline": "SOXL verliert 1,1 % – unruhiger Tag mit großen Ausschlägen",
+  "close": 97.55,
+  "change_pct": -1.12,
   "paragraphs": [
-    "Nach acht Verlusttagen in Folge ging es für Chipaktien am Montag wieder nach oben. SOXL stieg um 5,3 % auf 98,65 Dollar. Zum Start lag der Kurs sogar bei 103,95 Dollar, im Tagesverlauf gab ein Teil des Gewinns wieder nach. Der Nasdaq legte gut 1 % zu, der S&P 500 rund 0,4 %, der Dow blieb fast unverändert.",
-    "Viele Anleger kauften nach dem starken Rückgang der Vorwoche wieder zu. In dieser Zeit hatte der Chip-Index rund 16 % verloren. Zudem sank die Sorge vor einer schnellen Zinserhöhung: Die Wahrscheinlichkeit für einen Zinsschritt im Oktober fiel laut Marktdaten auf etwa 15 %, nach bis zu 45 % in der Vorwoche. Auch der Ölpreis gab nach.",
-    "Fast alle Top-10-Werte lagen im Plus: Marvell (+4,1 %), Micron (+3,0 %), Intel (+2,4 %) nach einer besseren Einstufung durch JPMorgan, Broadcom (+1,8 %), AMD (+1,8 %) und Nvidia (+1,4 %). Analog Devices und Texas Instruments blieben knapp im Minus."
+    "SOXL schloss am Dienstag mit minus 1,1 % bei 97,55 Dollar. Dazwischen lagen große Schwankungen: Der Kurs startete schwach bei 94,52 Dollar, fiel bis auf 91,35 Dollar und stieg danach bis auf 102,62 Dollar, bevor er wieder nachgab. Der Dow legte 1,0 % zu und der S&P 500 0,3 %, der Nasdaq blieb unverändert.",
+    "Vor Börsenbeginn drückten Sorgen auf Technologiewerte: Anleger fragen sich weiter, ob sich die hohen KI-Ausgaben lohnen, und die Zinsen für zehnjährige US-Staatsanleihen liegen bei rund 5,1 %. Dazu drohte Irans Revolutionsgarde, Unterseekabel für Internet und Daten in der Straße von Hormus anzugreifen. Später sanken die Ölpreise, und gute Quartalszahlen vieler Firmen stützten den breiten Markt. Gefragt waren vor allem Gesundheitswerte, Chipaktien kamen kaum voran.",
+    "Bei den Top 10 war das Bild gemischt: KLA fiel um 2,8 %, Micron um 1,0 % und AMD um 0,6 %. Marvell (+1,4 %) und Qualcomm (+1,3 %) legten zu. Nvidia und Broadcom blieben fast unverändert."
   ],
   "drivers": [
-    "Gegenbewegung nach acht Verlusttagen des Chip-Index",
-    "Geringere Erwartung einer Zinserhöhung im Oktober",
-    "Fallender Ölpreis",
-    "Höhere Einstufung von Intel durch JPMorgan",
-    "Fast alle Top-10-Werte im Plus"
+    "Anhaltende Zweifel am Nutzen hoher KI-Ausgaben",
+    "Hohe Zinsen für US-Staatsanleihen",
+    "Drohung Irans gegen Datenkabel in der Straße von Hormus",
+    "Fallende Ölpreise und gute Firmenzahlen stützen den breiten Markt",
+    "Gemischtes Bild bei den Top-10-Werten"
   ],
   "outlook": "Am 21. Oktober legen Texas Instruments, Lam Research, Tesla und Meta ihre Quartalszahlen vor. Die nächste Zinsentscheidung der US-Notenbank folgt voraussichtlich am 28. Oktober.",
   "sources": [
     {
-      "title": "Invezz: Nasdaq rises 1.1% as chip stocks rebound after last week's AI selloff",
-      "url": "https://invezz.com/news/2026/10/19/nasdaq-rises-1-1-as-chip-stocks-rebound-after-last-weeks-ai-selloff/"
+      "title": "USPress.News: Stock Market Today: Dow Surges Nearly 530 Points",
+      "url": "https://www.uspress.news/stock-market-today-dow-surges-nearly-530-points/"
+    },
+    {
+      "title": "Benzinga: Dow Jones Futures Rise, Nasdaq 100 Falls as Iran Threatens to Target Undersea Cables",
+      "url": "https://www.benzinga.com/markets/equities/26/10/62460028/stock-market-today-dow-jones-futures-rise-nasdaq-100-falls-as-iran-threatens-to-target-undersea-cables-spcx-nflx-stld-in-focus"
+    },
+    {
+      "title": "Benzinga: Health Care Stocks Hit Record Highs, GM Drops Nearly 8%: Stock Market Today",
+      "url": "https://www.benzinga.com/markets/equities/26/10/62475717/health-care-stocks-hit-record-highs-gm-drops-nearly-8-stock-market-today"
     },
     {
       "title": "Schwab: Tech Rebounds to Start Critical Earnings Stretch",
       "url": "https://www.schwab.com/learn/story/stock-market-update-open"
-    },
-    {
-      "title": "TheStreet: Stock Market Today (Oct. 19, 2026): Nasdaq climbs as tech rebounds from sell-off",
-      "url": "https://www.thestreet.com/stock-market-today/stock-market-today-oct-19-2026-nasdaq-futures-climb-as-tech-rebound-from-sell-off"
-    },
-    {
-      "title": "Bloomberg: Tech Stocks Pull S&P 500 Higher as Opportunistic Buyers Step In",
-      "url": "https://www.bloomberg.com/news/articles/2026-10-19/us-futures-climb-with-semiconductor-stocks-rebounding-after-rout"
     }
   ]
 }
