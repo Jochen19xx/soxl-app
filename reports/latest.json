@@ -1,38 +1,34 @@
 {
-  "trading_day": "2026-10-20",
-  "created": "2026-10-21T04:59:20Z",
-  "headline": "SOXL verliert 1,1 % – unruhiger Tag mit großen Ausschlägen",
-  "close": 97.55,
-  "change_pct": -1.12,
+  "trading_day": "2026-10-21",
+  "created": "2026-10-22T04:59:18Z",
+  "headline": "SOXL steigt 5,8 % – starke Zahlen machen Mut bei KI",
+  "close": 103.24,
+  "change_pct": 5.83,
   "paragraphs": [
-    "SOXL schloss am Dienstag mit minus 1,1 % bei 97,55 Dollar. Dazwischen lagen große Schwankungen: Der Kurs startete schwach bei 94,52 Dollar, fiel bis auf 91,35 Dollar und stieg danach bis auf 102,62 Dollar, bevor er wieder nachgab. Der Dow legte 1,0 % zu und der S&P 500 0,3 %, der Nasdaq blieb unverändert.",
-    "Vor Börsenbeginn drückten Sorgen auf Technologiewerte: Anleger fragen sich weiter, ob sich die hohen KI-Ausgaben lohnen, und die Zinsen für zehnjährige US-Staatsanleihen liegen bei rund 5,1 %. Dazu drohte Irans Revolutionsgarde, Unterseekabel für Internet und Daten in der Straße von Hormus anzugreifen. Später sanken die Ölpreise, und gute Quartalszahlen vieler Firmen stützten den breiten Markt. Gefragt waren vor allem Gesundheitswerte, Chipaktien kamen kaum voran.",
-    "Bei den Top 10 war das Bild gemischt: KLA fiel um 2,8 %, Micron um 1,0 % und AMD um 0,6 %. Marvell (+1,4 %) und Qualcomm (+1,3 %) legten zu. Nvidia und Broadcom blieben fast unverändert."
+    "SOXL legte am Mittwoch um 5,8 % auf 103,24 Dollar zu und schloss damit wieder über 100 Dollar. Der Chip-Index aus Philadelphia stieg um rund 2 %. Auch der breite Markt war fest: Nasdaq plus 1,1 %, S&P 500 plus 0,6 %, Dow plus 0,7 %.",
+    "Für Zuversicht sorgten gute Nachrichten von Firmen, die viel KI-Technik kaufen oder bauen. Der Server-Hersteller Super Micro hob seine Umsatzerwartung deutlich an. SpaceX meldete einen Quartalsgewinn von 4,4 Milliarden Dollar und mehr Umsatz als erwartet, mehr als die Hälfte davon mit KI. Das deutet darauf hin, dass die Nachfrage nach KI-Rechenleistung weiter hoch ist. Nach den Sorgen der letzten Wochen kauften Anleger daher wieder Chipaktien.",
+    "Alle Top-10-Werte lagen im Plus. Am stärksten stiegen AMD (+3,4 %), Nvidia (+2,5 %), Texas Instruments (+2,5 %) und Analog Devices (+2,2 %). Micron legte 2,0 % zu, Marvell 1,8 %."
   ],
   "drivers": [
-    "Anhaltende Zweifel am Nutzen hoher KI-Ausgaben",
-    "Hohe Zinsen für US-Staatsanleihen",
-    "Drohung Irans gegen Datenkabel in der Straße von Hormus",
-    "Fallende Ölpreise und gute Firmenzahlen stützen den breiten Markt",
-    "Gemischtes Bild bei den Top-10-Werten"
+    "Super Micro hebt Umsatzerwartung kräftig an",
+    "SpaceX mit Rekordgewinn und starkem KI-Geschäft",
+    "Neues Vertrauen in die KI-Nachfrage",
+    "Weitere Erholung nach der langen Verlustserie",
+    "Alle Top-10-Werte im Plus"
   ],
-  "outlook": "Am 21. Oktober legen Texas Instruments, Lam Research, Tesla und Meta ihre Quartalszahlen vor. Die nächste Zinsentscheidung der US-Notenbank folgt voraussichtlich am 28. Oktober.",
+  "outlook": "Die nächste Zinsentscheidung der US-Notenbank folgt voraussichtlich am 28. Oktober. Intel legt am 29. Oktober Quartalszahlen vor, AMD am 3. November.",
   "sources": [
     {
-      "title": "USPress.News: Stock Market Today: Dow Surges Nearly 530 Points",
-      "url": "https://www.uspress.news/stock-market-today-dow-surges-nearly-530-points/"
+      "title": "STL.News: Stock Market Today: Nasdaq Leads Wall Street Rally",
+      "url": "https://www.stl.news/stock-market-today-nasdaq-leads-wall-street-rally/"
     },
     {
-      "title": "Benzinga: Dow Jones Futures Rise, Nasdaq 100 Falls as Iran Threatens to Target Undersea Cables",
-      "url": "https://www.benzinga.com/markets/equities/26/10/62460028/stock-market-today-dow-jones-futures-rise-nasdaq-100-falls-as-iran-threatens-to-target-undersea-cables-spcx-nflx-stld-in-focus"
+      "title": "Invezz: Why Nvidia, AMD and Intel stocks are surging up to 2% in premarket today",
+      "url": "https://invezz.com/au/news/2026/10/21/why-nvidia-amd-and-intel-stocks-are-surging-up-to-2percent-in-premarket-today/"
     },
     {
-      "title": "Benzinga: Health Care Stocks Hit Record Highs, GM Drops Nearly 8%: Stock Market Today",
-      "url": "https://www.benzinga.com/markets/equities/26/10/62475717/health-care-stocks-hit-record-highs-gm-drops-nearly-8-stock-market-today"
-    },
-    {
-      "title": "Schwab: Tech Rebounds to Start Critical Earnings Stretch",
-      "url": "https://www.schwab.com/learn/story/stock-market-update-open"
+      "title": "Reuters via Investing.com: US chip stocks rise after steepest weekly selloff in months",
+      "url": "https://www.investing.com/news/stock-market-news/us-chip-stocks-rise-after-steepest-weekly-selloff-in-months-4957420"
     }
   ]
 }

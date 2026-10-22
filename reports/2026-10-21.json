@@ -1,0 +1,34 @@
+{
+  "trading_day": "2026-10-21",
+  "created": "2026-10-22T04:59:18Z",
+  "headline": "SOXL steigt 5,8 % – starke Zahlen machen Mut bei KI",
+  "close": 103.24,
+  "change_pct": 5.83,
+  "paragraphs": [
+    "SOXL legte am Mittwoch um 5,8 % auf 103,24 Dollar zu und schloss damit wieder über 100 Dollar. Der Chip-Index aus Philadelphia stieg um rund 2 %. Auch der breite Markt war fest: Nasdaq plus 1,1 %, S&P 500 plus 0,6 %, Dow plus 0,7 %.",
+    "Für Zuversicht sorgten gute Nachrichten von Firmen, die viel KI-Technik kaufen oder bauen. Der Server-Hersteller Super Micro hob seine Umsatzerwartung deutlich an. SpaceX meldete einen Quartalsgewinn von 4,4 Milliarden Dollar und mehr Umsatz als erwartet, mehr als die Hälfte davon mit KI. Das deutet darauf hin, dass die Nachfrage nach KI-Rechenleistung weiter hoch ist. Nach den Sorgen der letzten Wochen kauften Anleger daher wieder Chipaktien.",
+    "Alle Top-10-Werte lagen im Plus. Am stärksten stiegen AMD (+3,4 %), Nvidia (+2,5 %), Texas Instruments (+2,5 %) und Analog Devices (+2,2 %). Micron legte 2,0 % zu, Marvell 1,8 %."
+  ],
+  "drivers": [
+    "Super Micro hebt Umsatzerwartung kräftig an",
+    "SpaceX mit Rekordgewinn und starkem KI-Geschäft",
+    "Neues Vertrauen in die KI-Nachfrage",
+    "Weitere Erholung nach der langen Verlustserie",
+    "Alle Top-10-Werte im Plus"
+  ],
+  "outlook": "Die nächste Zinsentscheidung der US-Notenbank folgt voraussichtlich am 28. Oktober. Intel legt am 29. Oktober Quartalszahlen vor, AMD am 3. November.",
+  "sources": [
+    {
+      "title": "STL.News: Stock Market Today: Nasdaq Leads Wall Street Rally",
+      "url": "https://www.stl.news/stock-market-today-nasdaq-leads-wall-street-rally/"
+    },
+    {
+      "title": "Invezz: Why Nvidia, AMD and Intel stocks are surging up to 2% in premarket today",
+      "url": "https://invezz.com/au/news/2026/10/21/why-nvidia-amd-and-intel-stocks-are-surging-up-to-2percent-in-premarket-today/"
+    },
+    {
+      "title": "Reuters via Investing.com: US chip stocks rise after steepest weekly selloff in months",
+      "url": "https://www.investing.com/news/stock-market-news/us-chip-stocks-rise-after-steepest-weekly-selloff-in-months-4957420"
+    }
+  ]
+}
