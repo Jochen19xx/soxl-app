@@ -1,0 +1,39 @@
+{
+  "trading_day": "2026-10-22",
+  "created": "2026-10-23T04:59:16Z",
+  "headline": "SOXL bricht um 20,5 % ein – Warnung von Lam Research schockt Chipwerte",
+  "close": 82.11,
+  "change_pct": -20.47,
+  "paragraphs": [
+    "SOXL erlebte am Donnerstag einen sehr schwarzen Tag: minus 20,5 % auf 82,11 Dollar. Das Tagestief lag bei 80,22 Dollar. Der Nasdaq verlor 2,6 %, der S&P 500 1,2 %. Der Dow blieb dagegen fast unverändert, weil Anleger in sichere Werte wie Procter & Gamble umschichteten.",
+    "Auslöser war der Chip-Maschinenbauer Lam Research. Er meldete zwar ein Rekordquartal, sagte aber, der Umsatzausblick wäre ohne Engpässe bei Lieferungen höher ausgefallen. Fehlende Reinraum-Flächen und Bauteile würden die Chiphersteller bis ins Jahr 2027 bremsen. Die Aktie fiel um 11,8 %. Dazu kam Meta: Nach seinen Quartalszahlen verlor die Aktie rund 7 %. Das verstärkte die Zweifel an den hohen KI-Ausgaben erneut.",
+    "Die Top 10 traf es breit: KLA (−9,6 %), Marvell (−8,7 %), AMD (−8,1 %), Intel (−8,0 %) und Micron (−6,3 %) fielen besonders stark. Nvidia gab 4,4 % nach, Broadcom 4,3 %. Am besten hielt sich Texas Instruments mit minus 1,8 %.",
+    "Etwas Entlastung kam von den Zinsen: Die Rendite zehnjähriger US-Staatsanleihen fiel erstmals seit September unter 5 %."
+  ],
+  "drivers": [
+    "Lam Research warnt vor Liefer-Engpässen bis 2027",
+    "Meta-Aktie fällt nach Quartalszahlen um rund 7 %",
+    "Neue Zweifel an den hohen KI-Ausgaben",
+    "Breiter Ausverkauf bei allen Top-10-Werten",
+    "Zinsen zehnjähriger US-Anleihen fallen unter 5 %"
+  ],
+  "outlook": "Die nächste Zinsentscheidung der US-Notenbank folgt voraussichtlich am 28. Oktober, am 29. Oktober kommen die PCE-Inflationsdaten. Intel legt am 29. Oktober Quartalszahlen vor, AMD am 3. November.",
+  "sources": [
+    {
+      "title": "Yahoo Finance: Chip stocks fall as equipment maker Lam Research cites 'supply chain constraints'",
+      "url": "https://finance.yahoo.com/markets/article/chip-stocks-fall-as-equipment-maker-lam-research-cites-supply-chain-constraints-130648719.html"
+    },
+    {
+      "title": "24/7 Wall St.: Chip Stocks Fall as Supply Warning Deepens AI Selloff: Marvell and AMD Sink 8%, Intel Drops 7%",
+      "url": "https://247wallst.com/investing/2026/10/22/chip-stocks-fall-as-supply-warning-deepens-ai-selloff-marvell-and-amd-sink-8-intel-drops-7/"
+    },
+    {
+      "title": "Avalon Capital Research: Closing Bell: Meta Sinks 7% and Drags the Nasdaq Down 2.6% as P&G Lifts Staples",
+      "url": "https://avaloncapitalresearch.substack.com/p/closing-bell-meta-sinks-7-and-drags"
+    },
+    {
+      "title": "Yahoo Finance: Meta and chip stocks decline as AI trade comes under pressure",
+      "url": "https://finance.yahoo.com/markets/article/meta-and-chip-stocks-decline-as-ai-trade-comes-under-pressure-alphacheck-140107733.html"
+    }
+  ]
+}
