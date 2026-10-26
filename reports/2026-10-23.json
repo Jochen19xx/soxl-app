@@ -1,0 +1,33 @@
+{
+  "trading_day": "2026-10-23",
+  "created": "2026-10-26T05:58:29Z",
+  "headline": "SOXL erholt sich leicht um 1,8 % – Speicherwerte gefragt",
+  "close": 83.56,
+  "change_pct": 1.77,
+  "paragraphs": [
+    "Nach dem starken Einbruch vom Donnerstag stieg SOXL am Freitag um 1,8 % auf 83,56 Dollar. Im Tagesverlauf ging es bis auf 87,61 Dollar nach oben, ein Teil des Gewinns verschwand aber bis zum Abend wieder. Der breite Markt gab nach: Der Dow fiel um rund 1,2 %, der S&P 500 um 0,5 % und der Nasdaq um 0,2 %. Technologie gehörte zu den wenigen Bereichen im Plus.",
+    "Speicherchip-Aktien erholten sich nach dem Ausverkauf vom Vortag. SK Hynix stieg um 4 %. Belastet hat dagegen der Ölpreis: Wegen der Spannungen im Nahen Osten kletterte US-Öl um rund 4 % auf über 103 Dollar je Fass. Das hält die Sorge vor hoher Inflation und weiteren Zinserhöhungen wach. Die Rendite zehnjähriger US-Staatsanleihen stieg wieder auf etwa 5 %.",
+    "Bei den Top 10 lagen die meisten Werte im Plus: Micron (+2,5 %), Marvell (+2,3 %), Texas Instruments (+1,9 %), Qualcomm (+1,8 %), AMD (+1,7 %) und Intel (+1,7 %). KLA (−1,5 %), Nvidia (−0,6 %) und Broadcom (−0,5 %) gaben leicht nach."
+  ],
+  "drivers": [
+    "Gegenbewegung nach dem Einbruch vom Donnerstag",
+    "Erholung bei Speicherchip-Aktien",
+    "Stark steigender Ölpreis wegen Nahost-Spannungen",
+    "Zinsen zehnjähriger US-Anleihen wieder bei rund 5 %"
+  ],
+  "outlook": "Am 28. Oktober entscheidet die US-Notenbank über die Zinsen, am 29. Oktober folgen die PCE-Inflationsdaten und die Quartalszahlen von Intel. AMD berichtet am 3. November.",
+  "sources": [
+    {
+      "title": "Yahoo Finance: Markets News, Oct. 23, 2026: Dow Ends Week Higher Despite Friday Tumble; Nasdaq, S&P 500 Log Weekly Losses",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-futures-head-102959138.html"
+    },
+    {
+      "title": "Yahoo Finance: Stock Market Today (Oct. 23, 2026): Nasdaq falls following tech sell-off",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-oct-23-134445147.html"
+    },
+    {
+      "title": "Invezz: Why Nvidia, AMD and Intel stocks are surging up to 2% in premarket today",
+      "url": "https://invezz.com/au/news/2026/10/21/why-nvidia-amd-and-intel-stocks-are-surging-up-to-2percent-in-premarket-today/"
+    }
+  ]
+}

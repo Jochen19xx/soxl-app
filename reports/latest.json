@@ -1,39 +1,33 @@
 {
-  "trading_day": "2026-10-22",
-  "created": "2026-10-23T04:59:16Z",
-  "headline": "SOXL bricht um 20,5 % ein – Warnung von Lam Research schockt Chipwerte",
-  "close": 82.11,
-  "change_pct": -20.47,
+  "trading_day": "2026-10-23",
+  "created": "2026-10-26T05:58:29Z",
+  "headline": "SOXL erholt sich leicht um 1,8 % – Speicherwerte gefragt",
+  "close": 83.56,
+  "change_pct": 1.77,
   "paragraphs": [
-    "SOXL erlebte am Donnerstag einen sehr schwarzen Tag: minus 20,5 % auf 82,11 Dollar. Das Tagestief lag bei 80,22 Dollar. Der Nasdaq verlor 2,6 %, der S&P 500 1,2 %. Der Dow blieb dagegen fast unverändert, weil Anleger in sichere Werte wie Procter & Gamble umschichteten.",
-    "Auslöser war der Chip-Maschinenbauer Lam Research. Er meldete zwar ein Rekordquartal, sagte aber, der Umsatzausblick wäre ohne Engpässe bei Lieferungen höher ausgefallen. Fehlende Reinraum-Flächen und Bauteile würden die Chiphersteller bis ins Jahr 2027 bremsen. Die Aktie fiel um 11,8 %. Dazu kam Meta: Nach seinen Quartalszahlen verlor die Aktie rund 7 %. Das verstärkte die Zweifel an den hohen KI-Ausgaben erneut.",
-    "Die Top 10 traf es breit: KLA (−9,6 %), Marvell (−8,7 %), AMD (−8,1 %), Intel (−8,0 %) und Micron (−6,3 %) fielen besonders stark. Nvidia gab 4,4 % nach, Broadcom 4,3 %. Am besten hielt sich Texas Instruments mit minus 1,8 %.",
-    "Etwas Entlastung kam von den Zinsen: Die Rendite zehnjähriger US-Staatsanleihen fiel erstmals seit September unter 5 %."
+    "Nach dem starken Einbruch vom Donnerstag stieg SOXL am Freitag um 1,8 % auf 83,56 Dollar. Im Tagesverlauf ging es bis auf 87,61 Dollar nach oben, ein Teil des Gewinns verschwand aber bis zum Abend wieder. Der breite Markt gab nach: Der Dow fiel um rund 1,2 %, der S&P 500 um 0,5 % und der Nasdaq um 0,2 %. Technologie gehörte zu den wenigen Bereichen im Plus.",
+    "Speicherchip-Aktien erholten sich nach dem Ausverkauf vom Vortag. SK Hynix stieg um 4 %. Belastet hat dagegen der Ölpreis: Wegen der Spannungen im Nahen Osten kletterte US-Öl um rund 4 % auf über 103 Dollar je Fass. Das hält die Sorge vor hoher Inflation und weiteren Zinserhöhungen wach. Die Rendite zehnjähriger US-Staatsanleihen stieg wieder auf etwa 5 %.",
+    "Bei den Top 10 lagen die meisten Werte im Plus: Micron (+2,5 %), Marvell (+2,3 %), Texas Instruments (+1,9 %), Qualcomm (+1,8 %), AMD (+1,7 %) und Intel (+1,7 %). KLA (−1,5 %), Nvidia (−0,6 %) und Broadcom (−0,5 %) gaben leicht nach."
   ],
   "drivers": [
-    "Lam Research warnt vor Liefer-Engpässen bis 2027",
-    "Meta-Aktie fällt nach Quartalszahlen um rund 7 %",
-    "Neue Zweifel an den hohen KI-Ausgaben",
-    "Breiter Ausverkauf bei allen Top-10-Werten",
-    "Zinsen zehnjähriger US-Anleihen fallen unter 5 %"
+    "Gegenbewegung nach dem Einbruch vom Donnerstag",
+    "Erholung bei Speicherchip-Aktien",
+    "Stark steigender Ölpreis wegen Nahost-Spannungen",
+    "Zinsen zehnjähriger US-Anleihen wieder bei rund 5 %"
   ],
-  "outlook": "Die nächste Zinsentscheidung der US-Notenbank folgt voraussichtlich am 28. Oktober, am 29. Oktober kommen die PCE-Inflationsdaten. Intel legt am 29. Oktober Quartalszahlen vor, AMD am 3. November.",
+  "outlook": "Am 28. Oktober entscheidet die US-Notenbank über die Zinsen, am 29. Oktober folgen die PCE-Inflationsdaten und die Quartalszahlen von Intel. AMD berichtet am 3. November.",
   "sources": [
     {
-      "title": "Yahoo Finance: Chip stocks fall as equipment maker Lam Research cites 'supply chain constraints'",
-      "url": "https://finance.yahoo.com/markets/article/chip-stocks-fall-as-equipment-maker-lam-research-cites-supply-chain-constraints-130648719.html"
+      "title": "Yahoo Finance: Markets News, Oct. 23, 2026: Dow Ends Week Higher Despite Friday Tumble; Nasdaq, S&P 500 Log Weekly Losses",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-futures-head-102959138.html"
     },
     {
-      "title": "24/7 Wall St.: Chip Stocks Fall as Supply Warning Deepens AI Selloff: Marvell and AMD Sink 8%, Intel Drops 7%",
-      "url": "https://247wallst.com/investing/2026/10/22/chip-stocks-fall-as-supply-warning-deepens-ai-selloff-marvell-and-amd-sink-8-intel-drops-7/"
+      "title": "Yahoo Finance: Stock Market Today (Oct. 23, 2026): Nasdaq falls following tech sell-off",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-oct-23-134445147.html"
     },
     {
-      "title": "Avalon Capital Research: Closing Bell: Meta Sinks 7% and Drags the Nasdaq Down 2.6% as P&G Lifts Staples",
-      "url": "https://avaloncapitalresearch.substack.com/p/closing-bell-meta-sinks-7-and-drags"
-    },
-    {
-      "title": "Yahoo Finance: Meta and chip stocks decline as AI trade comes under pressure",
-      "url": "https://finance.yahoo.com/markets/article/meta-and-chip-stocks-decline-as-ai-trade-comes-under-pressure-alphacheck-140107733.html"
+      "title": "Invezz: Why Nvidia, AMD and Intel stocks are surging up to 2% in premarket today",
+      "url": "https://invezz.com/au/news/2026/10/21/why-nvidia-amd-and-intel-stocks-are-surging-up-to-2percent-in-premarket-today/"
     }
   ]
 }
