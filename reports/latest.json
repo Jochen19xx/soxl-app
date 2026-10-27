@@ -1,33 +1,33 @@
 {
-  "trading_day": "2026-10-23",
-  "created": "2026-10-26T05:58:29Z",
-  "headline": "SOXL erholt sich leicht um 1,8 % – Speicherwerte gefragt",
-  "close": 83.56,
-  "change_pct": 1.77,
+  "trading_day": "2026-10-26",
+  "created": "2026-10-27T05:58:53Z",
+  "headline": "SOXL steigt 8,3 % – Börsenpläne von Anthropic beflügeln KI-Werte",
+  "close": 90.5,
+  "change_pct": 8.31,
   "paragraphs": [
-    "Nach dem starken Einbruch vom Donnerstag stieg SOXL am Freitag um 1,8 % auf 83,56 Dollar. Im Tagesverlauf ging es bis auf 87,61 Dollar nach oben, ein Teil des Gewinns verschwand aber bis zum Abend wieder. Der breite Markt gab nach: Der Dow fiel um rund 1,2 %, der S&P 500 um 0,5 % und der Nasdaq um 0,2 %. Technologie gehörte zu den wenigen Bereichen im Plus.",
-    "Speicherchip-Aktien erholten sich nach dem Ausverkauf vom Vortag. SK Hynix stieg um 4 %. Belastet hat dagegen der Ölpreis: Wegen der Spannungen im Nahen Osten kletterte US-Öl um rund 4 % auf über 103 Dollar je Fass. Das hält die Sorge vor hoher Inflation und weiteren Zinserhöhungen wach. Die Rendite zehnjähriger US-Staatsanleihen stieg wieder auf etwa 5 %.",
-    "Bei den Top 10 lagen die meisten Werte im Plus: Micron (+2,5 %), Marvell (+2,3 %), Texas Instruments (+1,9 %), Qualcomm (+1,8 %), AMD (+1,7 %) und Intel (+1,7 %). KLA (−1,5 %), Nvidia (−0,6 %) und Broadcom (−0,5 %) gaben leicht nach."
+    "SOXL legte zum Wochenstart um 8,3 % auf 90,50 Dollar zu. Zwischenzeitlich ging es sogar bis auf 93,15 Dollar. Der Chip-Index aus Philadelphia stieg um 2,8 %, alle 30 enthaltenen Werte lagen im Plus. Der Nasdaq gewann 0,8 %, der S&P 500 0,7 % und der Dow 0,3 %.",
+    "Für gute Stimmung sorgte die KI-Firma Anthropic. Sie hat ihren Börsengang an der Nasdaq beantragt und dabei sehr starke Umsätze offengelegt: 16,3 Milliarden Dollar im ersten Halbjahr 2026, rund 14-mal so viel wie ein Jahr zuvor. Das gab der Hoffnung neuen Schwung, dass sich die hohen KI-Ausgaben lohnen. Zudem meldete SpaceX eine Finanzierung über 40 Milliarden Dollar für den Kauf von KI-Chips. Auch der Ölpreis gab nach, weil Anleger auf eine Entspannung zwischen den USA und Iran hoffen.",
+    "Alle Top-10-Werte stiegen: Texas Instruments (+4,7 %), Analog Devices (+4,3 %), Intel (+4,0 %), Micron (+3,0 %), AMD (+2,8 %), Applied Materials (+2,7 %) und Nvidia (+2,4 %)."
   ],
   "drivers": [
-    "Gegenbewegung nach dem Einbruch vom Donnerstag",
-    "Erholung bei Speicherchip-Aktien",
-    "Stark steigender Ölpreis wegen Nahost-Spannungen",
-    "Zinsen zehnjähriger US-Anleihen wieder bei rund 5 %"
+    "Anthropic beantragt Börsengang mit sehr starken Umsätzen",
+    "SpaceX sichert sich 40 Milliarden Dollar für KI-Chips",
+    "Fallender Ölpreis dank Hoffnung auf Entspannung mit Iran",
+    "Alle Werte im Chip-Index und alle Top-10-Werte im Plus"
   ],
-  "outlook": "Am 28. Oktober entscheidet die US-Notenbank über die Zinsen, am 29. Oktober folgen die PCE-Inflationsdaten und die Quartalszahlen von Intel. AMD berichtet am 3. November.",
+  "outlook": "Am 28. Oktober entscheidet die US-Notenbank über die Zinsen, eine Erhöhung gilt als wenig wahrscheinlich. In dieser Woche legen Microsoft, Alphabet und Amazon Zahlen vor, Intel am 29. Oktober.",
   "sources": [
     {
-      "title": "Yahoo Finance: Markets News, Oct. 23, 2026: Dow Ends Week Higher Despite Friday Tumble; Nasdaq, S&P 500 Log Weekly Losses",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-futures-head-102959138.html"
+      "title": "TradingKey: US Stocks Close: Nasdaq Rises 0.82%, SOX Gains Nearly 3%; AI-Related Stocks Rise After Anthropic Files Prospectus",
+      "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262240365-us-stock-close-nasdaq-anthropic-ipo-s1-semiconductor-ai-tradingkey"
     },
     {
-      "title": "Yahoo Finance: Stock Market Today (Oct. 23, 2026): Nasdaq falls following tech sell-off",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-oct-23-134445147.html"
+      "title": "TheStreet: Stock Market Today (Oct. 26, 2026): Nasdaq, S&P 500 jump after Anthropic IPO announcement",
+      "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-26-2026"
     },
     {
-      "title": "Invezz: Why Nvidia, AMD and Intel stocks are surging up to 2% in premarket today",
-      "url": "https://invezz.com/au/news/2026/10/21/why-nvidia-amd-and-intel-stocks-are-surging-up-to-2percent-in-premarket-today/"
+      "title": "Yahoo Finance: Stock Market Today, Oct. 26: AI Optimism Lifts Nasdaq as Tech Stocks Rebound",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-oct-26-215000106.html"
     }
   ]
 }
