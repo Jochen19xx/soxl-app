@@ -1,0 +1,38 @@
+{
+  "trading_day": "2026-10-28",
+  "created": "2026-10-29T05:58:27Z",
+  "headline": "SOXL legt 6,2 % zu – Rekordgewinn von SK Hynix stützt Chipwerte",
+  "close": 107.35,
+  "change_pct": 6.2,
+  "paragraphs": [
+    "SOXL stieg am Mittwoch um 6,2 % auf 107,35 Dollar, es war der dritte Gewinntag in Folge. Der Chip-Index aus Philadelphia legte 1,75 % zu. Der breite Markt bewegte sich nur wenig: S&P 500 und Nasdaq je plus 0,3 %, Dow plus 0,2 %.",
+    "Antrieb kam aus Südkorea. Der Speicherchip-Hersteller SK Hynix meldete einen Rekordgewinn und rechnet damit, dass die Nachfrage nach Speicherchips bis 2030 größer bleibt als das Angebot. Die Aktie stieg um 13 % und zog andere Speicherwerte mit nach oben.",
+    "Die US-Notenbank ließ die Zinsen wie erwartet unverändert bei 3,75 bis 4 %. Zwei Mitglieder hätten lieber erhöht, und die Notenbank nennt die Inflation weiterhin erhöht. Viele Anleger rechnen nun mit einer Zinserhöhung im Dezember. Nach Börsenschluss legten Microsoft und Alphabet Zahlen vor: Microsoft stieg nachbörslich, Alphabet fiel deutlich.",
+    "Bei den Top 10 führte Micron (+5,9 %) vor KLA (+3,3 %), Marvell (+3,3 %), AMD (+3,2 %) und Broadcom (+2,8 %). Nvidia (−1,2 %) und Qualcomm (−0,7 %) gaben nach."
+  ],
+  "drivers": [
+    "Rekordgewinn von SK Hynix und starker Ausblick für Speicherchips",
+    "Micron und andere Speicherwerte steigen deutlich",
+    "US-Notenbank lässt Zinsen unverändert",
+    "Erwartung einer Zinserhöhung im Dezember wächst"
+  ],
+  "outlook": "Am 29. Oktober kommen die PCE-Inflationsdaten und die Quartalszahlen von Intel, AMD berichtet am 3. November. Nachbörslich fiel Alphabet nach schwachen Zahlen um rund 10 %, was am Folgetag auf Technologiewerte drücken könnte.",
+  "sources": [
+    {
+      "title": "Capp Notes: Closing Look — Wednesday, October 28, 2026",
+      "url": "https://cappnotes.substack.com/p/closing-look-wednesday-october-28"
+    },
+    {
+      "title": "Yahoo Finance: Micron, AMD and Nvidia Stocks Rise as Memory Chip Boom Lifts AI Trade",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/micron-amd-nvidia-stocks-rise-183814387.html"
+    },
+    {
+      "title": "StockTitan: Stock Market Today Live October 28, 2026: Fed Holds Rates",
+      "url": "https://www.stocktitan.net/articles/stock-market-today-live-october-28-2026"
+    },
+    {
+      "title": "CNBC: Fed interest rate decision October 2026: Fed holds rates steady",
+      "url": "https://www.cnbc.com/2026/10/28/fed-interest-rate-decision-october-2026.html"
+    }
+  ]
+}

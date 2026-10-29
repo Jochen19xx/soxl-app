@@ -1,38 +1,38 @@
 {
-  "trading_day": "2026-10-27",
-  "created": "2026-10-28T05:58:54Z",
-  "headline": "SOXL springt 11,7 % – Großaufträge für KI-Chips treiben die Kurse",
-  "close": 101.08,
-  "change_pct": 11.69,
+  "trading_day": "2026-10-28",
+  "created": "2026-10-29T05:58:27Z",
+  "headline": "SOXL legt 6,2 % zu – Rekordgewinn von SK Hynix stützt Chipwerte",
+  "close": 107.35,
+  "change_pct": 6.2,
   "paragraphs": [
-    "SOXL stieg am Dienstag um 11,7 % auf 101,08 Dollar und lag damit wieder über 100 Dollar. Der Chip-Index aus Philadelphia legte 3,6 % zu, es war der zweite starke Tag in Folge. Der Nasdaq gewann 1,2 %, der S&P 500 0,6 %, der Dow blieb fast unverändert.",
-    "Rückenwind kam von neuen Großprojekten für KI. Broadcom half laut Berichten, eine Finanzierung über 63 Milliarden Dollar für Chipkäufe von Anthropic auf die Beine zu stellen. AMD baut seine Zusammenarbeit mit Meta aus: Meta testet AMD-Systeme für seine nächsten KI-Modelle und wird früher Partner für kommende AMD-Chips. Das stärkt die Erwartung, dass die Ausgaben für KI-Rechenzentren hoch bleiben. Zudem sank der Ölpreis, weil Berichte über mögliche Gespräche zum Ende der Kämpfe mit Iran die Sorgen dämpften.",
-    "Alle Top-10-Werte legten zu: AMD (+5,5 %), Analog Devices (+4,3 %), Marvell (+4,2 %), Broadcom (+4,0 %), Texas Instruments (+3,6 %) und Intel (+3,6 %). Nvidia stieg nur um 0,9 %."
+    "SOXL stieg am Mittwoch um 6,2 % auf 107,35 Dollar, es war der dritte Gewinntag in Folge. Der Chip-Index aus Philadelphia legte 1,75 % zu. Der breite Markt bewegte sich nur wenig: S&P 500 und Nasdaq je plus 0,3 %, Dow plus 0,2 %.",
+    "Antrieb kam aus Südkorea. Der Speicherchip-Hersteller SK Hynix meldete einen Rekordgewinn und rechnet damit, dass die Nachfrage nach Speicherchips bis 2030 größer bleibt als das Angebot. Die Aktie stieg um 13 % und zog andere Speicherwerte mit nach oben.",
+    "Die US-Notenbank ließ die Zinsen wie erwartet unverändert bei 3,75 bis 4 %. Zwei Mitglieder hätten lieber erhöht, und die Notenbank nennt die Inflation weiterhin erhöht. Viele Anleger rechnen nun mit einer Zinserhöhung im Dezember. Nach Börsenschluss legten Microsoft und Alphabet Zahlen vor: Microsoft stieg nachbörslich, Alphabet fiel deutlich.",
+    "Bei den Top 10 führte Micron (+5,9 %) vor KLA (+3,3 %), Marvell (+3,3 %), AMD (+3,2 %) und Broadcom (+2,8 %). Nvidia (−1,2 %) und Qualcomm (−0,7 %) gaben nach."
   ],
   "drivers": [
-    "Milliarden-Finanzierung für Chipkäufe von Anthropic",
-    "AMD baut KI-Partnerschaft mit Meta aus",
-    "Fallender Ölpreis dank Hoffnung auf Entspannung mit Iran",
-    "Zweiter starker Tag in Folge für den Chip-Index",
-    "Alle Top-10-Werte im Plus"
+    "Rekordgewinn von SK Hynix und starker Ausblick für Speicherchips",
+    "Micron und andere Speicherwerte steigen deutlich",
+    "US-Notenbank lässt Zinsen unverändert",
+    "Erwartung einer Zinserhöhung im Dezember wächst"
   ],
-  "outlook": "Am Abend des 28. Oktober (deutscher Zeit) gibt die US-Notenbank ihre Zinsentscheidung bekannt, am 29. Oktober folgen die PCE-Inflationsdaten und Intels Quartalszahlen. AMD berichtet am 3. November.",
+  "outlook": "Am 29. Oktober kommen die PCE-Inflationsdaten und die Quartalszahlen von Intel, AMD berichtet am 3. November. Nachbörslich fiel Alphabet nach schwachen Zahlen um rund 10 %, was am Folgetag auf Technologiewerte drücken könnte.",
   "sources": [
     {
-      "title": "HDFC Sky: Nasdaq Jumps 1.2% as Chip Stocks Rally, Oil Slides and Fed Meeting Begins",
-      "url": "https://hdfcsky.com/news/nasdaq-jumps-1-2percent-as-chip-stocks-rally-oil-slides-and-fed-meeting-begins-october-28-2026"
+      "title": "Capp Notes: Closing Look — Wednesday, October 28, 2026",
+      "url": "https://cappnotes.substack.com/p/closing-look-wednesday-october-28"
     },
     {
-      "title": "Yahoo Finance: AMD stock rallies on expanded Meta AI infrastructure deal and broader chip rally",
-      "url": "https://finance.yahoo.com/technology/ai/articles/amd-stock-rallies-expanded-meta-164417800.html"
+      "title": "Yahoo Finance: Micron, AMD and Nvidia Stocks Rise as Memory Chip Boom Lifts AI Trade",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/micron-amd-nvidia-stocks-rise-183814387.html"
     },
     {
-      "title": "Invezz: Nasdaq rises 1.14% as chip stocks rally ahead of Fed decision",
-      "url": "https://invezz.com/news/2026/10/27/nasdaq-rises-1-14-as-chip-stocks-rally-ahead-of-fed-decision/"
+      "title": "StockTitan: Stock Market Today Live October 28, 2026: Fed Holds Rates",
+      "url": "https://www.stocktitan.net/articles/stock-market-today-live-october-28-2026"
     },
     {
-      "title": "TheStreet: Stock Market Today (Oct. 27, 2026): Nasdaq and Russell 2000 gain as Anthropic lifts tech sector",
-      "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-27-2026"
+      "title": "CNBC: Fed interest rate decision October 2026: Fed holds rates steady",
+      "url": "https://www.cnbc.com/2026/10/28/fed-interest-rate-decision-october-2026.html"
     }
   ]
 }
