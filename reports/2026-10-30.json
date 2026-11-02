@@ -1,0 +1,39 @@
+{
+  "trading_day": "2026-10-30",
+  "created": "2026-11-02T05:58:45Z",
+  "headline": "SOXL stürzt 24,8 % ab – Intel-Einbruch reißt Chipwerte mit",
+  "close": 77.05,
+  "change_pct": -24.75,
+  "paragraphs": [
+    "SOXL erlebte am Freitag einen der schwersten Tage überhaupt: minus 24,8 % auf 77,05 Dollar, zwischenzeitlich sogar bis 70,23 Dollar. Der Chip-Index aus Philadelphia verlor 7,2 %. Der Nasdaq fiel um 2,9 %, der S&P 500 um 1,8 % und der Dow um 1,1 %.",
+    "Auslöser war Intel. Der Konzern erwartet für das Schlussquartal deutlich weniger Umsatz und Gewinn als gedacht. Grund sind schwache PC-Verkäufe: Stark gestiegene Preise für Speicherchips machen Computer teurer, Firmen kaufen weniger. Dazu kommt ein Unfall in Intels Werk in Israel, der die Lieferung von Server-Chips bremst. Die Aktie brach um 28,6 % ein, so stark wie seit Jahrzehnten nicht.",
+    "Der Schock zog die ganze Branche nach unten. Auch die Sorge, dass hohe KI-Ausgaben zu wenig Geld einbringen, belastete erneut. Ein Angriff auf einen Tanker in der Straße von Hormus ließ zudem die Ölpreise steigen.",
+    "Alle Top-10-Werte fielen deutlich: Neben Intel traf es Qualcomm (−11,1 %), AMD (−10,9 %), Marvell (−10,1 %), KLA (−5,7 %), Broadcom (−5,5 %) und Micron (−5,3 %). Nvidia verlor 4,2 %."
+  ],
+  "drivers": [
+    "Intel mit sehr schwachem Ausblick, Aktie minus 28,6 %",
+    "Schwache PC-Nachfrage wegen teurer Speicherchips",
+    "Chip-Index fällt um 7,2 %",
+    "Erneute Zweifel am Nutzen hoher KI-Ausgaben",
+    "Steigende Ölpreise nach Tanker-Angriff"
+  ],
+  "outlook": "Am 3. November legt AMD seine Quartalszahlen vor, am selben Tag finden die US-Zwischenwahlen statt. Am 6. November folgt der US-Arbeitsmarktbericht für Oktober.",
+  "sources": [
+    {
+      "title": "Capp Notes: Closing Look — Friday, October 30, 2026",
+      "url": "https://cappnotes.substack.com/p/closing-look-friday-october-30-2026"
+    },
+    {
+      "title": "The Motley Fool: Why Intel Stock Crashed on Friday",
+      "url": "https://www.fool.com/investing/2026/10/30/why-intel-stock-crashed-on-friday/"
+    },
+    {
+      "title": "TechCrunch: Intel's stock crashes, knocking $12B from government's stake",
+      "url": "https://techcrunch.com/2026/10/30/intels-stock-crashes-knocking-12b-from-governments-stake/"
+    },
+    {
+      "title": "StockTitan: Stock Market Today October 30, 2026: Tech Stocks Fall as Intel Has Its Worst Day in Decades",
+      "url": "https://www.stocktitan.net/articles/stock-market-today-live-october-30-2026"
+    }
+  ]
+}
