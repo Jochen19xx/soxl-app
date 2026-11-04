@@ -1,0 +1,37 @@
+{
+  "trading_day": "2026-11-03",
+  "created": "2026-11-04T05:58:41Z",
+  "headline": "SOXL steigt 7,3 % – Chipwerte erholen sich am Wahltag",
+  "close": 73.12,
+  "change_pct": 7.26,
+  "paragraphs": [
+    "Nach dem starken Rückgang der Vortage ging es für Chipaktien am Dienstag wieder nach oben. SOXL stieg um 7,3 % auf 73,12 Dollar. Der Chip-Index aus Philadelphia legte 2,6 % zu, alle 30 enthaltenen Werte lagen im Plus. Der Nasdaq gewann 0,8 %, der S&P 500 0,4 %. Der Dow gab 0,4 % nach, weil Apple nach einem schwachen Ausblick fiel.",
+    "Viele Anleger kauften nach dem Ausverkauf wieder zu. Gleichzeitig warteten alle auf die Ergebnisse der US-Zwischenwahlen, die über die Mehrheiten im Kongress entscheiden. Vor den Zahlen von AMD am Abend stieg die Aktie bereits deutlich. Nach Börsenschluss meldete AMD einen Umsatz von 13,4 Milliarden Dollar, 45 % mehr als vor einem Jahr. Das Geschäft mit Rechenzentren verdoppelte sich fast. Für das Schlussquartal erwartet AMD rund 17 Milliarden Dollar Umsatz. Die Aktie stieg nachbörslich um rund 5 %.",
+    "Alle Top-10-Werte legten zu: AMD (+3,7 %), Texas Instruments (+3,5 %), Broadcom (+3,1 %), Micron (+2,6 %), Nvidia (+2,3 %) und NXP (+2,2 %). Intel stieg nur um 1,0 %."
+  ],
+  "drivers": [
+    "Gegenbewegung nach dem starken Ausverkauf",
+    "Alle 30 Werte im Chip-Index im Plus",
+    "Starke Zahlen und guter Ausblick von AMD nach Börsenschluss",
+    "Warten auf die Ergebnisse der US-Zwischenwahlen"
+  ],
+  "outlook": "Die Wahlergebnisse und die AMD-Zahlen dürften den Handel am 4. November prägen. Am 6. November folgt der US-Arbeitsmarktbericht für Oktober.",
+  "sources": [
+    {
+      "title": "TradingKey: Nasdaq Snaps Three-Day Losing Streak, SOX Rises 2.6%; Chip Stocks Rebound Strongly",
+      "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262269485-us-stocks-today-close-nasdaq-rises-midterm-elections-tradingkey"
+    },
+    {
+      "title": "TradingKey: Today's Market Recap: AMD Surges Nearly 5% After Hours, AI Stock Rally Lifts Nasdaq",
+      "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262271579-amd-surge-after-hours-ai-rebound-nasdaq-midterm-elections-tradingkey"
+    },
+    {
+      "title": "TipRanks: Why Chip Stocks AMD, Nvidia, and Intel Are Rebounding in Premarket After Steep Losses",
+      "url": "https://www.tipranks.com/news/why-chip-stocks-amd-nvidia-and-intel-stocks-are-rebounding-in-premarket-after-steep-losses-november-3"
+    },
+    {
+      "title": "CNBC: S&P 500 snaps 3-day skid on Election Day as chip stocks rebound",
+      "url": "https://www.cnbc.com/2026/11/02/stock-market-today-live-updates.html"
+    }
+  ]
+}

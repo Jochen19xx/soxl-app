@@ -1,5 +1,10 @@
 [
   {
+    "trading_day": "2026-11-03",
+    "headline": "SOXL steigt 7,3 % – Chipwerte erholen sich am Wahltag",
+    "change_pct": 7.26
+  },
+  {
     "trading_day": "2026-11-02",
     "headline": "SOXL fällt 11,5 % – Ausverkauf bei Chipwerten geht weiter",
     "change_pct": -11.52
