@@ -1,37 +1,38 @@
 {
-  "trading_day": "2026-11-03",
-  "created": "2026-11-04T05:58:41Z",
-  "headline": "SOXL steigt 7,3 % – Chipwerte erholen sich am Wahltag",
-  "close": 73.12,
-  "change_pct": 7.26,
+  "trading_day": "2026-11-04",
+  "created": "2026-11-05T05:59:07Z",
+  "headline": "SOXL fällt 8,8 % – Wahlausgang weckt Sorgen um neue Rechenzentren",
+  "close": 66.68,
+  "change_pct": -8.81,
   "paragraphs": [
-    "Nach dem starken Rückgang der Vortage ging es für Chipaktien am Dienstag wieder nach oben. SOXL stieg um 7,3 % auf 73,12 Dollar. Der Chip-Index aus Philadelphia legte 2,6 % zu, alle 30 enthaltenen Werte lagen im Plus. Der Nasdaq gewann 0,8 %, der S&P 500 0,4 %. Der Dow gab 0,4 % nach, weil Apple nach einem schwachen Ausblick fiel.",
-    "Viele Anleger kauften nach dem Ausverkauf wieder zu. Gleichzeitig warteten alle auf die Ergebnisse der US-Zwischenwahlen, die über die Mehrheiten im Kongress entscheiden. Vor den Zahlen von AMD am Abend stieg die Aktie bereits deutlich. Nach Börsenschluss meldete AMD einen Umsatz von 13,4 Milliarden Dollar, 45 % mehr als vor einem Jahr. Das Geschäft mit Rechenzentren verdoppelte sich fast. Für das Schlussquartal erwartet AMD rund 17 Milliarden Dollar Umsatz. Die Aktie stieg nachbörslich um rund 5 %.",
-    "Alle Top-10-Werte legten zu: AMD (+3,7 %), Texas Instruments (+3,5 %), Broadcom (+3,1 %), Micron (+2,6 %), Nvidia (+2,3 %) und NXP (+2,2 %). Intel stieg nur um 1,0 %."
+    "Während der breite Markt nach den US-Zwischenwahlen kräftig stieg, fielen Chipaktien deutlich. SOXL verlor 8,8 % auf 66,68 Dollar, das Tagestief lag bei 62,23 Dollar. Der Chip-Index aus Philadelphia gab 3,1 % nach. Der Dow stieg dagegen um 3,0 %, der S&P 500 um 1,6 % und der Nasdaq um 1,4 %.",
+    "Die Demokraten gewannen beide Kammern des Kongresses und auch den Gouverneursposten in Texas. Die neue Gouverneurin will vorerst keine neuen Rechenzentren mehr genehmigen. Texas hat rund ein Viertel der US-Rechenzentrumsleistung. Anleger fürchten deshalb, dass der Ausbau von KI-Rechenzentren langsamer wird, und verkauften Chip- und Speicherwerte. Große Technologiekonzerne wie Apple, Microsoft und Amazon stiegen dagegen kräftig. Der Ölpreis fiel um über 8 %.",
+    "Bei den Top 10 fielen Micron (−7,0 %), KLA (−4,1 %), Intel (−3,8 %), Analog Devices (−3,2 %) und Nvidia (−3,2 %). Qualcomm stieg vor seinen Zahlen um 5,3 %, AMD legte nach starken Quartalszahlen 1,0 % zu."
   ],
   "drivers": [
-    "Gegenbewegung nach dem starken Ausverkauf",
-    "Alle 30 Werte im Chip-Index im Plus",
-    "Starke Zahlen und guter Ausblick von AMD nach Börsenschluss",
-    "Warten auf die Ergebnisse der US-Zwischenwahlen"
+    "Demokraten gewinnen beide Kammern des Kongresses",
+    "Texas will vorerst keine neuen Rechenzentren genehmigen",
+    "Sorge um langsameren Ausbau von KI-Rechenzentren",
+    "Speicherwerte wie Micron besonders schwach",
+    "Breiter Markt und große Tech-Konzerne steigen kräftig"
   ],
-  "outlook": "Die Wahlergebnisse und die AMD-Zahlen dürften den Handel am 4. November prägen. Am 6. November folgt der US-Arbeitsmarktbericht für Oktober.",
+  "outlook": "Nachbörslich fiel Qualcomm nach einem schwachen Ausblick um gut 6 %. Am 6. November folgt der US-Arbeitsmarktbericht für Oktober.",
   "sources": [
     {
-      "title": "TradingKey: Nasdaq Snaps Three-Day Losing Streak, SOX Rises 2.6%; Chip Stocks Rebound Strongly",
-      "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262269485-us-stocks-today-close-nasdaq-rises-midterm-elections-tradingkey"
+      "title": "Capp Notes: Closing Look — Wednesday, November 4, 2026",
+      "url": "https://cappnotes.substack.com/p/closing-look-wednesday-november-4"
     },
     {
-      "title": "TradingKey: Today's Market Recap: AMD Surges Nearly 5% After Hours, AI Stock Rally Lifts Nasdaq",
-      "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262271579-amd-surge-after-hours-ai-rebound-nasdaq-midterm-elections-tradingkey"
+      "title": "The Motley Fool: Why Micron Stock Is Falling Today",
+      "url": "https://fool.com/investing/2026/11/04/why-micron-stock-is-falling-today"
     },
     {
-      "title": "TipRanks: Why Chip Stocks AMD, Nvidia, and Intel Are Rebounding in Premarket After Steep Losses",
-      "url": "https://www.tipranks.com/news/why-chip-stocks-amd-nvidia-and-intel-stocks-are-rebounding-in-premarket-after-steep-losses-november-3"
+      "title": "Yahoo Finance: Dow surges 1,500 points in best day of 2026 after historic midterm election",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-dow-rallies-1500-points-sp-500-nasdaq-midterm-elections-democrats-sweep-201207340.html"
     },
     {
-      "title": "CNBC: S&P 500 snaps 3-day skid on Election Day as chip stocks rebound",
-      "url": "https://www.cnbc.com/2026/11/02/stock-market-today-live-updates.html"
+      "title": "StockTitan: The Dow Soared in the Stock Market Today, November 4, 2026, After Democrats Won Congress and Oil Fell",
+      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-4-2026"
     }
   ]
 }
