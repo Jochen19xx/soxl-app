@@ -1,38 +1,38 @@
 {
-  "trading_day": "2026-11-04",
-  "created": "2026-11-05T05:59:07Z",
-  "headline": "SOXL fällt 8,8 % – Wahlausgang weckt Sorgen um neue Rechenzentren",
-  "close": 66.68,
-  "change_pct": -8.81,
+  "trading_day": "2026-11-05",
+  "created": "2026-11-06T05:58:33Z",
+  "headline": "SOXL bricht um 38,7 % ein – Chip-Index verliert mehr als 12 %",
+  "close": 40.87,
+  "change_pct": -38.71,
   "paragraphs": [
-    "Während der breite Markt nach den US-Zwischenwahlen kräftig stieg, fielen Chipaktien deutlich. SOXL verlor 8,8 % auf 66,68 Dollar, das Tagestief lag bei 62,23 Dollar. Der Chip-Index aus Philadelphia gab 3,1 % nach. Der Dow stieg dagegen um 3,0 %, der S&P 500 um 1,6 % und der Nasdaq um 1,4 %.",
-    "Die Demokraten gewannen beide Kammern des Kongresses und auch den Gouverneursposten in Texas. Die neue Gouverneurin will vorerst keine neuen Rechenzentren mehr genehmigen. Texas hat rund ein Viertel der US-Rechenzentrumsleistung. Anleger fürchten deshalb, dass der Ausbau von KI-Rechenzentren langsamer wird, und verkauften Chip- und Speicherwerte. Große Technologiekonzerne wie Apple, Microsoft und Amazon stiegen dagegen kräftig. Der Ölpreis fiel um über 8 %.",
-    "Bei den Top 10 fielen Micron (−7,0 %), KLA (−4,1 %), Intel (−3,8 %), Analog Devices (−3,2 %) und Nvidia (−3,2 %). Qualcomm stieg vor seinen Zahlen um 5,3 %, AMD legte nach starken Quartalszahlen 1,0 % zu."
+    "Der Donnerstag war für Chipaktien ein historisch schlechter Tag. SOXL fiel um 38,7 % auf 40,87 Dollar und schloss fast auf dem Tagestief von 40,59 Dollar. Der Chip-Index aus Philadelphia verlor mehr als 12 %. Auch der breite Markt brach ein: Nasdaq minus 5,5 %, S&P 500 minus 4,4 %, Dow minus 3,4 %. Der Nasdaq liegt damit rund 12 % unter seinem Rekord vom 6. Oktober.",
+    "Nach dem Wahlsieg der Demokraten fürchten Anleger strengere Regeln für neue Rechenzentren. Steigende Strompreise waren im Wahlkampf ein großes Thema, und einige Politiker fordern Pausen beim Bau. Dazu kamen schwache Aussichten von Qualcomm und gemischte Zahlen von Arm. Viele erwarten nun, dass der Ausbau der KI-Infrastruktur langsamer und teurer wird. Die Kursgewinne vom Vortag waren damit komplett weg.",
+    "Alle Top-10-Werte fielen stark: Micron (−17,5 %), AMD (−17,3 %), KLA (−13,4 %), Analog Devices (−11,1 %), Texas Instruments (−10,7 %), Broadcom (−10,4 %) und Intel (−10,3 %). Nvidia verlor 9,3 %, Qualcomm 9,5 %."
   ],
   "drivers": [
-    "Demokraten gewinnen beide Kammern des Kongresses",
-    "Texas will vorerst keine neuen Rechenzentren genehmigen",
-    "Sorge um langsameren Ausbau von KI-Rechenzentren",
-    "Speicherwerte wie Micron besonders schwach",
-    "Breiter Markt und große Tech-Konzerne steigen kräftig"
+    "Sorge vor strengeren Regeln für Rechenzentren nach dem Wahlsieg der Demokraten",
+    "Schwacher Ausblick von Qualcomm, gemischte Zahlen von Arm",
+    "Erwartung eines langsameren KI-Ausbaus",
+    "Chip-Index fällt um mehr als 12 %",
+    "Nasdaq rutscht in eine Korrektur"
   ],
-  "outlook": "Nachbörslich fiel Qualcomm nach einem schwachen Ausblick um gut 6 %. Am 6. November folgt der US-Arbeitsmarktbericht für Oktober.",
+  "outlook": "Am 6. November kommt der US-Arbeitsmarktbericht für Oktober. Die nächste Zinsentscheidung der US-Notenbank folgt am 8. und 9. Dezember, eine Erhöhung gilt laut Marktdaten als wahrscheinlich.",
   "sources": [
     {
-      "title": "Capp Notes: Closing Look — Wednesday, November 4, 2026",
-      "url": "https://cappnotes.substack.com/p/closing-look-wednesday-november-4"
+      "title": "Fox Business: Stocks plunge as Dem midterm sweep fuels AI regulatory concerns",
+      "url": "https://www.foxbusiness.com/markets/stocks-nov-5-2026"
     },
     {
-      "title": "The Motley Fool: Why Micron Stock Is Falling Today",
-      "url": "https://fool.com/investing/2026/11/04/why-micron-stock-is-falling-today"
+      "title": "Capp Notes: Closing Look — Thursday, November 5, 2026",
+      "url": "https://cappnotes.substack.com/p/closing-look-thursday-november-5"
     },
     {
-      "title": "Yahoo Finance: Dow surges 1,500 points in best day of 2026 after historic midterm election",
-      "url": "https://finance.yahoo.com/markets/live/stock-market-today-dow-rallies-1500-points-sp-500-nasdaq-midterm-elections-democrats-sweep-201207340.html"
+      "title": "Yahoo Finance: Dow plunges 1,800 points, Nasdaq enters correction in AI trade meltdown",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-plunge-chip-stocks-melt-down-193726491.html"
     },
     {
-      "title": "StockTitan: The Dow Soared in the Stock Market Today, November 4, 2026, After Democrats Won Congress and Oil Fell",
-      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-4-2026"
+      "title": "Bloomberg: Semiconductor Stocks Plunge as AI Trade Weakens After US Election Results",
+      "url": "https://www.bloomberg.com/news/articles/2026-11-05/chips-selloff-worsens-as-fears-about-ai-trade-grip-stock-market"
     }
   ]
 }

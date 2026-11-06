@@ -1,0 +1,38 @@
+{
+  "trading_day": "2026-11-05",
+  "created": "2026-11-06T05:58:33Z",
+  "headline": "SOXL bricht um 38,7 % ein – Chip-Index verliert mehr als 12 %",
+  "close": 40.87,
+  "change_pct": -38.71,
+  "paragraphs": [
+    "Der Donnerstag war für Chipaktien ein historisch schlechter Tag. SOXL fiel um 38,7 % auf 40,87 Dollar und schloss fast auf dem Tagestief von 40,59 Dollar. Der Chip-Index aus Philadelphia verlor mehr als 12 %. Auch der breite Markt brach ein: Nasdaq minus 5,5 %, S&P 500 minus 4,4 %, Dow minus 3,4 %. Der Nasdaq liegt damit rund 12 % unter seinem Rekord vom 6. Oktober.",
+    "Nach dem Wahlsieg der Demokraten fürchten Anleger strengere Regeln für neue Rechenzentren. Steigende Strompreise waren im Wahlkampf ein großes Thema, und einige Politiker fordern Pausen beim Bau. Dazu kamen schwache Aussichten von Qualcomm und gemischte Zahlen von Arm. Viele erwarten nun, dass der Ausbau der KI-Infrastruktur langsamer und teurer wird. Die Kursgewinne vom Vortag waren damit komplett weg.",
+    "Alle Top-10-Werte fielen stark: Micron (−17,5 %), AMD (−17,3 %), KLA (−13,4 %), Analog Devices (−11,1 %), Texas Instruments (−10,7 %), Broadcom (−10,4 %) und Intel (−10,3 %). Nvidia verlor 9,3 %, Qualcomm 9,5 %."
+  ],
+  "drivers": [
+    "Sorge vor strengeren Regeln für Rechenzentren nach dem Wahlsieg der Demokraten",
+    "Schwacher Ausblick von Qualcomm, gemischte Zahlen von Arm",
+    "Erwartung eines langsameren KI-Ausbaus",
+    "Chip-Index fällt um mehr als 12 %",
+    "Nasdaq rutscht in eine Korrektur"
+  ],
+  "outlook": "Am 6. November kommt der US-Arbeitsmarktbericht für Oktober. Die nächste Zinsentscheidung der US-Notenbank folgt am 8. und 9. Dezember, eine Erhöhung gilt laut Marktdaten als wahrscheinlich.",
+  "sources": [
+    {
+      "title": "Fox Business: Stocks plunge as Dem midterm sweep fuels AI regulatory concerns",
+      "url": "https://www.foxbusiness.com/markets/stocks-nov-5-2026"
+    },
+    {
+      "title": "Capp Notes: Closing Look — Thursday, November 5, 2026",
+      "url": "https://cappnotes.substack.com/p/closing-look-thursday-november-5"
+    },
+    {
+      "title": "Yahoo Finance: Dow plunges 1,800 points, Nasdaq enters correction in AI trade meltdown",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-plunge-chip-stocks-melt-down-193726491.html"
+    },
+    {
+      "title": "Bloomberg: Semiconductor Stocks Plunge as AI Trade Weakens After US Election Results",
+      "url": "https://www.bloomberg.com/news/articles/2026-11-05/chips-selloff-worsens-as-fears-about-ai-trade-grip-stock-market"
+    }
+  ]
+}
