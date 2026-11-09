@@ -1,38 +1,37 @@
 {
-  "trading_day": "2026-11-05",
-  "created": "2026-11-06T05:58:33Z",
-  "headline": "SOXL bricht um 38,7 % ein – Chip-Index verliert mehr als 12 %",
-  "close": 40.87,
-  "change_pct": -38.71,
+  "trading_day": "2026-11-06",
+  "created": "2026-11-09T05:58:48Z",
+  "headline": "SOXL steigt 12,5 % – Erholung nach dem Rekord-Einbruch",
+  "close": 45.97,
+  "change_pct": 12.48,
   "paragraphs": [
-    "Der Donnerstag war für Chipaktien ein historisch schlechter Tag. SOXL fiel um 38,7 % auf 40,87 Dollar und schloss fast auf dem Tagestief von 40,59 Dollar. Der Chip-Index aus Philadelphia verlor mehr als 12 %. Auch der breite Markt brach ein: Nasdaq minus 5,5 %, S&P 500 minus 4,4 %, Dow minus 3,4 %. Der Nasdaq liegt damit rund 12 % unter seinem Rekord vom 6. Oktober.",
-    "Nach dem Wahlsieg der Demokraten fürchten Anleger strengere Regeln für neue Rechenzentren. Steigende Strompreise waren im Wahlkampf ein großes Thema, und einige Politiker fordern Pausen beim Bau. Dazu kamen schwache Aussichten von Qualcomm und gemischte Zahlen von Arm. Viele erwarten nun, dass der Ausbau der KI-Infrastruktur langsamer und teurer wird. Die Kursgewinne vom Vortag waren damit komplett weg.",
-    "Alle Top-10-Werte fielen stark: Micron (−17,5 %), AMD (−17,3 %), KLA (−13,4 %), Analog Devices (−11,1 %), Texas Instruments (−10,7 %), Broadcom (−10,4 %) und Intel (−10,3 %). Nvidia verlor 9,3 %, Qualcomm 9,5 %."
+    "Nach dem zweitschwersten Tag in der Geschichte des Chip-Index am Donnerstag (minus 12,25 %) ging es am Freitag wieder nach oben. SOXL stieg um 12,5 % auf 45,97 Dollar. Die großen Chip-Fonds legten rund 3,5 % zu. Der Nasdaq gewann 1,1 %, der S&P 500 0,3 %, der Dow gab 0,5 % nach.",
+    "Viele Anleger kauften nach dem starken Ausverkauf wieder Chipaktien. Zugleich kam ein sehr starker Arbeitsmarktbericht: Im Oktober entstanden in den USA 165.000 neue Stellen, erwartet waren nur rund 59.000. Die Arbeitslosenquote sank auf 4,1 %. Das spricht für eine robuste Wirtschaft, erhöht aber die Wahrscheinlichkeit einer Zinserhöhung im Dezember auf rund 78 %. Die Zinsen für US-Staatsanleihen stiegen.",
+    "Bei den Top 10 führte AMD (+11,0 %) vor Intel (+7,7 %), KLA (+6,7 %), Qualcomm (+5,5 %) und Micron (+5,1 %). Nvidia stieg um 2,8 %, Broadcom nur um 0,7 %. Texas Instruments gab leicht nach (−0,3 %)."
   ],
   "drivers": [
-    "Sorge vor strengeren Regeln für Rechenzentren nach dem Wahlsieg der Demokraten",
-    "Schwacher Ausblick von Qualcomm, gemischte Zahlen von Arm",
-    "Erwartung eines langsameren KI-Ausbaus",
-    "Chip-Index fällt um mehr als 12 %",
-    "Nasdaq rutscht in eine Korrektur"
+    "Gegenbewegung nach dem Rekord-Einbruch vom Donnerstag",
+    "Arbeitsmarkt mit viel mehr neuen Stellen als erwartet",
+    "Zinserhöhung im Dezember wird wahrscheinlicher",
+    "Lam Research kündigt Aktienrückkauf über 25 Milliarden Dollar an"
   ],
-  "outlook": "Am 6. November kommt der US-Arbeitsmarktbericht für Oktober. Die nächste Zinsentscheidung der US-Notenbank folgt am 8. und 9. Dezember, eine Erhöhung gilt laut Marktdaten als wahrscheinlich.",
+  "outlook": "Am 10. November kommen die US-Verbraucherpreise für Oktober, am 13. November die Erzeugerpreise. Die nächste Zinsentscheidung der US-Notenbank folgt am 8. und 9. Dezember.",
   "sources": [
     {
-      "title": "Fox Business: Stocks plunge as Dem midterm sweep fuels AI regulatory concerns",
-      "url": "https://www.foxbusiness.com/markets/stocks-nov-5-2026"
+      "title": "Capp Notes: Closing Look — Friday, November 6, 2026",
+      "url": "https://cappnotes.substack.com/p/closing-look-friday-november-6-2026"
     },
     {
-      "title": "Capp Notes: Closing Look — Thursday, November 5, 2026",
-      "url": "https://cappnotes.substack.com/p/closing-look-thursday-november-5"
+      "title": "Yahoo Finance: Chip Stocks Just Had Their Second-Worst Day on Record",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/chip-stocks-just-had-second-140243882.html"
     },
     {
-      "title": "Yahoo Finance: Dow plunges 1,800 points, Nasdaq enters correction in AI trade meltdown",
-      "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-plunge-chip-stocks-melt-down-193726491.html"
+      "title": "Yahoo Finance: Nasdaq and S&P 500 rebound, Dow slips to cap bruising week for AI stocks",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-november-6-dow-sp-500-nasdaq-jobs-report-earnings-135953863.html"
     },
     {
-      "title": "Bloomberg: Semiconductor Stocks Plunge as AI Trade Weakens After US Election Results",
-      "url": "https://www.bloomberg.com/news/articles/2026-11-05/chips-selloff-worsens-as-fears-about-ai-trade-grip-stock-market"
+      "title": "Fox Business: Nasdaq rises as AI and chip stocks recover after post-midterm sell-off",
+      "url": "https://www.foxbusiness.com/markets/stocks-11-6-2026"
     }
   ]
 }

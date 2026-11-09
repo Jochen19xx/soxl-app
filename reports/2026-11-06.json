@@ -1,0 +1,37 @@
+{
+  "trading_day": "2026-11-06",
+  "created": "2026-11-09T05:58:48Z",
+  "headline": "SOXL steigt 12,5 % – Erholung nach dem Rekord-Einbruch",
+  "close": 45.97,
+  "change_pct": 12.48,
+  "paragraphs": [
+    "Nach dem zweitschwersten Tag in der Geschichte des Chip-Index am Donnerstag (minus 12,25 %) ging es am Freitag wieder nach oben. SOXL stieg um 12,5 % auf 45,97 Dollar. Die großen Chip-Fonds legten rund 3,5 % zu. Der Nasdaq gewann 1,1 %, der S&P 500 0,3 %, der Dow gab 0,5 % nach.",
+    "Viele Anleger kauften nach dem starken Ausverkauf wieder Chipaktien. Zugleich kam ein sehr starker Arbeitsmarktbericht: Im Oktober entstanden in den USA 165.000 neue Stellen, erwartet waren nur rund 59.000. Die Arbeitslosenquote sank auf 4,1 %. Das spricht für eine robuste Wirtschaft, erhöht aber die Wahrscheinlichkeit einer Zinserhöhung im Dezember auf rund 78 %. Die Zinsen für US-Staatsanleihen stiegen.",
+    "Bei den Top 10 führte AMD (+11,0 %) vor Intel (+7,7 %), KLA (+6,7 %), Qualcomm (+5,5 %) und Micron (+5,1 %). Nvidia stieg um 2,8 %, Broadcom nur um 0,7 %. Texas Instruments gab leicht nach (−0,3 %)."
+  ],
+  "drivers": [
+    "Gegenbewegung nach dem Rekord-Einbruch vom Donnerstag",
+    "Arbeitsmarkt mit viel mehr neuen Stellen als erwartet",
+    "Zinserhöhung im Dezember wird wahrscheinlicher",
+    "Lam Research kündigt Aktienrückkauf über 25 Milliarden Dollar an"
+  ],
+  "outlook": "Am 10. November kommen die US-Verbraucherpreise für Oktober, am 13. November die Erzeugerpreise. Die nächste Zinsentscheidung der US-Notenbank folgt am 8. und 9. Dezember.",
+  "sources": [
+    {
+      "title": "Capp Notes: Closing Look — Friday, November 6, 2026",
+      "url": "https://cappnotes.substack.com/p/closing-look-friday-november-6-2026"
+    },
+    {
+      "title": "Yahoo Finance: Chip Stocks Just Had Their Second-Worst Day on Record",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/chip-stocks-just-had-second-140243882.html"
+    },
+    {
+      "title": "Yahoo Finance: Nasdaq and S&P 500 rebound, Dow slips to cap bruising week for AI stocks",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-november-6-dow-sp-500-nasdaq-jobs-report-earnings-135953863.html"
+    },
+    {
+      "title": "Fox Business: Nasdaq rises as AI and chip stocks recover after post-midterm sell-off",
+      "url": "https://www.foxbusiness.com/markets/stocks-11-6-2026"
+    }
+  ]
+}
