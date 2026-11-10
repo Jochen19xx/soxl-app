@@ -1,37 +1,37 @@
 {
-  "trading_day": "2026-11-06",
-  "created": "2026-11-09T05:58:48Z",
-  "headline": "SOXL steigt 12,5 % – Erholung nach dem Rekord-Einbruch",
-  "close": 45.97,
-  "change_pct": 12.48,
+  "trading_day": "2026-11-09",
+  "created": "2026-11-10T06:03:11Z",
+  "headline": "SOXL springt 22,3 % – fallender Ölpreis und AMD-Rally treiben Chipwerte",
+  "close": 56.2,
+  "change_pct": 22.25,
   "paragraphs": [
-    "Nach dem zweitschwersten Tag in der Geschichte des Chip-Index am Donnerstag (minus 12,25 %) ging es am Freitag wieder nach oben. SOXL stieg um 12,5 % auf 45,97 Dollar. Die großen Chip-Fonds legten rund 3,5 % zu. Der Nasdaq gewann 1,1 %, der S&P 500 0,3 %, der Dow gab 0,5 % nach.",
-    "Viele Anleger kauften nach dem starken Ausverkauf wieder Chipaktien. Zugleich kam ein sehr starker Arbeitsmarktbericht: Im Oktober entstanden in den USA 165.000 neue Stellen, erwartet waren nur rund 59.000. Die Arbeitslosenquote sank auf 4,1 %. Das spricht für eine robuste Wirtschaft, erhöht aber die Wahrscheinlichkeit einer Zinserhöhung im Dezember auf rund 78 %. Die Zinsen für US-Staatsanleihen stiegen.",
-    "Bei den Top 10 führte AMD (+11,0 %) vor Intel (+7,7 %), KLA (+6,7 %), Qualcomm (+5,5 %) und Micron (+5,1 %). Nvidia stieg um 2,8 %, Broadcom nur um 0,7 %. Texas Instruments gab leicht nach (−0,3 %)."
+    "SOXL legte zum Wochenstart um 22,3 % auf 56,20 Dollar zu und schloss fast auf dem Tageshoch von 57,50 Dollar. Der große Chip-Fonds SOXX stieg um 7,5 %. Auch der breite Markt erholte sich kräftig: Nasdaq und S&P 500 gewannen jeweils mehr als 2 %, der Dow rund 1.100 Punkte.",
+    "Rückenwind kam vom Ölpreis, der um 4 bis 6 % fiel. US-Präsident Trump hielt neue Angriffe auf Iran für sehr unwahrscheinlich, solange die Gespräche vorankommen. Das dämpfte die Sorge vor hoher Inflation. AMD stieg nach einer besseren Einstufung durch die Bank Oppenheimer um 13,3 %. Nvidia fiel dagegen um 4,3 %: Der Verwaltungsrat lässt eine private Beziehung von Firmenchef Jensen Huang unabhängig prüfen.",
+    "Bis auf Nvidia lagen alle Top-10-Werte im Plus: AMD (+13,3 %), KLA (+9,3 %), Broadcom (+8,8 %), Analog Devices (+8,6 %), Texas Instruments (+6,6 %), Micron (+6,3 %) und Intel (+5,5 %)."
   ],
   "drivers": [
-    "Gegenbewegung nach dem Rekord-Einbruch vom Donnerstag",
-    "Arbeitsmarkt mit viel mehr neuen Stellen als erwartet",
-    "Zinserhöhung im Dezember wird wahrscheinlicher",
-    "Lam Research kündigt Aktienrückkauf über 25 Milliarden Dollar an"
+    "Deutlich fallender Ölpreis dank Hoffnung auf Entspannung mit Iran",
+    "AMD mit besserer Einstufung durch Oppenheimer",
+    "Weitere Erholung nach dem Einbruch der Vorwoche",
+    "Nvidia fällt wegen interner Prüfung des Firmenchefs"
   ],
   "outlook": "Am 10. November kommen die US-Verbraucherpreise für Oktober, am 13. November die Erzeugerpreise. Die nächste Zinsentscheidung der US-Notenbank folgt am 8. und 9. Dezember.",
   "sources": [
     {
-      "title": "Capp Notes: Closing Look — Friday, November 6, 2026",
-      "url": "https://cappnotes.substack.com/p/closing-look-friday-november-6-2026"
+      "title": "Capp Notes: Closing Look — Monday, November 9, 2026",
+      "url": "https://cappnotes.substack.com/p/closing-look-monday-november-9-2026"
     },
     {
-      "title": "Yahoo Finance: Chip Stocks Just Had Their Second-Worst Day on Record",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/chip-stocks-just-had-second-140243882.html"
+      "title": "24/7 Wall St.: NVIDIA Falls 5% as Board Probes Jensen Huang's Ties; AMD Rises",
+      "url": "https://247wallst.com/investing/2026/11/09/nvidia-falls-5-as-board-probes-jensen-huangs-ties-to-alleged-chinese-spy-amd-rises-4-intel-holds-steady/"
     },
     {
-      "title": "Yahoo Finance: Nasdaq and S&P 500 rebound, Dow slips to cap bruising week for AI stocks",
-      "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-november-6-dow-sp-500-nasdaq-jobs-report-earnings-135953863.html"
+      "title": "TheStreet: Stock Market Today (Nov. 9, 2026): Nasdaq, S&P 500 rise over 2% amid oil backslide, tech comeback",
+      "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-09-202"
     },
     {
-      "title": "Fox Business: Nasdaq rises as AI and chip stocks recover after post-midterm sell-off",
-      "url": "https://www.foxbusiness.com/markets/stocks-11-6-2026"
+      "title": "Vista Partners: Stock Market Today, November 9, 2026: Dow Jumps 1,104 Points, Nasdaq Rallies As Oil's Slide Fuels Breadth",
+      "url": "https://vistapglobal.com/stock-market-today-november-9-2026-dow-jumps-1104-points-nasdaq-rallies-as-oils-slide-fuels-breadth-amwl-ant-eprx-googl-modd-nvda-ser-spcx/"
     }
   ]
 }
