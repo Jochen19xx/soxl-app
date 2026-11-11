@@ -1,5 +1,10 @@
 [
   {
+    "trading_day": "2026-11-10",
+    "headline": "SOXL fast unverändert – hohe Inflation und Nvidia-Schwäche bremsen",
+    "change_pct": -0.25
+  },
+  {
     "trading_day": "2026-11-09",
     "headline": "SOXL springt 22,3 % – fallender Ölpreis und AMD-Rally treiben Chipwerte",
     "change_pct": 22.25

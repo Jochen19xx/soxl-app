@@ -1,0 +1,37 @@
+{
+  "trading_day": "2026-11-10",
+  "created": "2026-11-11T05:58:34Z",
+  "headline": "SOXL fast unverändert – hohe Inflation und Nvidia-Schwäche bremsen",
+  "close": 56.06,
+  "change_pct": -0.25,
+  "paragraphs": [
+    "SOXL schloss am Dienstag mit minus 0,25 % bei 56,06 Dollar nahezu unverändert. Im Tagesverlauf ging es kräftig auf und ab: vom Tief bei 52,04 Dollar bis zum Hoch bei 59,66 Dollar. Die großen US-Indizes gaben leicht nach, Technologie war der schwächste Bereich.",
+    "Die Verbraucherpreise stiegen im Oktober um 0,4 % zum Vormonat, erwartet waren 0,3 %. Auch ohne Energie und Lebensmittel lag der Anstieg über den Erwartungen. Damit gilt eine Zinserhöhung der US-Notenbank im Dezember nun als sehr wahrscheinlich, Marktdaten zeigen fast 90 %. Nvidia fiel den zweiten Tag in Folge, diesmal um 5,5 %, weil die interne Prüfung rund um Firmenchef Jensen Huang die Anleger weiter verunsichert.",
+    "Bei den Top 10 war das Bild gemischt. Broadcom stieg um 3,9 %, nachdem die Firma sich an einer Finanzierungsrunde von Anthropic beteiligt hat. Texas Instruments (+1,6 %), AMD (+1,3 %) und Qualcomm (+1,2 %) legten ebenfalls zu. Neben Nvidia gaben Monolithic Power (−2,2 %), Intel (−2,1 %) und Micron (−1,1 %) nach."
+  ],
+  "drivers": [
+    "Inflation im Oktober höher als erwartet",
+    "Zinserhöhung im Dezember gilt als sehr wahrscheinlich",
+    "Nvidia fällt erneut wegen der Prüfung rund um den Firmenchef",
+    "Broadcom steigt dank Beteiligung an Anthropic-Finanzierung"
+  ],
+  "outlook": "Am 12. November legt Applied Materials Quartalszahlen vor, am 13. November kommen die US-Erzeugerpreise. Nvidia berichtet am 17. November.",
+  "sources": [
+    {
+      "title": "Capp Notes: Closing Look — Tuesday, November 10, 2026",
+      "url": "https://cappnotes.substack.com/p/closing-look-tuesday-november-10"
+    },
+    {
+      "title": "Yahoo Finance: Dow, S&P 500, Nasdaq slip as hot CPI fuels rate hike odds, Nvidia stock sinks",
+      "url": "https://finance.yahoo.com/markets/article/stock-market-today-tuesday-november-10-dow-sp-500-nasdaq-inflation-data-cpi-090627830.html"
+    },
+    {
+      "title": "The Motley Fool: Nvidia Stock Plunges 5.5% as CEO Scandal Overshadows Its Upcoming Earnings Report",
+      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/10/stock-market-today-nov-10-nvidia-stock-plunges-5-5-as-ceo-scandal-overshadows-its-upcoming-earnings-report/"
+    },
+    {
+      "title": "StockTitan: The Stock Market Today, November 10, 2026, Closed Lower on the Day BLS Data Show Core Prices Rising Again",
+      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-10-2026"
+    }
+  ]
+}
