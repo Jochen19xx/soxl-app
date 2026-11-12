@@ -1,37 +1,33 @@
 {
-  "trading_day": "2026-11-10",
-  "created": "2026-11-11T05:58:34Z",
-  "headline": "SOXL fast unverändert – hohe Inflation und Nvidia-Schwäche bremsen",
-  "close": 56.06,
-  "change_pct": -0.25,
+  "trading_day": "2026-11-11",
+  "created": "2026-11-12T05:58:38Z",
+  "headline": "SOXL steigt 17,8 % – starke CoreWeave-Zahlen beleben KI-Werte",
+  "close": 66.03,
+  "change_pct": 17.78,
   "paragraphs": [
-    "SOXL schloss am Dienstag mit minus 0,25 % bei 56,06 Dollar nahezu unverändert. Im Tagesverlauf ging es kräftig auf und ab: vom Tief bei 52,04 Dollar bis zum Hoch bei 59,66 Dollar. Die großen US-Indizes gaben leicht nach, Technologie war der schwächste Bereich.",
-    "Die Verbraucherpreise stiegen im Oktober um 0,4 % zum Vormonat, erwartet waren 0,3 %. Auch ohne Energie und Lebensmittel lag der Anstieg über den Erwartungen. Damit gilt eine Zinserhöhung der US-Notenbank im Dezember nun als sehr wahrscheinlich, Marktdaten zeigen fast 90 %. Nvidia fiel den zweiten Tag in Folge, diesmal um 5,5 %, weil die interne Prüfung rund um Firmenchef Jensen Huang die Anleger weiter verunsichert.",
-    "Bei den Top 10 war das Bild gemischt. Broadcom stieg um 3,9 %, nachdem die Firma sich an einer Finanzierungsrunde von Anthropic beteiligt hat. Texas Instruments (+1,6 %), AMD (+1,3 %) und Qualcomm (+1,2 %) legten ebenfalls zu. Neben Nvidia gaben Monolithic Power (−2,2 %), Intel (−2,1 %) und Micron (−1,1 %) nach."
+    "SOXL legte am Mittwoch um 17,8 % auf 66,03 Dollar zu. Der Chip-Index aus Philadelphia stieg um 5,7 %, alle enthaltenen Werte lagen im Plus. Es war sein höchster Schlusskurs seit dem 3. November. Der Nasdaq gewann 1,6 %, der S&P 500 1,3 % und der Dow 0,5 %.",
+    "Auslöser waren die Zahlen des KI-Rechenzentrumsbetreibers CoreWeave. Er setzte mehr um als erwartet und hob seine Umsatzprognose für 2026 an. Die Aktie stieg um fast 25 %. Das hat die Hoffnung belebt, dass die Nachfrage nach KI-Rechenleistung hoch bleibt. Besonders stark erholten sich Speicherchip-Aktien.",
+    "Alle Top-10-Werte legten zu: Micron (+11,9 %), Intel (+7,5 %), AMD (+7,3 %), KLA (+5,2 %), Analog Devices (+4,0 %) und Broadcom (+4,0 %). Nvidia stieg um 2,9 %. Nach Börsenschluss fiel Nvidia jedoch um rund 8,6 %, nachdem das Wall Street Journal berichtete, der Verwaltungsrat bereite die Ablösung von Firmenchef Jensen Huang vor."
   ],
   "drivers": [
-    "Inflation im Oktober höher als erwartet",
-    "Zinserhöhung im Dezember gilt als sehr wahrscheinlich",
-    "Nvidia fällt erneut wegen der Prüfung rund um den Firmenchef",
-    "Broadcom steigt dank Beteiligung an Anthropic-Finanzierung"
+    "CoreWeave mit starken Zahlen und höherer Prognose",
+    "Kräftige Erholung bei Speicherchip-Aktien",
+    "Alle Werte im Chip-Index im Plus",
+    "Nvidia fällt nachbörslich wegen Berichten über Chefwechsel"
   ],
-  "outlook": "Am 12. November legt Applied Materials Quartalszahlen vor, am 13. November kommen die US-Erzeugerpreise. Nvidia berichtet am 17. November.",
+  "outlook": "Am 12. November legt Applied Materials Quartalszahlen vor, am 13. November kommen die US-Erzeugerpreise. Nvidia berichtet am 17. November, Anthropic soll am 19. November an die Börse gehen.",
   "sources": [
     {
-      "title": "Capp Notes: Closing Look — Tuesday, November 10, 2026",
-      "url": "https://cappnotes.substack.com/p/closing-look-tuesday-november-10"
+      "title": "Capp Notes: Closing Look — Wednesday, November 11, 2026",
+      "url": "https://cappnotes.substack.com/p/closing-look-wednesday-november-11"
     },
     {
-      "title": "Yahoo Finance: Dow, S&P 500, Nasdaq slip as hot CPI fuels rate hike odds, Nvidia stock sinks",
-      "url": "https://finance.yahoo.com/markets/article/stock-market-today-tuesday-november-10-dow-sp-500-nasdaq-inflation-data-cpi-090627830.html"
+      "title": "StockTitan: Tech Stocks Closed Higher in the Stock Market Today, November 11, 2026, Then Nvidia Fell After Hours",
+      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-11-2026"
     },
     {
-      "title": "The Motley Fool: Nvidia Stock Plunges 5.5% as CEO Scandal Overshadows Its Upcoming Earnings Report",
-      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/10/stock-market-today-nov-10-nvidia-stock-plunges-5-5-as-ceo-scandal-overshadows-its-upcoming-earnings-report/"
-    },
-    {
-      "title": "StockTitan: The Stock Market Today, November 10, 2026, Closed Lower on the Day BLS Data Show Core Prices Rising Again",
-      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-10-2026"
+      "title": "The Motley Fool: Nvidia Rebounds as CoreWeave Earnings Reignite the AI Trade",
+      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/11/stock-market-today-nov-11-nvidia-rebounds-as-coreweave-earnings-reignite-the-ai-trade/"
     }
   ]
 }

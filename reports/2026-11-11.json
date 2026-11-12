@@ -1,0 +1,33 @@
+{
+  "trading_day": "2026-11-11",
+  "created": "2026-11-12T05:58:38Z",
+  "headline": "SOXL steigt 17,8 % – starke CoreWeave-Zahlen beleben KI-Werte",
+  "close": 66.03,
+  "change_pct": 17.78,
+  "paragraphs": [
+    "SOXL legte am Mittwoch um 17,8 % auf 66,03 Dollar zu. Der Chip-Index aus Philadelphia stieg um 5,7 %, alle enthaltenen Werte lagen im Plus. Es war sein höchster Schlusskurs seit dem 3. November. Der Nasdaq gewann 1,6 %, der S&P 500 1,3 % und der Dow 0,5 %.",
+    "Auslöser waren die Zahlen des KI-Rechenzentrumsbetreibers CoreWeave. Er setzte mehr um als erwartet und hob seine Umsatzprognose für 2026 an. Die Aktie stieg um fast 25 %. Das hat die Hoffnung belebt, dass die Nachfrage nach KI-Rechenleistung hoch bleibt. Besonders stark erholten sich Speicherchip-Aktien.",
+    "Alle Top-10-Werte legten zu: Micron (+11,9 %), Intel (+7,5 %), AMD (+7,3 %), KLA (+5,2 %), Analog Devices (+4,0 %) und Broadcom (+4,0 %). Nvidia stieg um 2,9 %. Nach Börsenschluss fiel Nvidia jedoch um rund 8,6 %, nachdem das Wall Street Journal berichtete, der Verwaltungsrat bereite die Ablösung von Firmenchef Jensen Huang vor."
+  ],
+  "drivers": [
+    "CoreWeave mit starken Zahlen und höherer Prognose",
+    "Kräftige Erholung bei Speicherchip-Aktien",
+    "Alle Werte im Chip-Index im Plus",
+    "Nvidia fällt nachbörslich wegen Berichten über Chefwechsel"
+  ],
+  "outlook": "Am 12. November legt Applied Materials Quartalszahlen vor, am 13. November kommen die US-Erzeugerpreise. Nvidia berichtet am 17. November, Anthropic soll am 19. November an die Börse gehen.",
+  "sources": [
+    {
+      "title": "Capp Notes: Closing Look — Wednesday, November 11, 2026",
+      "url": "https://cappnotes.substack.com/p/closing-look-wednesday-november-11"
+    },
+    {
+      "title": "StockTitan: Tech Stocks Closed Higher in the Stock Market Today, November 11, 2026, Then Nvidia Fell After Hours",
+      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-11-2026"
+    },
+    {
+      "title": "The Motley Fool: Nvidia Rebounds as CoreWeave Earnings Reignite the AI Trade",
+      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/11/stock-market-today-nov-11-nvidia-rebounds-as-coreweave-earnings-reignite-the-ai-trade/"
+    }
+  ]
+}
