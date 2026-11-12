@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-11-12T05:57:55+00:00",
+  "generated_utc": "2026-11-12T12:52:41+00:00",
   "trading_day": "2026-11-11",
   "soxl": {
     "symbol": "SOXL",
@@ -28,7 +28,7 @@
     {
       "symbol": "AMD",
       "name": "ADVANCED MICRO DEVICES",
-      "weight": 6.7,
+      "weight": 5.8,
       "close": 552.9,
       "change_pct": 7.32,
       "date": "2026-11-11"
@@ -36,31 +36,31 @@
     {
       "symbol": "AVGO",
       "name": "BROADCOM INC",
-      "weight": 5.5,
+      "weight": 4.6,
       "close": 345.22,
       "change_pct": 3.99,
       "date": "2026-11-11"
     },
     {
-      "symbol": "NVDA",
-      "name": "NVIDIA CORP",
-      "weight": 4.7,
-      "close": 173.73,
-      "change_pct": 2.87,
-      "date": "2026-11-11"
-    },
-    {
       "symbol": "MU",
       "name": "MICRON TECHNOLOGY INC",
-      "weight": 4.6,
+      "weight": 4.2,
       "close": 811.3,
       "change_pct": 11.89,
       "date": "2026-11-11"
     },
     {
+      "symbol": "NVDA",
+      "name": "NVIDIA CORP",
+      "weight": 3.9,
+      "close": 173.73,
+      "change_pct": 2.87,
+      "date": "2026-11-11"
+    },
+    {
       "symbol": "INTC",
       "name": "INTEL CORP",
-      "weight": 4,
+      "weight": 3.5,
       "close": 62.5,
       "change_pct": 7.52,
       "date": "2026-11-11"
@@ -68,7 +68,7 @@
     {
       "symbol": "TXN",
       "name": "TEXAS INSTRUMENTS INC",
-      "weight": 3.5,
+      "weight": 3,
       "close": 309.81,
       "change_pct": 3.09,
       "date": "2026-11-11"
@@ -76,7 +76,7 @@
     {
       "symbol": "ADI",
       "name": "ANALOG DEVICES INC",
-      "weight": 3.3,
+      "weight": 2.8,
       "close": 409.08,
       "change_pct": 4.01,
       "date": "2026-11-11"
@@ -84,23 +84,23 @@
     {
       "symbol": "QCOM",
       "name": "QUALCOMM INC",
-      "weight": 3.1,
+      "weight": 2.6,
       "close": 176.57,
       "change_pct": 1.75,
       "date": "2026-11-11"
     },
     {
-      "symbol": "NXPI",
-      "name": "NXP SEMICONDUCTORS NV",
-      "weight": 2.8,
-      "close": 269.51,
-      "change_pct": 3.04,
+      "symbol": "MPWR",
+      "name": "MONOLITHIC POWER SYSTEMS INC",
+      "weight": 2.4,
+      "close": 1478.69,
+      "change_pct": 8.92,
       "date": "2026-11-11"
     },
     {
       "symbol": "KLAC",
       "name": "KLA CORP",
-      "weight": 2.7,
+      "weight": 2.3,
       "close": 161.01,
       "change_pct": 5.24,
       "date": "2026-11-11"
