@@ -1,0 +1,33 @@
+{
+  "trading_day": "2026-11-12",
+  "created": "2026-11-13T05:58:45Z",
+  "headline": "SOXL fast unverändert – Nvidia-Chef Jensen Huang tritt zurück",
+  "close": 65.53,
+  "change_pct": -0.76,
+  "paragraphs": [
+    "SOXL schloss am Donnerstag mit minus 0,8 % bei 65,53 Dollar. Dazwischen lag ein bewegter Tag: Der Kurs startete bei 59,79 Dollar deutlich im Minus und stieg bis auf 68,91 Dollar, bevor er wieder nachgab. Die großen US-Indizes verloren jeweils rund 0,3 bis 0,4 %.",
+    "Vor Börsenbeginn gab Nvidia bekannt, dass Firmenchef Jensen Huang mit sofortiger Wirkung zurücktritt. Finanzchefin Colette Kress übernimmt vorübergehend die Leitung. Die Aktie lag zeitweise mehr als 8 % im Minus und schloss mit minus 4,3 %. AMD (+5,9 %) und Broadcom (+5,5 %) stiegen dagegen kräftig, weil Anleger darauf setzen, dass sie Marktanteile gewinnen könnten. AMD erhielt zudem eine bessere Einstufung durch William Blair.",
+    "Belastend wirkten steigende Zinsen: Die Rendite zehnjähriger US-Staatsanleihen stieg wieder über 5 %, eine Zinserhöhung im Dezember gilt als sicher. Bei den Top 10 gaben neben Nvidia auch KLA (−2,3 %), Monolithic Power (−2,1 %), Intel (−2,1 %) und Micron (−1,6 %) nach. Nach Börsenschluss meldete Applied Materials einen Rekordumsatz."
+  ],
+  "drivers": [
+    "Rücktritt von Nvidia-Chef Jensen Huang",
+    "AMD und Broadcom profitieren, Nvidia fällt",
+    "Rendite zehnjähriger US-Anleihen wieder über 5 %",
+    "Zinserhöhung im Dezember gilt als sicher"
+  ],
+  "outlook": "Am 13. November kommen die US-Erzeugerpreise. Nvidia legt am 17. November Quartalszahlen vor, Anthropic soll am 19. November an die Börse gehen.",
+  "sources": [
+    {
+      "title": "Capp Notes: Closing Look — Thursday, November 12, 2026",
+      "url": "https://cappnotes.substack.com/p/closing-look-thursday-november-12"
+    },
+    {
+      "title": "StockTitan: Stocks Closed Slightly Lower in the Stock Market Today, November 12, 2026, and Nvidia Said CEO Jensen Huang Resigned",
+      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-12-2026"
+    },
+    {
+      "title": "The Motley Fool: Nvidia Shares Slide on Reports of CEO Jensen Huang's Resignation",
+      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/12/stock-market-today-nov-12-nvidia-shares-slide-on-reports-of-ceo-jensen-huang-s-resignation/"
+    }
+  ]
+}
