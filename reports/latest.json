@@ -1,33 +1,33 @@
 {
-  "trading_day": "2026-11-12",
-  "created": "2026-11-13T05:58:45Z",
-  "headline": "SOXL fast unverändert – Nvidia-Chef Jensen Huang tritt zurück",
-  "close": 65.53,
-  "change_pct": -0.76,
+  "trading_day": "2026-11-13",
+  "created": "2026-11-16T05:58:52Z",
+  "headline": "SOXL fällt 11 % – Gewinnmitnahmen und steigende Zinsen",
+  "close": 58.32,
+  "change_pct": -11.0,
   "paragraphs": [
-    "SOXL schloss am Donnerstag mit minus 0,8 % bei 65,53 Dollar. Dazwischen lag ein bewegter Tag: Der Kurs startete bei 59,79 Dollar deutlich im Minus und stieg bis auf 68,91 Dollar, bevor er wieder nachgab. Die großen US-Indizes verloren jeweils rund 0,3 bis 0,4 %.",
-    "Vor Börsenbeginn gab Nvidia bekannt, dass Firmenchef Jensen Huang mit sofortiger Wirkung zurücktritt. Finanzchefin Colette Kress übernimmt vorübergehend die Leitung. Die Aktie lag zeitweise mehr als 8 % im Minus und schloss mit minus 4,3 %. AMD (+5,9 %) und Broadcom (+5,5 %) stiegen dagegen kräftig, weil Anleger darauf setzen, dass sie Marktanteile gewinnen könnten. AMD erhielt zudem eine bessere Einstufung durch William Blair.",
-    "Belastend wirkten steigende Zinsen: Die Rendite zehnjähriger US-Staatsanleihen stieg wieder über 5 %, eine Zinserhöhung im Dezember gilt als sicher. Bei den Top 10 gaben neben Nvidia auch KLA (−2,3 %), Monolithic Power (−2,1 %), Intel (−2,1 %) und Micron (−1,6 %) nach. Nach Börsenschluss meldete Applied Materials einen Rekordumsatz."
+    "SOXL verlor am Freitag 11,0 % auf 58,32 Dollar. Nach einem Start bei 63,30 Dollar ging es bis auf 52,36 Dollar nach unten, danach erholte sich der Kurs etwas. Der Chip-Index aus Philadelphia fiel um 3,4 %. Der Nasdaq gab 0,9 % nach, der S&P 500 0,4 %, der Dow stieg leicht um 0,1 %. Auf Wochensicht lagen S&P 500 und Nasdaq trotzdem im Plus.",
+    "Nach den starken Kursgewinnen der Woche nahmen viele Anleger Gewinne mit, vor allem bei AMD. Die Aktie war nach dem Rücktritt des Nvidia-Chefs als Alternative gefragt und hatte in der Woche rund 30 % zugelegt. Dazu stiegen die Zinsen: Die Rendite zehnjähriger US-Staatsanleihen kletterte auf 5,15 %. Die Erzeugerpreise lagen auf Jahressicht bei 6,5 %, eine Zinserhöhung im Dezember gilt als sicher. Die Unsicherheit um die Nvidia-Führung hält ebenfalls an.",
+    "Alle Top-10-Werte fielen: AMD (−8,8 %), Broadcom (−4,8 %), Monolithic Power (−3,9 %), Texas Instruments (−2,8 %), Analog Devices (−2,8 %), Micron und Intel (je −2,5 %). Nvidia verlor 2,0 %."
   ],
   "drivers": [
-    "Rücktritt von Nvidia-Chef Jensen Huang",
-    "AMD und Broadcom profitieren, Nvidia fällt",
-    "Rendite zehnjähriger US-Anleihen wieder über 5 %",
-    "Zinserhöhung im Dezember gilt als sicher"
+    "Gewinnmitnahmen nach starker Woche, besonders bei AMD",
+    "Rendite zehnjähriger US-Anleihen steigt auf 5,15 %",
+    "Zinserhöhung im Dezember gilt als sicher",
+    "Unsicherheit um die Führung bei Nvidia"
   ],
-  "outlook": "Am 13. November kommen die US-Erzeugerpreise. Nvidia legt am 17. November Quartalszahlen vor, Anthropic soll am 19. November an die Börse gehen.",
+  "outlook": "Nvidia legt am 17. November Quartalszahlen vor, zum ersten Mal ohne festen Firmenchef. Anthropic soll am 19. November an die Börse gehen.",
   "sources": [
     {
-      "title": "Capp Notes: Closing Look — Thursday, November 12, 2026",
-      "url": "https://cappnotes.substack.com/p/closing-look-thursday-november-12"
+      "title": "Capp Notes: Closing Look — Friday, November 13, 2026",
+      "url": "https://cappnotes.substack.com/p/closing-look-friday-november-13-2026"
     },
     {
-      "title": "StockTitan: Stocks Closed Slightly Lower in the Stock Market Today, November 12, 2026, and Nvidia Said CEO Jensen Huang Resigned",
-      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-12-2026"
+      "title": "Yahoo Finance: AMD Sinks 9%, Marvell Down 5% as Chip Rally Reverses and Treasury Yields Hit 5%",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/amd-sinks-9-marvell-down-220540439.html"
     },
     {
-      "title": "The Motley Fool: Nvidia Shares Slide on Reports of CEO Jensen Huang's Resignation",
-      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/12/stock-market-today-nov-12-nvidia-shares-slide-on-reports-of-ceo-jensen-huang-s-resignation/"
+      "title": "Yahoo Finance: Dow rises, S&P 500 and Nasdaq slip to cap volatile week, Nvidia stock plunge deepens",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-november-13-dow-sp-500-nasdaq-nvidia-ppi-141451558.html"
     }
   ]
 }
