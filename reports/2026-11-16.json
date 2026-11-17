@@ -1,0 +1,39 @@
+{
+  "trading_day": "2026-11-16",
+  "created": "2026-11-17T05:59:28Z",
+  "close": 48.76,
+  "change_pct": -16.39,
+  "headline": "Chipwerte brechen vor Nvidias Zahlen erneut ein",
+  "paragraphs": [
+    "SOXL hat am Montag 16,4 Prozent verloren und schloss bei 48,76 Dollar. Der ganze Aktienmarkt war schwach: Der Nasdaq fiel um 2,5 Prozent, der S&P 500 um 1,9 Prozent. Chipaktien führten die Verluste an.",
+    "Ein Grund ist eine neue Regel der US-Regierung. Firmen sollen die Exportgrenzen für starke KI-Chips nicht mehr umgehen können, indem sie die Chips aus Rechenzentren im Ausland per Fernzugriff nutzen. Dazu kommt die Unruhe bei Nvidia nach dem Rücktritt von Chef Jensen Huang. Vor den Quartalszahlen am Dienstag haben mehrere Analysten ihre Kursziele gesenkt.",
+    "Auch schwache Konjunkturdaten drückten die Stimmung: Ein wichtiger Industrie-Index aus New York fiel deutlich schlechter aus als erwartet. Zudem stiegen die Zinsen für US-Staatsanleihen.",
+    "Bei den großen Werten im SOXL fielen Micron (minus 7,6 Prozent) und Intel (minus 7,0 Prozent) am stärksten. AMD verlor 5,6 Prozent, Monolithic Power 5,5 Prozent, Nvidia 4,1 Prozent und Broadcom 3,9 Prozent."
+  ],
+  "drivers": [
+    "Neue US-Regel gegen Fernzugriff auf KI-Chips im Ausland",
+    "Unruhe bei Nvidia nach dem Rücktritt von Jensen Huang",
+    "Gesenkte Kursziele vor Nvidias Quartalszahlen",
+    "Schwache Industriedaten aus New York und steigende Zinsen",
+    "Nasdaq minus 2,5 Prozent, Chipwerte vorne bei den Verlierern"
+  ],
+  "outlook": "Heute Abend (Dienstag, 17. November) legt Nvidia nach US-Börsenschluss seine Quartalszahlen vor, vorher kommen die US-Einzelhandelsumsätze. Am 18. November wird der Börsenpreis für Anthropic festgelegt, die nächste Fed-Zinsentscheidung folgt am 8. und 9. Dezember.",
+  "sources": [
+    {
+      "title": "Stock Market Today, November 16, 2026: Tech Stocks Pull the Market Lower Before Nvidia's Results (Stock Titan)",
+      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-16-2026"
+    },
+    {
+      "title": "Stock Market Today, Nov. 16: Nvidia Sinks as U.S. Tightens AI Chip Restrictions and Analysts Slash Price Targets (Motley Fool)",
+      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/16/stock-market-today-nov-16-nvidia-sinks-as-u-s-tightens-ai-chip-restrictions-and-analysts-slash-price-targets/"
+    },
+    {
+      "title": "Stocks slide to kick off major week for Wall Street (CNN)",
+      "url": "https://www.cnn.com/2026/11/16/business/stocks-nvidia-ai-anthropic"
+    },
+    {
+      "title": "Stock market today: Dow and S&P 500 drop, Nasdaq sinks over 2% as Nvidia leads AI trade lower (Yahoo Finance)",
+      "url": "https://uk.finance.yahoo.com/news/live/stock-market-today-monday-november-16-dow-sp-500-nasdaq-nvidia-oil-091631084.html"
+    }
+  ]
+}

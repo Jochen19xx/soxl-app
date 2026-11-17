@@ -1,33 +1,39 @@
 {
-  "trading_day": "2026-11-13",
-  "created": "2026-11-16T05:58:52Z",
-  "headline": "SOXL fällt 11 % – Gewinnmitnahmen und steigende Zinsen",
-  "close": 58.32,
-  "change_pct": -11.0,
+  "trading_day": "2026-11-16",
+  "created": "2026-11-17T05:59:28Z",
+  "close": 48.76,
+  "change_pct": -16.39,
+  "headline": "Chipwerte brechen vor Nvidias Zahlen erneut ein",
   "paragraphs": [
-    "SOXL verlor am Freitag 11,0 % auf 58,32 Dollar. Nach einem Start bei 63,30 Dollar ging es bis auf 52,36 Dollar nach unten, danach erholte sich der Kurs etwas. Der Chip-Index aus Philadelphia fiel um 3,4 %. Der Nasdaq gab 0,9 % nach, der S&P 500 0,4 %, der Dow stieg leicht um 0,1 %. Auf Wochensicht lagen S&P 500 und Nasdaq trotzdem im Plus.",
-    "Nach den starken Kursgewinnen der Woche nahmen viele Anleger Gewinne mit, vor allem bei AMD. Die Aktie war nach dem Rücktritt des Nvidia-Chefs als Alternative gefragt und hatte in der Woche rund 30 % zugelegt. Dazu stiegen die Zinsen: Die Rendite zehnjähriger US-Staatsanleihen kletterte auf 5,15 %. Die Erzeugerpreise lagen auf Jahressicht bei 6,5 %, eine Zinserhöhung im Dezember gilt als sicher. Die Unsicherheit um die Nvidia-Führung hält ebenfalls an.",
-    "Alle Top-10-Werte fielen: AMD (−8,8 %), Broadcom (−4,8 %), Monolithic Power (−3,9 %), Texas Instruments (−2,8 %), Analog Devices (−2,8 %), Micron und Intel (je −2,5 %). Nvidia verlor 2,0 %."
+    "SOXL hat am Montag 16,4 Prozent verloren und schloss bei 48,76 Dollar. Der ganze Aktienmarkt war schwach: Der Nasdaq fiel um 2,5 Prozent, der S&P 500 um 1,9 Prozent. Chipaktien führten die Verluste an.",
+    "Ein Grund ist eine neue Regel der US-Regierung. Firmen sollen die Exportgrenzen für starke KI-Chips nicht mehr umgehen können, indem sie die Chips aus Rechenzentren im Ausland per Fernzugriff nutzen. Dazu kommt die Unruhe bei Nvidia nach dem Rücktritt von Chef Jensen Huang. Vor den Quartalszahlen am Dienstag haben mehrere Analysten ihre Kursziele gesenkt.",
+    "Auch schwache Konjunkturdaten drückten die Stimmung: Ein wichtiger Industrie-Index aus New York fiel deutlich schlechter aus als erwartet. Zudem stiegen die Zinsen für US-Staatsanleihen.",
+    "Bei den großen Werten im SOXL fielen Micron (minus 7,6 Prozent) und Intel (minus 7,0 Prozent) am stärksten. AMD verlor 5,6 Prozent, Monolithic Power 5,5 Prozent, Nvidia 4,1 Prozent und Broadcom 3,9 Prozent."
   ],
   "drivers": [
-    "Gewinnmitnahmen nach starker Woche, besonders bei AMD",
-    "Rendite zehnjähriger US-Anleihen steigt auf 5,15 %",
-    "Zinserhöhung im Dezember gilt als sicher",
-    "Unsicherheit um die Führung bei Nvidia"
+    "Neue US-Regel gegen Fernzugriff auf KI-Chips im Ausland",
+    "Unruhe bei Nvidia nach dem Rücktritt von Jensen Huang",
+    "Gesenkte Kursziele vor Nvidias Quartalszahlen",
+    "Schwache Industriedaten aus New York und steigende Zinsen",
+    "Nasdaq minus 2,5 Prozent, Chipwerte vorne bei den Verlierern"
   ],
-  "outlook": "Nvidia legt am 17. November Quartalszahlen vor, zum ersten Mal ohne festen Firmenchef. Anthropic soll am 19. November an die Börse gehen.",
+  "outlook": "Heute Abend (Dienstag, 17. November) legt Nvidia nach US-Börsenschluss seine Quartalszahlen vor, vorher kommen die US-Einzelhandelsumsätze. Am 18. November wird der Börsenpreis für Anthropic festgelegt, die nächste Fed-Zinsentscheidung folgt am 8. und 9. Dezember.",
   "sources": [
     {
-      "title": "Capp Notes: Closing Look — Friday, November 13, 2026",
-      "url": "https://cappnotes.substack.com/p/closing-look-friday-november-13-2026"
+      "title": "Stock Market Today, November 16, 2026: Tech Stocks Pull the Market Lower Before Nvidia's Results (Stock Titan)",
+      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-16-2026"
     },
     {
-      "title": "Yahoo Finance: AMD Sinks 9%, Marvell Down 5% as Chip Rally Reverses and Treasury Yields Hit 5%",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/amd-sinks-9-marvell-down-220540439.html"
+      "title": "Stock Market Today, Nov. 16: Nvidia Sinks as U.S. Tightens AI Chip Restrictions and Analysts Slash Price Targets (Motley Fool)",
+      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/16/stock-market-today-nov-16-nvidia-sinks-as-u-s-tightens-ai-chip-restrictions-and-analysts-slash-price-targets/"
     },
     {
-      "title": "Yahoo Finance: Dow rises, S&P 500 and Nasdaq slip to cap volatile week, Nvidia stock plunge deepens",
-      "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-november-13-dow-sp-500-nasdaq-nvidia-ppi-141451558.html"
+      "title": "Stocks slide to kick off major week for Wall Street (CNN)",
+      "url": "https://www.cnn.com/2026/11/16/business/stocks-nvidia-ai-anthropic"
+    },
+    {
+      "title": "Stock market today: Dow and S&P 500 drop, Nasdaq sinks over 2% as Nvidia leads AI trade lower (Yahoo Finance)",
+      "url": "https://uk.finance.yahoo.com/news/live/stock-market-today-monday-november-16-dow-sp-500-nasdaq-nvidia-oil-091631084.html"
     }
   ]
 }
