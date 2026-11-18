@@ -1,5 +1,10 @@
 [
   {
+    "trading_day": "2026-11-17",
+    "headline": "Chipwerte halten sich, Nvidia überzeugt nach Börsenschluss",
+    "change_pct": 0.64
+  },
+  {
     "trading_day": "2026-11-16",
     "headline": "Chipwerte brechen vor Nvidias Zahlen erneut ein",
     "change_pct": -16.39

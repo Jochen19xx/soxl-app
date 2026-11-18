@@ -1,39 +1,39 @@
 {
-  "trading_day": "2026-11-16",
-  "created": "2026-11-17T05:59:28Z",
-  "close": 48.76,
-  "change_pct": -16.39,
-  "headline": "Chipwerte brechen vor Nvidias Zahlen erneut ein",
+  "trading_day": "2026-11-17",
+  "created": "2026-11-18T05:58:45Z",
+  "close": 49.07,
+  "change_pct": 0.64,
+  "headline": "Chipwerte halten sich, Nvidia überzeugt nach Börsenschluss",
   "paragraphs": [
-    "SOXL hat am Montag 16,4 Prozent verloren und schloss bei 48,76 Dollar. Der ganze Aktienmarkt war schwach: Der Nasdaq fiel um 2,5 Prozent, der S&P 500 um 1,9 Prozent. Chipaktien führten die Verluste an.",
-    "Ein Grund ist eine neue Regel der US-Regierung. Firmen sollen die Exportgrenzen für starke KI-Chips nicht mehr umgehen können, indem sie die Chips aus Rechenzentren im Ausland per Fernzugriff nutzen. Dazu kommt die Unruhe bei Nvidia nach dem Rücktritt von Chef Jensen Huang. Vor den Quartalszahlen am Dienstag haben mehrere Analysten ihre Kursziele gesenkt.",
-    "Auch schwache Konjunkturdaten drückten die Stimmung: Ein wichtiger Industrie-Index aus New York fiel deutlich schlechter aus als erwartet. Zudem stiegen die Zinsen für US-Staatsanleihen.",
-    "Bei den großen Werten im SOXL fielen Micron (minus 7,6 Prozent) und Intel (minus 7,0 Prozent) am stärksten. AMD verlor 5,6 Prozent, Monolithic Power 5,5 Prozent, Nvidia 4,1 Prozent und Broadcom 3,9 Prozent."
+    "SOXL hat am Dienstag leicht um 0,6 Prozent zugelegt und schloss bei 49,07 Dollar. Der breite Markt fiel dagegen: Der S&P 500 verlor 1,0 Prozent und schloss so tief wie seit fünf Monaten nicht mehr, der Dow Jones gab 1,6 Prozent nach. Vor allem Software-Aktien wie Salesforce und Versicherer wurden verkauft.",
+    "Bei den Chipwerten warteten viele Anleger auf die Zahlen von Nvidia. Die kamen nach Börsenschluss und waren besser als erwartet: Der Umsatz lag bei rund 115,8 Milliarden Dollar, mehr als doppelt so viel wie vor einem Jahr. Für das nächste Quartal rechnet Nvidia mit etwa 130 Milliarden Dollar. Die Aktie stieg im nachbörslichen Handel um rund 3 bis 5 Prozent.",
+    "Unter den großen SOXL-Werten stieg Broadcom um 2,5 Prozent. Nvidia (minus 0,4 Prozent), Micron (minus 0,9 Prozent) und Qualcomm (minus 1,1 Prozent) gaben im regulären Handel leicht nach. Intel fiel um 0,5 Prozent, nachdem Nvidia mitteilte, seinen Anteil an Intel um ein Viertel verkleinert zu haben.",
+    "Belastend wirkten Aussagen eines Fed-Vertreters, dass bis zum Frühjahr noch mehrere Zinserhöhungen nötig sein könnten. Außerdem kündigte die US-Regierung neue Exportauflagen für KI-Chips in mehrere asiatische Länder und Brasilien an."
   ],
   "drivers": [
-    "Neue US-Regel gegen Fernzugriff auf KI-Chips im Ausland",
-    "Unruhe bei Nvidia nach dem Rücktritt von Jensen Huang",
-    "Gesenkte Kursziele vor Nvidias Quartalszahlen",
-    "Schwache Industriedaten aus New York und steigende Zinsen",
-    "Nasdaq minus 2,5 Prozent, Chipwerte vorne bei den Verlierern"
+    "Nvidia-Zahlen und Ausblick über den Erwartungen",
+    "Nvidia nachbörslich rund 3 bis 5 Prozent im Plus",
+    "Broadcom plus 2,5 Prozent",
+    "Fed-Vertreter spricht von weiteren Zinserhöhungen",
+    "Neue US-Exportauflagen für KI-Chips ab 19. November"
   ],
-  "outlook": "Heute Abend (Dienstag, 17. November) legt Nvidia nach US-Börsenschluss seine Quartalszahlen vor, vorher kommen die US-Einzelhandelsumsätze. Am 18. November wird der Börsenpreis für Anthropic festgelegt, die nächste Fed-Zinsentscheidung folgt am 8. und 9. Dezember.",
+  "outlook": "Heute Abend (18. November) erscheint das Protokoll der letzten Fed-Sitzung, und der Börsenpreis für Anthropic wird festgelegt; der Handel beginnt am Donnerstag. Die nächste Fed-Zinsentscheidung folgt am 9. Dezember.",
   "sources": [
     {
-      "title": "Stock Market Today, November 16, 2026: Tech Stocks Pull the Market Lower Before Nvidia's Results (Stock Titan)",
-      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-16-2026"
+      "title": "Closing Look — Tuesday, November 17, 2026 (Capp Notes)",
+      "url": "https://cappnotes.substack.com/p/closing-look-tuesday-november-17"
     },
     {
-      "title": "Stock Market Today, Nov. 16: Nvidia Sinks as U.S. Tightens AI Chip Restrictions and Analysts Slash Price Targets (Motley Fool)",
-      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/16/stock-market-today-nov-16-nvidia-sinks-as-u-s-tightens-ai-chip-restrictions-and-analysts-slash-price-targets/"
+      "title": "Stock Market Today, November 17, 2026: Nvidia Rises After Hours on the Evening It Reports Results (Stock Titan)",
+      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-17-2026"
     },
     {
-      "title": "Stocks slide to kick off major week for Wall Street (CNN)",
-      "url": "https://www.cnn.com/2026/11/16/business/stocks-nvidia-ai-anthropic"
+      "title": "Stock Market Today, Nov. 17: Nvidia Slides Ahead of Earnings but Soars in After Hours Trading (Motley Fool)",
+      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/17/stock-market-today-nov-17-nvidia-slides-ahead-of-earnings-but-soars-in-after-hours-trading/"
     },
     {
-      "title": "Stock market today: Dow and S&P 500 drop, Nasdaq sinks over 2% as Nvidia leads AI trade lower (Yahoo Finance)",
-      "url": "https://uk.finance.yahoo.com/news/live/stock-market-today-monday-november-16-dow-sp-500-nasdaq-nvidia-oil-091631084.html"
+      "title": "Nvidia earnings spark after-hours rally in chipmakers, neocloud stocks (Investing.com)",
+      "url": "https://www.investing.com/news/stock-market-news/nvidia-earnings-spark-afterhours-rally-in-chipmakers-neocloud-stocks-5034434"
     }
   ]
 }

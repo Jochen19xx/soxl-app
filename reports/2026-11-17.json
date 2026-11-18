@@ -1,0 +1,39 @@
+{
+  "trading_day": "2026-11-17",
+  "created": "2026-11-18T05:58:45Z",
+  "close": 49.07,
+  "change_pct": 0.64,
+  "headline": "Chipwerte halten sich, Nvidia überzeugt nach Börsenschluss",
+  "paragraphs": [
+    "SOXL hat am Dienstag leicht um 0,6 Prozent zugelegt und schloss bei 49,07 Dollar. Der breite Markt fiel dagegen: Der S&P 500 verlor 1,0 Prozent und schloss so tief wie seit fünf Monaten nicht mehr, der Dow Jones gab 1,6 Prozent nach. Vor allem Software-Aktien wie Salesforce und Versicherer wurden verkauft.",
+    "Bei den Chipwerten warteten viele Anleger auf die Zahlen von Nvidia. Die kamen nach Börsenschluss und waren besser als erwartet: Der Umsatz lag bei rund 115,8 Milliarden Dollar, mehr als doppelt so viel wie vor einem Jahr. Für das nächste Quartal rechnet Nvidia mit etwa 130 Milliarden Dollar. Die Aktie stieg im nachbörslichen Handel um rund 3 bis 5 Prozent.",
+    "Unter den großen SOXL-Werten stieg Broadcom um 2,5 Prozent. Nvidia (minus 0,4 Prozent), Micron (minus 0,9 Prozent) und Qualcomm (minus 1,1 Prozent) gaben im regulären Handel leicht nach. Intel fiel um 0,5 Prozent, nachdem Nvidia mitteilte, seinen Anteil an Intel um ein Viertel verkleinert zu haben.",
+    "Belastend wirkten Aussagen eines Fed-Vertreters, dass bis zum Frühjahr noch mehrere Zinserhöhungen nötig sein könnten. Außerdem kündigte die US-Regierung neue Exportauflagen für KI-Chips in mehrere asiatische Länder und Brasilien an."
+  ],
+  "drivers": [
+    "Nvidia-Zahlen und Ausblick über den Erwartungen",
+    "Nvidia nachbörslich rund 3 bis 5 Prozent im Plus",
+    "Broadcom plus 2,5 Prozent",
+    "Fed-Vertreter spricht von weiteren Zinserhöhungen",
+    "Neue US-Exportauflagen für KI-Chips ab 19. November"
+  ],
+  "outlook": "Heute Abend (18. November) erscheint das Protokoll der letzten Fed-Sitzung, und der Börsenpreis für Anthropic wird festgelegt; der Handel beginnt am Donnerstag. Die nächste Fed-Zinsentscheidung folgt am 9. Dezember.",
+  "sources": [
+    {
+      "title": "Closing Look — Tuesday, November 17, 2026 (Capp Notes)",
+      "url": "https://cappnotes.substack.com/p/closing-look-tuesday-november-17"
+    },
+    {
+      "title": "Stock Market Today, November 17, 2026: Nvidia Rises After Hours on the Evening It Reports Results (Stock Titan)",
+      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-17-2026"
+    },
+    {
+      "title": "Stock Market Today, Nov. 17: Nvidia Slides Ahead of Earnings but Soars in After Hours Trading (Motley Fool)",
+      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/17/stock-market-today-nov-17-nvidia-slides-ahead-of-earnings-but-soars-in-after-hours-trading/"
+    },
+    {
+      "title": "Nvidia earnings spark after-hours rally in chipmakers, neocloud stocks (Investing.com)",
+      "url": "https://www.investing.com/news/stock-market-news/nvidia-earnings-spark-afterhours-rally-in-chipmakers-neocloud-stocks-5034434"
+    }
+  ]
+}
