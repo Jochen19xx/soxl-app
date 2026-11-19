@@ -1,39 +1,39 @@
 {
-  "trading_day": "2026-11-17",
-  "created": "2026-11-18T05:58:45Z",
-  "close": 49.07,
-  "change_pct": 0.64,
-  "headline": "Chipwerte halten sich, Nvidia überzeugt nach Börsenschluss",
+  "trading_day": "2026-11-18",
+  "created": "2026-11-19T05:58:22Z",
+  "close": 49.26,
+  "change_pct": 0.39,
+  "headline": "Nvidia fällt trotz starker Zahlen, AMD und Broadcom steigen",
   "paragraphs": [
-    "SOXL hat am Dienstag leicht um 0,6 Prozent zugelegt und schloss bei 49,07 Dollar. Der breite Markt fiel dagegen: Der S&P 500 verlor 1,0 Prozent und schloss so tief wie seit fünf Monaten nicht mehr, der Dow Jones gab 1,6 Prozent nach. Vor allem Software-Aktien wie Salesforce und Versicherer wurden verkauft.",
-    "Bei den Chipwerten warteten viele Anleger auf die Zahlen von Nvidia. Die kamen nach Börsenschluss und waren besser als erwartet: Der Umsatz lag bei rund 115,8 Milliarden Dollar, mehr als doppelt so viel wie vor einem Jahr. Für das nächste Quartal rechnet Nvidia mit etwa 130 Milliarden Dollar. Die Aktie stieg im nachbörslichen Handel um rund 3 bis 5 Prozent.",
-    "Unter den großen SOXL-Werten stieg Broadcom um 2,5 Prozent. Nvidia (minus 0,4 Prozent), Micron (minus 0,9 Prozent) und Qualcomm (minus 1,1 Prozent) gaben im regulären Handel leicht nach. Intel fiel um 0,5 Prozent, nachdem Nvidia mitteilte, seinen Anteil an Intel um ein Viertel verkleinert zu haben.",
-    "Belastend wirkten Aussagen eines Fed-Vertreters, dass bis zum Frühjahr noch mehrere Zinserhöhungen nötig sein könnten. Außerdem kündigte die US-Regierung neue Exportauflagen für KI-Chips in mehrere asiatische Länder und Brasilien an."
+    "SOXL hat am Mittwoch leicht um 0,4 Prozent zugelegt und schloss bei 49,26 Dollar. Der Nasdaq stieg um 0,4 Prozent, der S&P 500 fiel dagegen den fünften Tag in Folge leicht um 0,2 Prozent. Der Dow Jones verlor 1,1 Prozent.",
+    "Nvidia hatte am Vorabend sehr gute Zahlen und einen starken Ausblick vorgelegt. Trotzdem fiel die Aktie um 2,9 Prozent, nachdem ein Anfangsplus wieder verschwand. Der Aufsichtsratschef stellte klar, dass Jensen Huang nicht als Chef zurückkehren wird. Andere Chipfirmen profitierten aber vom starken Ausblick, weil er zeigt, dass weiter viel Geld in KI fließt: AMD stieg um 5,3 Prozent, Broadcom um 3,6 Prozent.",
+    "Qualcomm fiel dagegen um 4,1 Prozent. Gründe waren Sorgen um die Nachfrage nach Smartphones und ein gesenktes Kursziel, weil ein erwartetes Geschäft mit ByteDance wegen US-Auflagen wegfällt. Micron verlor 1,0 Prozent.",
+    "Das Protokoll der letzten Fed-Sitzung zeigte, dass fast alle Mitglieder weitere Zinserhöhungen für wahrscheinlich halten. Anthropic legte den Ausgabepreis für seine Aktien auf 83 Dollar fest, mehr als geplant."
   ],
   "drivers": [
-    "Nvidia-Zahlen und Ausblick über den Erwartungen",
-    "Nvidia nachbörslich rund 3 bis 5 Prozent im Plus",
-    "Broadcom plus 2,5 Prozent",
-    "Fed-Vertreter spricht von weiteren Zinserhöhungen",
-    "Neue US-Exportauflagen für KI-Chips ab 19. November"
+    "Nvidia minus 2,9 Prozent trotz guter Zahlen",
+    "AMD plus 5,3 Prozent, Broadcom plus 3,6 Prozent",
+    "Qualcomm minus 4,1 Prozent wegen Nachfragesorgen",
+    "Fed-Protokoll deutet auf weitere Zinserhöhungen",
+    "Anthropic-Ausgabepreis bei 83 Dollar"
   ],
-  "outlook": "Heute Abend (18. November) erscheint das Protokoll der letzten Fed-Sitzung, und der Börsenpreis für Anthropic wird festgelegt; der Handel beginnt am Donnerstag. Die nächste Fed-Zinsentscheidung folgt am 9. Dezember.",
+  "outlook": "Heute (19. November) beginnt der Handel mit Anthropic-Aktien an der Nasdaq, außerdem kommen Arbeitsmarktdaten und Quartalszahlen von Walmart. Die nächste Fed-Zinsentscheidung folgt am 9. Dezember.",
   "sources": [
     {
-      "title": "Closing Look — Tuesday, November 17, 2026 (Capp Notes)",
-      "url": "https://cappnotes.substack.com/p/closing-look-tuesday-november-17"
+      "title": "Closing Look — Wednesday, November 18, 2026 (Capp Notes)",
+      "url": "https://cappnotes.substack.com/p/closing-look-wednesday-november-18"
     },
     {
-      "title": "Stock Market Today, November 17, 2026: Nvidia Rises After Hours on the Evening It Reports Results (Stock Titan)",
-      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-17-2026"
+      "title": "Stock Market Today, Nov. 18: Nvidia Slips on Strong Results as Succession and China Business Risks Weigh (Yahoo Finance)",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nov-18-221135469.html"
     },
     {
-      "title": "Stock Market Today, Nov. 17: Nvidia Slides Ahead of Earnings but Soars in After Hours Trading (Motley Fool)",
-      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/17/stock-market-today-nov-17-nvidia-slides-ahead-of-earnings-but-soars-in-after-hours-trading/"
+      "title": "Stock Market Today, November 18, 2026: The Dow Closes Lower (Stock Titan)",
+      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-18-2026"
     },
     {
-      "title": "Nvidia earnings spark after-hours rally in chipmakers, neocloud stocks (Investing.com)",
-      "url": "https://www.investing.com/news/stock-market-news/nvidia-earnings-spark-afterhours-rally-in-chipmakers-neocloud-stocks-5034434"
+      "title": "Qualcomm Inc Stock (QCOM) Moved Down on Nov 18: Facts Behind the Movement (TradingKey)",
+      "url": "https://www.tradingkey.com/news/market-movers/262311471-market-movers-qcom-20261118"
     }
   ]
 }

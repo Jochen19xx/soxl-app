@@ -1,5 +1,10 @@
 [
   {
+    "trading_day": "2026-11-18",
+    "headline": "Nvidia fällt trotz starker Zahlen, AMD und Broadcom steigen",
+    "change_pct": 0.39
+  },
+  {
     "trading_day": "2026-11-17",
     "headline": "Chipwerte halten sich, Nvidia überzeugt nach Börsenschluss",
     "change_pct": 0.64

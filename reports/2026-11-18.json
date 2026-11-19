@@ -1,0 +1,39 @@
+{
+  "trading_day": "2026-11-18",
+  "created": "2026-11-19T05:58:22Z",
+  "close": 49.26,
+  "change_pct": 0.39,
+  "headline": "Nvidia fällt trotz starker Zahlen, AMD und Broadcom steigen",
+  "paragraphs": [
+    "SOXL hat am Mittwoch leicht um 0,4 Prozent zugelegt und schloss bei 49,26 Dollar. Der Nasdaq stieg um 0,4 Prozent, der S&P 500 fiel dagegen den fünften Tag in Folge leicht um 0,2 Prozent. Der Dow Jones verlor 1,1 Prozent.",
+    "Nvidia hatte am Vorabend sehr gute Zahlen und einen starken Ausblick vorgelegt. Trotzdem fiel die Aktie um 2,9 Prozent, nachdem ein Anfangsplus wieder verschwand. Der Aufsichtsratschef stellte klar, dass Jensen Huang nicht als Chef zurückkehren wird. Andere Chipfirmen profitierten aber vom starken Ausblick, weil er zeigt, dass weiter viel Geld in KI fließt: AMD stieg um 5,3 Prozent, Broadcom um 3,6 Prozent.",
+    "Qualcomm fiel dagegen um 4,1 Prozent. Gründe waren Sorgen um die Nachfrage nach Smartphones und ein gesenktes Kursziel, weil ein erwartetes Geschäft mit ByteDance wegen US-Auflagen wegfällt. Micron verlor 1,0 Prozent.",
+    "Das Protokoll der letzten Fed-Sitzung zeigte, dass fast alle Mitglieder weitere Zinserhöhungen für wahrscheinlich halten. Anthropic legte den Ausgabepreis für seine Aktien auf 83 Dollar fest, mehr als geplant."
+  ],
+  "drivers": [
+    "Nvidia minus 2,9 Prozent trotz guter Zahlen",
+    "AMD plus 5,3 Prozent, Broadcom plus 3,6 Prozent",
+    "Qualcomm minus 4,1 Prozent wegen Nachfragesorgen",
+    "Fed-Protokoll deutet auf weitere Zinserhöhungen",
+    "Anthropic-Ausgabepreis bei 83 Dollar"
+  ],
+  "outlook": "Heute (19. November) beginnt der Handel mit Anthropic-Aktien an der Nasdaq, außerdem kommen Arbeitsmarktdaten und Quartalszahlen von Walmart. Die nächste Fed-Zinsentscheidung folgt am 9. Dezember.",
+  "sources": [
+    {
+      "title": "Closing Look — Wednesday, November 18, 2026 (Capp Notes)",
+      "url": "https://cappnotes.substack.com/p/closing-look-wednesday-november-18"
+    },
+    {
+      "title": "Stock Market Today, Nov. 18: Nvidia Slips on Strong Results as Succession and China Business Risks Weigh (Yahoo Finance)",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nov-18-221135469.html"
+    },
+    {
+      "title": "Stock Market Today, November 18, 2026: The Dow Closes Lower (Stock Titan)",
+      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-18-2026"
+    },
+    {
+      "title": "Qualcomm Inc Stock (QCOM) Moved Down on Nov 18: Facts Behind the Movement (TradingKey)",
+      "url": "https://www.tradingkey.com/news/market-movers/262311471-market-movers-qcom-20261118"
+    }
+  ]
+}
