@@ -1,39 +1,39 @@
 {
-  "trading_day": "2026-11-18",
-  "created": "2026-11-19T05:58:22Z",
-  "close": 49.26,
-  "change_pct": 0.39,
-  "headline": "Nvidia fällt trotz starker Zahlen, AMD und Broadcom steigen",
+  "trading_day": "2026-11-19",
+  "created": "2026-11-20T05:59:36Z",
+  "close": 45.3,
+  "change_pct": -8.04,
+  "headline": "Anthropic-Börsengang verpufft, Chipwerte rutschen ab",
   "paragraphs": [
-    "SOXL hat am Mittwoch leicht um 0,4 Prozent zugelegt und schloss bei 49,26 Dollar. Der Nasdaq stieg um 0,4 Prozent, der S&P 500 fiel dagegen den fünften Tag in Folge leicht um 0,2 Prozent. Der Dow Jones verlor 1,1 Prozent.",
-    "Nvidia hatte am Vorabend sehr gute Zahlen und einen starken Ausblick vorgelegt. Trotzdem fiel die Aktie um 2,9 Prozent, nachdem ein Anfangsplus wieder verschwand. Der Aufsichtsratschef stellte klar, dass Jensen Huang nicht als Chef zurückkehren wird. Andere Chipfirmen profitierten aber vom starken Ausblick, weil er zeigt, dass weiter viel Geld in KI fließt: AMD stieg um 5,3 Prozent, Broadcom um 3,6 Prozent.",
-    "Qualcomm fiel dagegen um 4,1 Prozent. Gründe waren Sorgen um die Nachfrage nach Smartphones und ein gesenktes Kursziel, weil ein erwartetes Geschäft mit ByteDance wegen US-Auflagen wegfällt. Micron verlor 1,0 Prozent.",
-    "Das Protokoll der letzten Fed-Sitzung zeigte, dass fast alle Mitglieder weitere Zinserhöhungen für wahrscheinlich halten. Anthropic legte den Ausgabepreis für seine Aktien auf 83 Dollar fest, mehr als geplant."
+    "SOXL hat am Donnerstag 8,0 Prozent verloren und schloss bei 45,30 Dollar. Der ganze Markt fiel deutlich: Der S&P 500 und der Nasdaq gaben jeweils rund 2 Prozent nach, der Dow Jones verlor über 1.100 Punkte.",
+    "Der Tag begann mit dem Börsengang von Anthropic, dem größten aller Zeiten. Die Aktie startete bei 111,50 Dollar, deutlich über dem Ausgabepreis von 83 Dollar, schloss aber nur noch bei 97,17 Dollar. Die Begeisterung hielt also nicht an, und der Markt drehte am späten Vormittag ins Minus.",
+    "Bei den Chipwerten fiel AMD am stärksten um 7,7 Prozent, nachdem ein Investmentfonds bekanntgab, auf fallende AMD-Kurse zu setzen. Nvidia verlor 3,3 Prozent; trotz guter Zahlen belasten der Chefwechsel und neue US-Regeln für die Chipnutzung durch chinesische Firmen. Broadcom und Micron gaben je etwa 2,1 Prozent nach. Intel (plus 1,9 Prozent) und Qualcomm (plus 1,4 Prozent) legten dagegen zu.",
+    "Dazu kamen schwache Daten aus der Industrie: Ein wichtiger Index aus Philadelphia fiel auf den tiefsten Stand seit Mai."
   ],
   "drivers": [
-    "Nvidia minus 2,9 Prozent trotz guter Zahlen",
-    "AMD plus 5,3 Prozent, Broadcom plus 3,6 Prozent",
-    "Qualcomm minus 4,1 Prozent wegen Nachfragesorgen",
-    "Fed-Protokoll deutet auf weitere Zinserhöhungen",
-    "Anthropic-Ausgabepreis bei 83 Dollar"
+    "Anthropic-Aktie gibt nach starkem Start viel wieder ab",
+    "AMD minus 7,7 Prozent nach Wette eines Fonds gegen die Aktie",
+    "Nvidia minus 3,3 Prozent wegen Chefwechsel und US-Regeln",
+    "Schwache Industriedaten aus Philadelphia",
+    "S&P 500 und Nasdaq rund 2 Prozent im Minus"
   ],
-  "outlook": "Heute (19. November) beginnt der Handel mit Anthropic-Aktien an der Nasdaq, außerdem kommen Arbeitsmarktdaten und Quartalszahlen von Walmart. Die nächste Fed-Zinsentscheidung folgt am 9. Dezember.",
+  "outlook": "Heute (20. November) wird der Anthropic-Börsengang abgeschlossen. Die nächste Fed-Zinsentscheidung folgt am 9. Dezember, eine Erhöhung gilt als sehr wahrscheinlich.",
   "sources": [
     {
-      "title": "Closing Look — Wednesday, November 18, 2026 (Capp Notes)",
-      "url": "https://cappnotes.substack.com/p/closing-look-wednesday-november-18"
+      "title": "Stock Market Today, November 19, 2026: Stocks Close Lower on the Day Anthropic Begins Trading (Stock Titan)",
+      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-19-2026"
     },
     {
-      "title": "Stock Market Today, Nov. 18: Nvidia Slips on Strong Results as Succession and China Business Risks Weigh (Yahoo Finance)",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nov-18-221135469.html"
+      "title": "Nvidia, AMD, Micron Sink as Anthropic Closes 17% Above IPO Price (Yahoo Finance)",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-amd-micron-sink-anthropic-211206180.html"
     },
     {
-      "title": "Stock Market Today, November 18, 2026: The Dow Closes Lower (Stock Titan)",
-      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-18-2026"
+      "title": "Stock Market Today, Nov. 19: Nvidia Slides as Investors Weigh CEO Transition Fallout Despite Strong Q3 Results (Yahoo Finance)",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nov-19-222025646.html"
     },
     {
-      "title": "Qualcomm Inc Stock (QCOM) Moved Down on Nov 18: Facts Behind the Movement (TradingKey)",
-      "url": "https://www.tradingkey.com/news/market-movers/262311471-market-movers-qcom-20261118"
+      "title": "Anthropic valued at $1.76 trillion after historic first day of trading (CNN)",
+      "url": "https://www.cnn.com/2026/11/19/business/live-news/anthropic-ipo"
     }
   ]
 }
