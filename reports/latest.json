@@ -1,35 +1,38 @@
 {
-  "trading_day": "2026-11-20",
-  "created": "2026-11-23T05:59:34Z",
-  "close": 30.88,
-  "change_pct": -31.83,
-  "headline": "Ausverkauf bei Chipaktien: schlechteste Woche seit 2001",
+  "trading_day": "2026-11-23",
+  "created": "2026-11-24T05:58:48Z",
+  "close": 43.21,
+  "change_pct": 39.93,
+  "headline": "Jensen Huang kehrt zurück: Nvidia springt über 31 Prozent",
   "paragraphs": [
-    "SOXL ist am Freitag um 31,8 Prozent auf 30,88 Dollar eingebrochen. Der Nasdaq fiel um 5,3 Prozent, der S&P 500 um 3,7 Prozent. S&P 500 und Dow Jones liegen damit jeweils mehr als 10 Prozent unter ihrem Rekord. Für Chipaktien war es die schlechteste Woche seit der Woche nach dem 11. September 2001; der Chip-Index verlor in der Woche rund 17 Prozent.",
-    "Einen einzelnen Auslöser gab es nicht. Viele Anleger zweifeln, ob sich die riesigen Ausgaben für KI-Rechenzentren auszahlen. Selbst die starken Nvidia-Zahlen konnten die Stimmung nicht drehen, dazu kommen der Chefwechsel bei Nvidia und Berichte über eine Prüfung durch die US-Börsenaufsicht.",
-    "Alle großen SOXL-Werte fielen kräftig: Nvidia verlor 14,0 Prozent, Micron 13,9 Prozent, AMD 13,3 Prozent, Broadcom 12,2 Prozent und Monolithic Power 11,9 Prozent. Auch Intel (minus 8,0 Prozent) und Qualcomm (minus 7,5 Prozent) gaben deutlich nach. Chipwerte in Taiwan und Südkorea brachen ebenfalls ein.",
-    "Die Anthropic-Aktie fiel um 8,5 Prozent, liegt aber noch über dem Ausgabepreis von 83 Dollar."
+    "SOXL ist am Montag um 39,9 Prozent auf 43,21 Dollar gestiegen. Nach der schwachen Vorwoche erholte sich der ganze Markt kräftig: Der Nasdaq legte um 6,5 Prozent zu, der S&P 500 um 4,7 Prozent und der Dow Jones um 3,0 Prozent.",
+    "Auslöser war eine Nachricht von Nvidia vor Börsenbeginn: Der Aufsichtsrat hat Jensen Huang einstimmig wieder zum Chef ernannt. Huang war am 12. November zurückgetreten. Nach Angaben von Nvidia wurde die Entscheidung auch mit der US-Regierung abgestimmt. Die Nvidia-Aktie stieg um 31,5 Prozent auf 165,05 Dollar und machte damit fast alle Verluste seit dem Rücktritt wieder wett.",
+    "Die Erleichterung zog alle Chipwerte mit nach oben. Micron gewann 19,0 Prozent, Monolithic Power 16,8 Prozent und Intel 16,3 Prozent. Texas Instruments und Qualcomm legten jeweils rund 10 Prozent zu, AMD 6,9 Prozent und Broadcom 3,0 Prozent. Auch andere KI-Werte wie Rechenzentrumsbetreiber stiegen stark."
   ],
   "drivers": [
-    "Zweifel am Nutzen der hohen KI-Ausgaben",
-    "Nvidia minus 14 Prozent trotz starker Zahlen",
-    "Micron, AMD und Broadcom jeweils über 12 Prozent im Minus",
-    "Nasdaq minus 5,3 Prozent, S&P 500 in der Korrektur",
-    "Schlechteste Chip-Woche seit 2001"
+    "Jensen Huang wieder Nvidia-Chef",
+    "Nvidia plus 31,5 Prozent",
+    "Micron plus 19 Prozent, Intel plus 16 Prozent",
+    "Erholung nach der schwachen Vorwoche",
+    "Nasdaq plus 6,5 Prozent"
   ],
-  "outlook": "In dieser Woche ist am Donnerstag (26. November) wegen Thanksgiving an der US-Börse kein Handel, am Freitag wird verkürzt gehandelt. Die nächste Fed-Zinsentscheidung folgt am 9. Dezember.",
+  "outlook": "Am Mittwoch (25. November) kommen wichtige Inflationsdaten (PCE), am Donnerstag ist wegen Thanksgiving kein Handel und am Freitag wird verkürzt gehandelt. Bei der Fed-Sitzung am 9. Dezember gilt eine Zinserhöhung als sehr wahrscheinlich.",
   "sources": [
     {
-      "title": "Stock Market Today, November 20, 2026: US Stocks Close Sharply Lower (Stock Titan)",
-      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-20-2026"
+      "title": "US stocks rebound as battered AI and chip stocks rally after correction (Fox Business)",
+      "url": "https://www.foxbusiness.com/markets/stocks-november-23-2026"
     },
     {
-      "title": "Chips suffer worst week since 2001 as the Nasdaq nears a bear market (Yahoo Finance)",
-      "url": "https://finance.yahoo.com/markets/article/chips-are-crashing-like-its-2008-as-the-nasdaq-100-nears-a-bear-market-192805534.html"
+      "title": "Stock Market Today, Nov. 23: Advanced Micro Devices Climbs on AI-Chip Rebound After Nvidia Reinstates Jensen Huang as CEO (Motley Fool)",
+      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/23/stock-market-today-nov-23-advanced-micro-devices-climbs-on-ai-chip-rebound-after-nvidia-reinstates-jensen-huang-as-ceo/"
     },
     {
-      "title": "Stock Market Midday, Nov. 20: Nasdaq Plunges Nearly 3% as AMD and Micron Lead a Brutal Semiconductor Sell-Off (Motley Fool)",
-      "url": "https://www.fool.com/coverage/stock-market-today/2026/11/20/stock-market-midday-nov-20-nasdaq-plunges-nearly-3-as-amd-and-micron-lead-a-brutal-semiconductor-sell-off/"
+      "title": "Stock market rebounds sharply after sell-off, Nvidia soars (ABC7 New York)",
+      "url": "https://abc7ny.com/story/stock-market-rebounds-sharply-sell-off-nvidia-soars/20071242/"
+    },
+    {
+      "title": "Nvidia shares soar more than 30% after Huang reinstated as CEO (CNN)",
+      "url": "https://www.cnn.com/2026/11/23/markets/us-stocks-rebound-intl"
     }
   ]
 }
